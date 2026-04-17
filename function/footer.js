@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         <div class="col-lg-2 col-md-6 ms-lg-auto">
                             <ul class="list-unstyled" style="margin-top: 3.5rem;">
-                                <li class="mb-2"><a href="#beranda" class="text-secondary text-decoration-none small hover-white">Beranda</a></li>
-                                <li class="mb-2"><a href="#profil" class="text-secondary text-decoration-none small hover-white">Profil UKM</a></li>
-                                <li class="mb-2"><a href="#kegiatan" class="text-secondary text-decoration-none small hover-white">Kegiatan</a></li>
-                                <li class="mb-2"><a href="#galeri" class="text-secondary text-decoration-none small hover-white">Galeri Karya</a></li>
-                                <li class="mb-2"><a href="#struktur" class="text-secondary text-decoration-none small hover-white">Struktur Pengurus</a></li>
+                                <li class="mb-2"><a href="/index.html" class="text-secondary text-decoration-none small hover-white">Beranda</a></li>
+                                <li class="mb-2"><a href="/pages/Profil/Sejarah/index.html" class="text-secondary text-decoration-none small hover-white">Profil UKM</a></li>
+                                <li class="mb-2"><a href="/pages/Kegiatan/index.html" class="text-secondary text-decoration-none small hover-white">Kegiatan</a></li>
+                                <li class="mb-2"><a href="/pages/Galeri/index.html" class="text-secondary text-decoration-none small hover-white">Galeri Karya</a></li>
+                                <li class="mb-2"><a href="/pages/Struktur Organisasi/index.html" class="text-secondary text-decoration-none small hover-white">Struktur Pengurus</a></li>
                             </ul>
                         </div>
 
