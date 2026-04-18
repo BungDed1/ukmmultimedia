@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Event - UKM Multimedia</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/style/main.css">
+
+    <style>
+        /* Efek Hover Khusus untuk Tombol Gelap (Event Workshop) */
+        .btn-dark-custom {
+            background-color: #1a1a1a !important;
+            color: #ffffff !important;
+            border: 2px solid #1a1a1a !important;
+            transition: all 0.3s ease;
+        }
+
+        .btn-dark-custom:hover,
+        .btn-dark-custom:active {
+            background-color: transparent !important;
+            color: #1a1a1a !important;
+            border: 2px solid #1a1a1a !important;
+        }
+    </style>
+</head>
+
+<body class="bg-light" style="font-family: 'Poppins', sans-serif;">
+
+    <div id="tempat-navbar"></div>
+
+    <section class="py-4" style="background-color: #800000; color: white;">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="/index.html"
+                            class="text-white-50 text-decoration-none small">Beranda</a></li>
+                    <li class="breadcrumb-item active text-white small" aria-current="page">Event & Lomba</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="py-5 my-3">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: #800000;">Event & Pendaftaran Dibuka</h2>
+                <p class="text-muted">Pilih dan daftarkan dirimu pada program dan event terbaru dari UKM Multimedia.</p>
+            </div>
+
+            <div class="bg-white rounded-4 shadow-sm overflow-hidden mb-5" style="border-top: 5px solid #800000;">
+                <div class="row g-0 align-items-center p-4 p-lg-5">
+
+                    <div class="col-lg-5 text-center pe-lg-5 mb-4 mb-lg-0">
+                        <div class="bg-light p-3 rounded-4">
+                            <img src="/public/bannerspektra.webp" alt="Poster Event Spektra" class="img-fluid rounded-3"
+                                style="max-height: 450px; object-fit: contain;">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7 text-start">
+                        <span class="badge mb-3 px-3 py-2 text-uppercase fw-bold text-white"
+                            style="background-color: #800000; letter-spacing: 1px; border-radius: 6px;">
+                            Open Submission
+                        </span>
+
+                        <h2 class="fw-bold display-6 mb-3 text-dark" style="letter-spacing: -0.5px;">Spektra Vol. 1:
+                            Antologi & Visual</h2>
+
+                        <p class="text-secondary mb-4" style="line-height: 1.8; font-size: 1.05rem;">
+                            UKM Multimedia IKIP PGRI Bojonegoro memanggil para kreator! Ini adalah kesempatanmu untuk
+                            memamerkan karya terbaikmu di bidang puisi dan seni visual dalam mahakarya kolaboratif tahun
+                            ini. Pastikan kamu telah membaca syarat dan ketentuan sebelum mendaftar.
+                        </p>
+
+                        <div class="row g-4 mb-5">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-light rounded-circle p-2 d-flex align-items-center justify-content-center me-3"
+                                        style="width: 45px; height: 45px;">
+                                        <i class="bi bi-calendar-event-fill fs-5" style="color: #800000;"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-0 text-dark">Deadline Karya</h6>
+                                        <small class="text-secondary">30 Mei 2026</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-light rounded-circle p-2 d-flex align-items-center justify-content-center me-3"
+                                        style="width: 45px; height: 45px;">
+                                        <i class="bi bi-person-badge-fill fs-5" style="color: #800000;"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-0 text-dark">Kategori Peserta</h6>
+                                        <small class="text-secondary">Umum & Mahasiswa</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column flex-sm-row gap-3">
+                            <a href="https://forms.gle/8g85wD8vXSyoLK3J8" target="_blank"
+                                class="btn btn-maroon fw-bold py-3 px-4 rounded-pill d-flex align-items-center justify-content-center flex-grow-1"
+                                style="font-size: 1.1rem;">
+                                <i class="bi bi-ui-checks-grid me-2"></i> Isi Formulir Pendaftaran
+                            </a>
+
+                            <a href="#"
+                                class="btn btn-outline-dark-custom fw-bold py-3 px-5 rounded-pill d-flex align-items-center justify-content-center">
+                                <i class="bi bi-file-earmark-pdf-fill me-2"></i> Guidebook
+                            </a>
+                        </div>
+
+                        <p class="text-muted mt-3 small">*Tautan pendaftaran akan membuka tab baru menuju Google Forms.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="bg-white rounded-4 shadow-sm overflow-hidden" style="border-top: 5px solid #1a1a1a;">
+                <div class="row g-0 align-items-center p-4 p-lg-5">
+
+                    <div class="col-lg-7 text-start order-2 order-lg-1 pr-lg-5">
+                        <span class="badge mb-3 px-3 py-2 text-uppercase fw-bold text-white bg-dark"
+                            style="letter-spacing: 1px; border-radius: 6px;">
+                            Pendaftaran Dibuka
+                        </span>
+
+                        <h2 class="fw-bold display-6 mb-3 text-dark" style="letter-spacing: -0.5px;">Pelatihan Digital
+                            Creator</h2>
+
+                        <p class="text-secondary mb-4" style="line-height: 1.8; font-size: 1.05rem;">
+                            Tingkatkan skill digitalmu! Dari dasar pembuatan website, optimasi desain, hingga siap
+                            menjadi creativepreneur. Pelatihan eksklusif ini terbatas hanya untuk 30 peserta pendaftar
+                            pertama.
+                        </p>
+
+                        <div class="row g-4 mb-5">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-light rounded-circle p-2 d-flex align-items-center justify-content-center me-3"
+                                        style="width: 45px; height: 45px;">
+                                        <i class="bi bi-geo-alt-fill fs-5 text-dark"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-0 text-dark">Lokasi Pelatihan</h6>
+                                        <small class="text-secondary">Lab Komputer IKIP</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-light rounded-circle p-2 d-flex align-items-center justify-content-center me-3"
+                                        style="width: 45px; height: 45px;">
+                                        <i class="bi bi-person-fill-check fs-5 text-dark"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-0 text-dark">Kategori Peserta</h6>
+                                        <small class="text-secondary">Khusus Internal</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-column flex-sm-row gap-3">
+                            <a href="#" target="_blank"
+                                class="btn btn-dark-custom fw-bold py-3 px-4 rounded-pill d-flex align-items-center justify-content-center flex-grow-1"
+                                style="font-size: 1.1rem;">
+                                <i class="bi bi-send-fill me-2"></i> Daftar Sekarang
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 text-center ps-lg-5 mb-4 mb-lg-0 order-1 order-lg-2">
+                        <div class="bg-light p-3 rounded-4">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600"
+                                alt="Poster Pelatihan" class="img-fluid rounded-3"
+                                style="max-height: 450px; object-fit: contain;">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="tempat-footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/function/navbar.js"></script>
+    <script src="/function/footer.js"></script>
+</body>
+
+</html>

@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <img src="/public/logomm.webp" alt="Logo UKM" width="50" class="me-2">
                         <div class="d-flex flex-column">
                             <span class="fw-bold fs-4 text-dark" style="letter-spacing: -0.5px; line-height: 1.2;">UKM MULTIMEDIA</span>
-                            <span style="font-family: 'Cardo', serif; font-style: italic; font-size: 0.85rem; color: #800000; letter-spacing: 0.5px; margin-top: -2px;">
+                            <span style="font-family: 'Cardo', serif; font-style: italic; font-size: 0.85rem; color: #000000; letter-spacing: 0.5px; margin-top: -2px;">
                                 Creative, Innovative, Collaborative
                             </span>
                         </div>

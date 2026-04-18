@@ -702,3 +702,110 @@ section {
         /* Kasih pembatas vertikal di tengah */
     }
 }
+
+/* ==========================================================================
+   ANIMASI BANNER EVENT & TOMBOL (Homepage)
+   ========================================================================== */
+.event-banner-hover {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 20px;
+}
+
+.event-banner-hover:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(128, 0, 0, 0.25) !important;
+}
+
+/* Animasi Tombol Utama (Putih -> Transparan) */
+.btn-event-primary {
+    background-color: #ffffff;
+    color: #800000 !important;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+}
+
+.btn-event-primary:hover {
+    background-color: transparent;
+    color: #ffffff !important;
+}
+
+/* Animasi Tombol Sekunder (Transparan -> Putih) */
+.btn-event-outline {
+    background-color: transparent;
+    color: #ffffff !important;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+}
+
+.btn-event-outline:hover {
+    background-color: #ffffff;
+    color: #800000 !important;
+}
+
+/* ==========================================================================
+   TOMBOL MAROON CUSTOM (Untuk Pendaftaran Event)
+   ========================================================================== */
+.btn-maroon {
+    background-color: #800000;
+    color: #ffffff !important;
+    border: 2px solid #800000;
+    transition: all 0.3s ease;
+}
+
+.btn-maroon:hover {
+    background-color: #5a0000;
+    /* Warna maroon jadi sedikit lebih gelap */
+    border-color: #5a0000;
+    color: #ffffff !important;
+    /* Mengunci teks agar tetap putih */
+}
+
+/* Animasi untuk tombol Guidebook (Outline) */
+.btn-outline-dark-custom {
+    color: #1a1a1a !important;
+    border: 2px solid #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-dark-custom:hover {
+    background-color: #1a1a1a;
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   TOMBOL MAROON CUSTOM (Untuk Event & Departemen)
+   ========================================================================== */
+/* Kondisi Normal: Background Maroon, Teks Putih */
+.btn-maroon,
+.btn-layanan-custom {
+    background-color: #800000 !important;
+    color: #ffffff !important;
+    border: 2px solid #800000 !important;
+    transition: all 0.3s ease;
+}
+
+/* Kondisi saat Disorot (Hover) atau Ditekan (Active): Background Transparan/Putih, Teks Maroon, Garis Maroon */
+.btn-maroon:hover,
+.btn-maroon:active,
+.btn-layanan-custom:hover,
+.btn-layanan-custom:active {
+    background-color: transparent !important;
+    color: #800000 !important;
+    border: 2px solid #800000 !important;
+}
+
+/* ==========================================================================
+   TOMBOL OUTLINE CUSTOM (Untuk Guidebook)
+   ========================================================================== */
+.btn-outline-dark-custom {
+    background-color: transparent !important;
+    color: #1a1a1a !important;
+    border: 2px solid #1a1a1a !important;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-dark-custom:hover,
+.btn-outline-dark-custom:active {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
