@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="bg-black text-white py-2 d-none d-md-block" style="font-family: 'Poppins', sans-serif;">
                 <div class="container d-flex justify-content-end align-items-center">
                     <span class="me-3 fw-bold" style="font-size: 0.85rem;">Follow:</span>
-                    <a href="#" class="text-white me-3 fs-5"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-white me-3 fs-5"><i class="bi bi-tiktok"></i></a>
-                    <a href="#" class="text-white fs-5"><i class="bi bi-youtube"></i></a>
+                    <a href="https://www.instagram.com/ukmmultimedia?igsh=aGlyYmV2YWZyZ2Nu" class="text-white me-3 fs-5"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@ukmmultimediaikip?lang=en" class="text-white me-3 fs-5"><i class="bi bi-tiktok"></i></a>
+                    <a href="https://youtube.com/@ukmmultimediaikip?si=YIybflLmZFrIlybN" class="text-white fs-5"><i class="bi bi-youtube"></i></a>
                 </div>
             </div>
 

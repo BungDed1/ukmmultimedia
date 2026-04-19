@@ -22,9 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             </p>
                             <div class="d-flex gap-3">
                                 <a href="mailto:ukmmultimediaikip@gmail.com" class="text-white fs-5 hover-maroon-text-top" title="Kirim Email"><i class="bi bi-envelope-fill"></i></a>
-                                <a href="#" class="text-white fs-5 hover-maroon-text-top" title="Instagram"><i class="bi bi-instagram"></i></a>
-                                <a href="#" class="text-white fs-5 hover-maroon-text-top" title="TikTok"><i class="bi bi-tiktok"></i></a>
-                                <a href="#" class="text-white fs-5 hover-maroon-text-top" title="YouTube"><i class="bi bi-youtube"></i></a>
+                                <a href="https://www.instagram.com/ukmmultimedia?igsh=aGlyYmV2YWZyZ2Nu" class="text-white fs-5 hover-maroon-text-top" title="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="https://www.tiktok.com/@ukmmultimediaikip?lang=en" class="text-white fs-5 hover-maroon-text-top" title="TikTok"><i class="bi bi-tiktok"></i></a>
+                                <a href="https://youtube.com/@ukmmultimediaikip?si=YIybflLmZFrIlybN" class="text-white fs-5 hover-maroon-text-top" title="YouTube"><i class="bi bi-youtube"></i></a>
                             </div>
                         </div>
 
