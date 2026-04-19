@@ -16,54 +16,92 @@
 <body class="bg-light" style="font-family: 'Poppins', sans-serif;">
     <div id="tempat-navbar"></div>
 
-    <section class="py-4" style="background-color: #800000; color: white;">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0">
+    <section class="global-hero-rounded">
+        <div class="container text-center">
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="/index.html"
                             class="text-white-50 text-decoration-none small">Beranda</a></li>
                     <li class="breadcrumb-item text-white-50 small">Hubungi Kami</li>
-                    <li class="breadcrumb-item active text-white small" aria-current="page">Kontak Admin</li>
+                    <li class="breadcrumb-item active text-white small fw-bold" aria-current="page">Kontak Admin</li>
                 </ol>
             </nav>
+            <h1 class="fw-bold display-4 mb-3">Hubungi Kami</h1>
+            <p class="lead mx-auto"
+                style="font-family: 'Cardo', serif; font-style: italic; max-width: 600px; opacity: 0.9;">
+                Kami siap mendengarkan aspirasi dan menjawab pertanyaan Anda seputar UKM Multimedia.
+            </p>
         </div>
     </section>
 
-    <section class="py-5" style="background-color: #800000; color: white;">
-        <div class="container text-center py-5">
-            <h1 class="fw-bold display-5">Hubungi Kami</h1>
-            <p class="lead" style="font-family: 'Cardo', serif; font-style: italic;">Kami siap mendengarkan aspirasi dan
-                pertanyaan Anda.</p>
-        </div>
-    </section>
-
-    <section class="py-5">
+    <section class="py-5 mb-4">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 bg-white p-5 shadow-sm rounded-4">
-                    <h4 class="fw-bold mb-4">Kirim Pesan</h4>
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label text-muted small">Nama Lengkap</label>
-                            <input type="text" class="form-control" placeholder="Masukkan nama Anda">
+            <div class="row justify-content-center g-4">
+
+                <div class="col-lg-4">
+                    <div class="bg-white p-5 shadow-sm rounded-4 h-100">
+                        <h4 class="fw-bold mb-4" style="color: #800000;">Informasi Admin</h4>
+                        <p class="text-muted small mb-4">Dapatkan respon lebih cepat melalui saluran komunikasi resmi
+                            kami pada jam kerja.</p>
+
+                        <div class="contact-info-card p-3 rounded-3 mb-3">
+                            <p class="mb-1 fw-bold text-dark small"><i
+                                    class="bi bi-geo-alt-fill text-danger me-2"></i>Alamat Sekretariat</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.85rem;">Kampus IKIP PGRI Bojonegoro, Jl.
+                                Panglima Polim No. 46 Bojonegoro</p>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label text-muted small">Kategori Pertanyaan</label>
-                            <select class="form-select">
-                                <option>Pendaftaran Anggota Baru</option>
-                                <option>Informasi Kegiatan</option>
-                                <option>Lainnya</option>
-                            </select>
+
+                        <div class="contact-info-card p-3 rounded-3 mb-3">
+                            <p class="mb-1 fw-bold text-dark small"><i
+                                    class="bi bi-envelope-fill text-danger me-2"></i>Email Resmi</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.85rem;">ukmmultimediaikip@gmail.com
+                            </p>
                         </div>
-                        <div class="mb-4">
-                            <label class="form-label text-muted small">Pesan</label>
-                            <textarea class="form-control" rows="4"
-                                placeholder="Tulis pesan Anda di sini..."></textarea>
+
+                        <div class="contact-info-card p-3 rounded-3">
+                            <p class="mb-1 fw-bold text-dark small"><i class="bi bi-clock-fill text-danger me-2"></i>Jam
+                                Operasional</p>
+                            <p class="mb-0 text-muted" style="font-size: 0.85rem;">Senin - Jumat: 09.00 - 15.00 WIB</p>
                         </div>
-                        <button type="button" class="btn w-100 text-white fw-bold py-2"
-                            style="background-color: #800000;">Kirim via WhatsApp</button>
-                    </form>
+                    </div>
                 </div>
+
+                <div class="col-lg-6">
+                    <div class="bg-white p-5 shadow-sm rounded-4 h-100 border border-light">
+                        <h4 class="fw-bold mb-4" style="color: #1a1a1a;">Kirim Pesan Cepat</h4>
+
+                        <form id="waForm">
+                            <div class="mb-3">
+                                <label class="form-label text-dark fw-semibold small">Nama Lengkap</label>
+                                <input type="text" id="inputNama" class="form-control py-2 bg-light"
+                                    placeholder="Contoh: Budi Santoso" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-dark fw-semibold small">Kategori Pertanyaan</label>
+                                <select id="inputKategori" class="form-select py-2 bg-light" required>
+                                    <option value="" disabled selected>-- Pilih Kategori --</option>
+                                    <option value="Pendaftaran Anggota Baru">Pendaftaran Anggota Baru</option>
+                                    <option value="Informasi Kegiatan & Event">Informasi Kegiatan & Event</option>
+                                    <option value="Layanan Jasa & Publikasi">Layanan Jasa & Publikasi</option>
+                                    <option value="Pertanyaan Lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label text-dark fw-semibold small">Pesan</label>
+                                <textarea id="inputPesan" class="form-control bg-light" rows="5"
+                                    placeholder="Tuliskan detail pertanyaan atau keperluan Anda di sini..."
+                                    required></textarea>
+                            </div>
+
+                            <button type="button" onclick="sendToWhatsApp()"
+                                class="btn w-100 text-white fw-bold py-3 rounded-pill btn-maroon shadow-sm mt-2">
+                                <i class="bi bi-whatsapp me-2"></i> Kirim via WhatsApp
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -72,6 +110,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/function/navbar.js"></script>
     <script src="/function/footer.js"></script>
+    <script src="/function/contact.js"></script>
 </body>
 
 </html>

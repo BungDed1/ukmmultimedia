@@ -8,27 +8,45 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     background-color: #f4f7f6;
 }
 
-/* Hilangkan garis fokus biru saat diklik (biar rapi) */
+/* Hilangkan garis fokus biru saat diklik & atur offset */
 :target {
     scroll-margin-top: 90px;
 }
 
 .section-offset {
-    /* Angka ini menyesuaikan tinggi navbar kamu agar judulnya pas tidak tertutup */
     scroll-margin-top: 80px;
 }
 
-/* Supaya saat diklik anchor link, judulnya tidak tertutup navbar yang menempel di atas */
 #paket {
     scroll-margin-top: 100px;
 }
 
 /* ==========================================================================
-   EFEK HOVER (NAVBAR & TOMBOL)
+   GLOBAL SECTION STYLING
+   ========================================================================== */
+section {
+    margin: 0 !important;
+}
+
+.section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-title-gap {
+    margin-bottom: 50px;
+}
+
+.bg-subtle {
+    background-color: #fcfcfc;
+}
+
+/* ==========================================================================
+   NAVBAR, DROPDOWN & FOOTER
    ========================================================================== */
 .custom-nav-link {
     border: 2px solid transparent;
@@ -40,48 +58,60 @@ body {
     border: 2px solid #ffffff;
 }
 
-.social-icon-custom:hover {
-    background-color: #e6b3b3 !important;
-    /* Warna maroon muda untuk hover icon */
-    transform: translateY(-3px);
+.hover-maroon-text {
+    color: #000000 !important;
+    transition: color 0.2s ease-in-out;
 }
 
-/* EFEK HOVER TOMBOL HERO (HUBUNGI SEKARANG) */
-.btn-hero-custom {
-    background-color: #800000;
-    color: #ffffff;
-    border: 2px solid transparent;
-    /* Border default transparan agar tidak lompat */
-    transition: all 0.3s ease;
-}
-
-.btn-hero-custom:hover {
-    background-color: #ffffff !important;
+.hover-maroon-text:hover,
+.hover-maroon-text:focus {
     color: #800000 !important;
-    /* Warna teks menyesuaikan maroon tombol aslinya */
-    border: 2px solid #000000 !important;
-    /* Border hitam sesuai permintaan */
 }
 
-/* Mengatur warna ikon WA/Action di dalam tombol Hero */
-.btn-hero-custom img {
-    filter: brightness(0) invert(1);
-    /* Kondisi awal: Ikon menjadi putih */
+.hover-maroon-text-top {
+    transition: color 0.2s ease-in-out;
+}
+
+.hover-maroon-text-top:hover {
+    color: #ff6666 !important;
+    transform: translateY(-3px);
+    display: inline-block;
+}
+
+.brand-divider {
+    border-left: 2px solid #dee2e6;
+    height: 24px;
+    margin: 0 12px;
+}
+
+/* Override Dropdown Bootstrap */
+.dropdown-menu .dropdown-item {
+    background-color: transparent !important;
+    color: #000000 !important;
+    transition: color 0.2s ease-in-out;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .dropdown-item:active,
+.dropdown-menu .dropdown-item.active {
+    background-color: transparent !important;
+    color: #800000 !important;
+}
+
+/* Footer Link & Floating Logo */
+.hover-white {
     transition: all 0.3s ease;
 }
 
-.btn-hero-custom:hover img {
-    filter: brightness(0) !important;
-    /* Kondisi saat di-hover: Ikon menjadi hitam */
+.hover-white:hover {
+    color: #ffffff !important;
+    padding-left: 5px;
 }
 
-/* ==========================================================================
-   FOOTER GAYA MENGAMBANG (FLOATING LOGO)
-   ========================================================================== */
 .footer-logo-wrapper {
     position: absolute;
     top: -60px;
-    /* Mendorong separuh lingkaran ke atas */
     left: 50%;
     transform: translateX(-50%);
     width: 120px;
@@ -99,9 +129,230 @@ body {
     height: auto;
 }
 
+.social-icon-custom:hover {
+    background-color: #e6b3b3 !important;
+    transform: translateY(-3px);
+}
+
 /* ==========================================================================
-   STYLE KARTU / KATALOG (PRODUK & LAYANAN)
+   HERO CAROUSEL & INDICATORS
    ========================================================================== */
+.hero-bg-image {
+    width: 100%;
+    min-height: 85vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+}
+
+.hero-ornament {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.hero-badge {
+    background-color: #800000;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.hero-overline {
+    color: #F2C94C;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 300;
+    opacity: 0.9;
+    color: #ffffff;
+    max-width: 650px;
+}
+
+.custom-indicators {
+    margin-bottom: 2rem;
+    z-index: 5;
+}
+
+.custom-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    margin: 0 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.custom-indicators .active {
+    width: 35px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+/* ==========================================================================
+   TOMBOL (BUTTONS) - DIGABUNGKAN AGAR RAPI
+   ========================================================================== */
+/* 1. Tombol Hero / Hubungi Sekarang */
+.btn-hero-custom {
+    background-color: #800000;
+    color: #ffffff;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-hero-custom:hover {
+    background-color: #ffffff !important;
+    color: #800000 !important;
+    border: 2px solid #000000 !important;
+}
+
+.btn-hero-custom img {
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease;
+}
+
+.btn-hero-custom:hover img {
+    filter: brightness(0) !important;
+}
+
+/* 2. Tombol Maroon & Layanan (Fill -> Transparan) */
+.btn-maroon,
+.btn-layanan-custom {
+    background-color: #800000 !important;
+    color: #ffffff !important;
+    border: 2px solid #800000 !important;
+    transition: all 0.3s ease;
+}
+
+.btn-maroon:hover,
+.btn-maroon:active,
+.btn-layanan-custom:hover,
+.btn-layanan-custom:active {
+    background-color: transparent !important;
+    color: #800000 !important;
+    border: 2px solid #800000 !important;
+}
+
+/* 3. Tombol Outline Dark (Transparan -> Fill Gelap) */
+.btn-outline-dark-custom {
+    background-color: transparent !important;
+    color: #1a1a1a !important;
+    border: 2px solid #1a1a1a !important;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-dark-custom:hover,
+.btn-outline-dark-custom:active {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+/* 4. Tombol Khusus Animasi Banner Event */
+.btn-event-primary {
+    background-color: #ffffff;
+    color: #800000 !important;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+}
+
+.btn-event-primary:hover {
+    background-color: transparent;
+    color: #ffffff !important;
+}
+
+.btn-event-outline {
+    background-color: transparent;
+    color: #ffffff !important;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+}
+
+.btn-event-outline:hover {
+    background-color: #ffffff;
+    color: #800000 !important;
+}
+
+/* 5. Tombol Order / Paket */
+.btn-order {
+    background-color: #800000;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: auto;
+}
+
+.btn-order:hover {
+    background-color: #4d0000;
+}
+
+.paket-btn-custom {
+    background-color: #800000 !important;
+    color: #ffffff !important;
+    border: 2px solid #800000 !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+.paket-btn-custom:hover {
+    background-color: #ffffff !important;
+    color: #800000 !important;
+    border: 2px solid #000000 !important;
+}
+
+.paket-btn-outline {
+    background-color: transparent !important;
+    color: #800000 !important;
+    border: 2px solid #800000 !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+.paket-btn-outline:hover {
+    background-color: #800000 !important;
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   KOMPONEN KARTU & LAYOUT
+   ========================================================================== */
+/* Katalog Buku / Layanan */
 .katalog-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -172,72 +423,86 @@ body {
     text-align: left;
 }
 
-/* Styling tombol dalam card */
-.btn-order {
-    background-color: #800000;
-    color: #ffffff;
-    border: none;
-    padding: 12px;
+/* Kartu Departemen Hover */
+.custom-card-hover {
+    transition: all 0.3s ease;
+    border-radius: 20px !important;
+}
+
+.custom-card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dept-icon {
+    width: 70px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.custom-card-hover:hover .dept-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Banner Animasi Event */
+.event-banner-hover {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 20px;
+}
+
+.event-banner-hover:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(128, 0, 0, 0.25) !important;
+}
+
+/* Preview Galeri */
+.img-preview {
+    height: 280px;
     width: 100%;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: auto;
-}
-
-.btn-order:hover {
-    background-color: #4d0000;
-    /* Warna maroon lebih gelap saat di-hover */
-}
-
-/* EFEK HOVER TOMBOL LAYANAN (CARD) */
-.btn-layanan-custom {
-    background-color: #800000;
-    color: #ffffff;
-    border: 2px solid transparent;
+    object-fit: cover;
+    border-radius: 15px;
     transition: all 0.3s ease;
 }
 
-.btn-layanan-custom:hover {
-    background-color: #ffffff !important;
-    color: #800000 !important;
-    border: 2px solid #800000 !important;
+.img-preview:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Statistik Angka */
+.stat-number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #800000;
+    display: block;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.stat-box {
+    border-right: 1px solid #dee2e6;
+}
+
+.stat-box:last-child {
+    border-right: none;
+}
+
+/* Logo Partner */
+.partner-logo {
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: all 0.4s ease;
+    max-height: 45px;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
 }
 
 /* ==========================================================================
-   STYLE TOMBOL PAKET & MODAL
-   ========================================================================== */
-/* Tombol Utama (Awal Maroon -> Hover Putih) */
-.paket-btn-custom {
-    background-color: #800000 !important;
-    color: #ffffff !important;
-    border: 2px solid #800000 !important;
-    transition: all 0.3s ease-in-out !important;
-}
-
-.paket-btn-custom:hover {
-    background-color: #ffffff !important;
-    color: #800000 !important;
-    border: 2px solid #000000 !important;
-}
-
-/* Tombol Batal/Outline (Awal Transparan -> Hover Maroon) */
-.paket-btn-outline {
-    background-color: transparent !important;
-    color: #800000 !important;
-    border: 2px solid #800000 !important;
-    transition: all 0.3s ease-in-out !important;
-}
-
-.paket-btn-outline:hover {
-    background-color: #800000 !important;
-    color: #ffffff !important;
-}
-
-/* ==========================================================================
-   EFEK 3D SWIPER / SLIDER (JIKA DIGUNAKAN)
+   SWIPER 3D EFFECT (JIKA DIGUNAKAN)
    ========================================================================== */
 #tokobuku {
     perspective: 1500px;
@@ -269,382 +534,186 @@ body {
 }
 
 /* ==========================================================================
-   STYLE KHUSUS NAVBAR (TEXT HITAM, HOVER TEXT MAROON)
+   CSS KHUSUS STRUKTUR ORGANISASI V4
    ========================================================================== */
-
-/* Kelas utama untuk teks navbar (Warna dasar Hitam) */
-.hover-maroon-text {
-    color: #000000 !important;
-    transition: color 0.2s ease-in-out;
+.org-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
 }
 
-/* Berubah jadi Maroon murni saat kursor diarahkan */
-.hover-maroon-text:hover,
-.hover-maroon-text:focus {
-    color: #800000 !important;
+.org-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(128, 0, 0, 0.15);
 }
 
-/* Khusus icon sosmed di Top Bar hitam agar hover-nya terang */
-.hover-maroon-text-top {
-    transition: color 0.2s ease-in-out;
-}
-
-.hover-maroon-text-top:hover {
-    color: #ff6666 !important;
-}
-
-/* Memastikan divider navbar rapi */
-.brand-divider {
-    border-left: 2px solid #dee2e6;
-    height: 24px;
-    margin: 0 12px;
-}
-
-/* ==========================================================================
-   OVERRIDE DROPDOWN BOOTSTRAP (MENGHILANGKAN BLOK BIRU)
-   ========================================================================== */
-
-/* Kondisi default dropdown item (teks hitam, background transparan/putih) */
-.dropdown-menu .dropdown-item {
-    background-color: transparent !important;
-    color: #000000 !important;
-    transition: color 0.2s ease-in-out;
-}
-
-/* Kondisi saat dropdown item di-hover, di-klik, atau aktif */
-.dropdown-menu .dropdown-item:hover,
-.dropdown-menu .dropdown-item:focus,
-.dropdown-menu .dropdown-item:active,
-.dropdown-menu .dropdown-item.active {
-    background-color: transparent !important;
-    /* Mematikan blok warna biru */
-    color: #800000 !important;
-    /* Teks berubah jadi maroon */
-}
-
-/* ==========================================================================
-   HERO CAROUSEL STYLE (EKRAF BOJONEGORO STYLE)
-   ========================================================================== */
-
-/* Mengatur tinggi slider agar proporsional */
-.hero-bg-image {
-    width: 100%;
-    min-height: 85vh;
-    /* Bisa diubah jadi 100vh kalau mau full screen banget */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-}
-
-/* Gradient overlay gelap dari kiri ke kanan */
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 45%, rgba(0, 0, 0, 0.1) 100%);
-    z-index: 1;
-}
-
-/* Opsional: Jika punya file transparan PNG untuk ukiran pinggir kiri */
-.hero-ornament {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 250px;
-    height: 100%;
-    /* Uncomment baris di bawah dan masukkan file pattern batik/ukiran jika ada */
-    /* background: url('/public/ornamen-kiri.png') left center/cover no-repeat; */
-    opacity: 0.4;
-    z-index: 1;
-}
-
-/* Typography Custom */
-.hero-overline {
-    color: #F2C94C;
-    /* Warna emas/kuning elegan seperti di gambar */
-    font-size: 0.9rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-.hero-title {
-    font-family: 'Playfair Display', serif;
-    /* Font Serif tebal */
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    /* Responsive typography */
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.hero-desc {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    opacity: 0.9;
-    font-family: Arial, sans-serif;
-    max-width: 650px;
-}
-
-/* ==========================================================================
-   HERO CAROUSEL STYLE (POPPINS & PALET UKM)
-   ========================================================================== */
-
-/* Mengatur tinggi slider agar proporsional dan teks fix di tengah vertikal */
-.hero-bg-image {
-    width: 100%;
-    min-height: 85vh;
-    /* Atur jadi 100vh kalau mau full 1 layar penuh */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    display: flex;
-    /* Kunci agar teks... */
-    align-items: center;
-    /* ...selalu berada di tengah vertikal */
-}
-
-/* Gradient overlay Hitam pekat di kiri, transparan di kanan */
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%);
-    z-index: 1;
-}
-
-/* Aksen Warna Maroon untuk label di atas judul */
-.hero-badge {
-    background-color: #800000;
-    color: #ffffff;
-    letter-spacing: 1.5px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-}
-
-/* Typography Custom pakai Poppins */
-.hero-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    /* Responsif otomatis */
-    font-weight: 700;
-    line-height: 1.2;
-    color: #ffffff;
-}
-
-.hero-desc {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    font-weight: 300;
-    opacity: 0.9;
-    color: #ffffff;
-    max-width: 650px;
-}
-
-/* ==========================================================================
-   CUSTOM CAROUSEL INDICATORS (PILL & DOTS)
-   ========================================================================== */
-.custom-indicators {
-    margin-bottom: 2rem;
-    z-index: 5;
-}
-
-/* Bentuk awal titik (Bulat kecil, agak transparan, bisa diklik) */
-.custom-indicators [data-bs-target] {
-    width: 10px;
-    height: 10px;
+/* Ukuran Foto */
+.avatar-bph {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: none;
-    margin: 0 6px;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    border: 4px solid #800000;
+    padding: 3px;
 }
 
-/* Bentuk saat aktif (Berubah jadi Pil panjang warna putih solid) */
-.custom-indicators .active {
-    width: 35px;
-    height: 10px;
-    border-radius: 10px;
-    background-color: #ffffff;
-}
-
-/* Styling Link Footer */
-.hover-white {
-    transition: all 0.3s ease;
-}
-
-.hover-white:hover {
-    color: #ffffff !important;
-    padding-left: 5px;
-    /* Efek sedikit bergeser saat di-hover */
-}
-
-/* Memastikan ikon sosmed di footer berubah warna saat disorot */
-.hover-maroon-text-top:hover {
-    color: #ff6666 !important;
-    transform: translateY(-3px);
-    display: inline-block;
-}
-
-/* Styling Counter Statistik */
-.stat-box {
-    border-right: 1px solid #dee2e6;
-}
-
-.stat-box:last-child {
-    border-right: none;
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #800000;
-}
-
-/* Styling Gallery Preview */
-.img-preview {
-    height: 250px;
+.avatar-dept {
+    width: 100px;
+    height: 100px;
     object-fit: cover;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
+    border-radius: 50%;
+    border: 3px solid #1a1a1a;
+    padding: 3px;
 }
 
-.img-preview:hover {
-    transform: scale(1.03);
+.avatar-subdept {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #800000;
+    padding: 2px;
 }
 
-/* Styling Logo Partner */
-.partner-logo {
-    filter: grayscale(100%);
-    opacity: 0.6;
-    transition: all 0.3s ease;
-    max-height: 50px;
+.avatar-anggota {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
-.partner-logo:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-}
-
-/* Standarisasi Jarak Section */
-.section-padding {
-    padding-top: 80px;
-    padding-bottom: 80px;
-}
-
-/* Menghilangkan margin bawaan yang bikin renggang */
-section {
-    margin: 0 !important;
-}
-
-/* Mengatur jarak khusus untuk header section agar tidak terlalu nempel dengan teks deskripsi */
-.section-title-gap {
-    margin-bottom: 50px;
-}
-
-/* Memberikan warna selang-seling agar section tidak terlihat menyatu (biar gak hambar putih semua) */
-.bg-subtle {
-    background-color: #fcfcfc;
-    /* Abu-abu sangat tipis */
-}
-
-/* Styling Ikon Departemen */
-.dept-icon {
-    height: 65px;
-    /* Sesuaikan tinggi ikon di sini */
-    width: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-/* Efek sedikit goyang/besar pas kartu di-hover */
-.custom-card-hover:hover .dept-icon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* ==========================================================================
-   GLOBAL SECTION STYLING
-   ========================================================================== */
-.section-padding {
-    padding-top: 80px;
-    padding-bottom: 80px;
-}
-
-/* ==========================================================================
-   DEPARTEMEN SECTION (CENTERED)
-   ========================================================================== */
-.dept-icon {
-    width: 70px;
-    height: auto;
-    transition: transform 0.3s ease;
-}
-
-.custom-card-hover {
-    transition: all 0.3s ease;
-    border-radius: 20px !important;
-}
-
-.custom-card-hover:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* ==========================================================================
-   STATISTIK & COUNTER
-   ========================================================================== */
-.stat-number {
-    font-size: 2.8rem;
-    font-weight: 800;
+/* Label / Jabatan */
+.label-jabatan {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
     color: #800000;
-    display: block;
-    line-height: 1;
-    margin-bottom: 5px;
+    background: #fff0f0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.label-jabatan.dark {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* Item Anggota */
+.member-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.member-item:hover {
+    background-color: #fff0f0;
+    border-color: #800000;
+}
+
+/* Garis Penghubung Hirarki */
+.hierarchy-line {
+    width: 2px;
+    height: 30px;
+    background-color: #800000;
+    margin: 0 auto;
 }
 
 /* ==========================================================================
-   KARYA TERBARU (GALLERY PREVIEW)
+   CSS KHUSUS HALAMAN KEGIATAN & PROGRAM (ALBUM GRID)
    ========================================================================== */
-.img-preview {
-    height: 280px;
+.activity-card {
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.activity-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(128, 0, 0, 0.1) !important;
+}
+
+.activity-img {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.badge-date {
+    background-color: #800000;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   CSS KHUSUS HALAMAN GALERI KARYA (TABS & ALBUM)
+   ========================================================================== */
+/* Styling Tab Filter Navigasi */
+.nav-pills-custom .nav-link {
+    color: #444;
+    font-weight: 600;
+    border-radius: 50rem;
+    padding: 10px 25px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.nav-pills-custom .nav-link:hover {
+    color: #800000;
+}
+
+.nav-pills-custom .nav-link.active {
+    background-color: #800000;
+    color: white;
+    border-color: #800000;
+}
+
+/* Efek Kartu Galeri (Foto & Publikasi) */
+.gallery-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(128, 0, 0, 0.15);
+}
+
+/* Gambar dalam Galeri */
+.gallery-img {
+    height: 250px;
     width: 100%;
     object-fit: cover;
-    border-radius: 15px;
-    transition: all 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
-.img-preview:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+.gallery-card:hover .gallery-img {
+    transform: scale(1.05);
 }
 
-/* ==========================================================================
-   PARTNER LOGO
-   ========================================================================== */
-.partner-logo {
-    filter: grayscale(100%);
-    opacity: 0.5;
-    transition: all 0.4s ease;
-    max-height: 45px;
-}
-
-.partner-logo:hover {
-    filter: grayscale(0%);
-    opacity: 1;
+/* Styling Container Player Video */
+.video-card-body {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1.5rem;
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVE ADJUSTMENTS (Khusus HP)
+   MOBILE RESPONSIVE ADJUSTMENTS (Selalu di Posisi Paling Bawah)
    ========================================================================== */
 @media (max-width: 991.98px) {
 
-    /* 1. Navbar Rata Kiri & Rapi */
+    /* Navbar Rata Kiri & Rapi */
     .navbar-nav {
         text-align: left !important;
         padding-top: 20px;
@@ -653,7 +722,6 @@ section {
 
     .nav-item {
         border-bottom: 1px solid #f1f1f1;
-        /* Kasih garis tipis antar menu */
     }
 
     .nav-link {
@@ -663,14 +731,12 @@ section {
     .dropdown-menu {
         border: none !important;
         padding-left: 20px !important;
-        /* Sub-menu menjorok ke dalam */
         background: #fafafa !important;
     }
 
-    /* 2. Hero Section Adjustments */
+    /* Hero Section */
     .hero-title {
         font-size: 1.8rem !important;
-        /* Judul mengecil biar gak kepotong */
         line-height: 1.3;
     }
 
@@ -679,133 +745,156 @@ section {
         opacity: 0.8;
     }
 
+    /* Section Padding */
     .section-padding {
         padding-top: 50px !important;
-        /* Jarak section di HP lebih rapat */
         padding-bottom: 50px !important;
     }
 
-    /* 3. Statistik jadi 2 baris x 2 kolom */
+    /* Statistik menjadi 2x2 grid */
     .stat-number {
         font-size: 2rem !important;
     }
 
     .stat-box {
         border-right: none !important;
-        /* Hilangkan garis pembatas desktop */
         border-bottom: 1px solid #dee2e6;
         padding-bottom: 15px;
     }
 
     .stat-box:nth-child(even) {
         border-left: 1px solid #dee2e6;
-        /* Kasih pembatas vertikal di tengah */
     }
 }
 
 /* ==========================================================================
-   ANIMASI BANNER EVENT & TOMBOL (Homepage)
+   CSS KHUSUS HALAMAN PARTNERSHIP V3 (MINIMALIST & CLEAN)
    ========================================================================== */
-.event-banner-hover {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border-radius: 20px;
+.partnership-hero {
+    background: linear-gradient(135deg, #800000 0%, #4a0000 100%);
+    color: white;
+    padding: 80px 0;
+    border-radius: 0 0 40px 40px;
+    margin-bottom: 50px;
 }
 
-.event-banner-hover:hover {
+.proposal-card-v3 {
+    background: #fff;
+    border-radius: 24px;
+    border: 1px solid #eaeaea;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.proposal-card-v3:hover {
     transform: translateY(-12px);
-    box-shadow: 0 25px 50px rgba(128, 0, 0, 0.25) !important;
+    box-shadow: 0 24px 48px rgba(128, 0, 0, 0.12);
+    border-color: #800000;
 }
 
-/* Animasi Tombol Utama (Putih -> Transparan) */
-.btn-event-primary {
-    background-color: #ffffff;
-    color: #800000 !important;
-    border: 2px solid #ffffff;
-    transition: all 0.3s ease;
+.proposal-v3-header {
+    background-color: #f8f9fa;
+    padding: 40px 20px 30px;
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+    transition: background-color 0.4s ease;
 }
 
-.btn-event-primary:hover {
-    background-color: transparent;
-    color: #ffffff !important;
+.proposal-card-v3:hover .proposal-v3-header {
+    background-color: #fff4f4;
+    /* Efek kemerahan tipis saat di-hover */
 }
 
-/* Animasi Tombol Sekunder (Transparan -> Putih) */
-.btn-event-outline {
-    background-color: transparent;
-    color: #ffffff !important;
-    border: 2px solid #ffffff;
-    transition: all 0.3s ease;
+.proposal-v3-icon {
+    font-size: 3.5rem;
+    color: #800000;
+    margin-bottom: 15px;
+    display: inline-block;
+    transition: transform 0.4s ease;
 }
 
-.btn-event-outline:hover {
-    background-color: #ffffff;
-    color: #800000 !important;
+.proposal-card-v3:hover .proposal-v3-icon {
+    transform: scale(1.1) rotate(-5deg);
 }
 
-/* ==========================================================================
-   TOMBOL MAROON CUSTOM (Untuk Pendaftaran Event)
-   ========================================================================== */
-.btn-maroon {
-    background-color: #800000;
-    color: #ffffff !important;
-    border: 2px solid #800000;
-    transition: all 0.3s ease;
+.proposal-v3-body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.btn-maroon:hover {
-    background-color: #5a0000;
-    /* Warna maroon jadi sedikit lebih gelap */
-    border-color: #5a0000;
-    color: #ffffff !important;
-    /* Mengunci teks agar tetap putih */
+.benefit-list {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 30px;
 }
 
-/* Animasi untuk tombol Guidebook (Outline) */
-.btn-outline-dark-custom {
-    color: #1a1a1a !important;
-    border: 2px solid #1a1a1a;
-    transition: all 0.3s ease;
+.benefit-list li {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
-.btn-outline-dark-custom:hover {
-    background-color: #1a1a1a;
-    color: #ffffff !important;
-}
-
-/* ==========================================================================
-   TOMBOL MAROON CUSTOM (Untuk Event & Departemen)
-   ========================================================================== */
-/* Kondisi Normal: Background Maroon, Teks Putih */
-.btn-maroon,
-.btn-layanan-custom {
-    background-color: #800000 !important;
-    color: #ffffff !important;
-    border: 2px solid #800000 !important;
-    transition: all 0.3s ease;
-}
-
-/* Kondisi saat Disorot (Hover) atau Ditekan (Active): Background Transparan/Putih, Teks Maroon, Garis Maroon */
-.btn-maroon:hover,
-.btn-maroon:active,
-.btn-layanan-custom:hover,
-.btn-layanan-custom:active {
-    background-color: transparent !important;
-    color: #800000 !important;
-    border: 2px solid #800000 !important;
+.benefit-list li::before {
+    content: '\F26A';
+    /* Unicode untuk bootstrap icon check-circle-fill */
+    font-family: 'bootstrap-icons';
+    position: absolute;
+    left: 0;
+    top: 0px;
+    color: #800000;
+    font-size: 1.2rem;
 }
 
 /* ==========================================================================
-   TOMBOL OUTLINE CUSTOM (Untuk Guidebook)
+   GLOBAL ROUNDED HERO (Digunakan untuk semua header halaman)
    ========================================================================== */
-.btn-outline-dark-custom {
-    background-color: transparent !important;
-    color: #1a1a1a !important;
-    border: 2px solid #1a1a1a !important;
-    transition: all 0.3s ease;
+.global-hero-rounded {
+    background: linear-gradient(135deg, #800000 0%, #4a0000 100%);
+    color: white;
+    padding: 80px 0;
+    border-radius: 0 0 40px 40px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 30px rgba(128, 0, 0, 0.1);
 }
 
-.btn-outline-dark-custom:hover,
-.btn-outline-dark-custom:active {
-    background-color: #1a1a1a !important;
-    color: #ffffff !important;
+/* ==========================================================================
+   CSS KHUSUS HALAMAN KONTAK ADMIN
+   ========================================================================== */
+.form-control:focus,
+.form-select:focus {
+    border-color: #800000;
+    box-shadow: 0 0 0 0.25rem rgba(128, 0, 0, 0.15);
+}
+
+.contact-info-card {
+    background-color: #fff9f9;
+    border-left: 4px solid #800000;
+}
+
+/* ==========================================================================
+   CSS KHUSUS PARTNER LOGO V2 (LEBIH BESAR & RAPAT)
+   ========================================================================== */
+.partner-logo-v2 {
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: all 0.4s ease;
+    max-height: 80px;
+    /* Ukuran dibesarkan dari 45px ke 80px */
+    width: auto;
+    object-fit: contain;
+}
+
+.partner-logo-v2:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+    /* Tambahan efek sedikit membesar saat disentuh */
 }
