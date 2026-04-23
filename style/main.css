@@ -898,3 +898,158 @@ section {
     transform: scale(1.05);
     /* Tambahan efek sedikit membesar saat disentuh */
 }
+
+/* ==========================================================================
+   INTERAKSI TOMBOL ASPIRASI
+   ========================================================================== */
+.btn-kirim-aspirasi {
+    background: linear-gradient(135deg, #800000 0%, #4a0000 100%);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    /* Dipercepat dikit biar responsif */
+}
+
+/* Saat kursor di atas tombol */
+.btn-kirim-aspirasi:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(128, 0, 0, 0.2);
+    color: white;
+    filter: brightness(1.1);
+}
+
+/* EFEK SAAT DITEKAN (CLICKED) */
+.btn-kirim-aspirasi:active {
+    transform: translateY(1px) scale(0.98);
+    /* Tombol kerasa mendem ke dalem */
+    background: #330000;
+    /* Berubah jadi maroon gelap pekat */
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* State saat JS aktif mengirim */
+.btn-kirim-aspirasi.is-sending {
+    background: #212529 !important;
+    /* Berubah jadi hitam/gelap */
+    pointer-events: none;
+    /* Biar nggak diklik berkali-kali */
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   KOTAK ASPIRASI - PROFESSIONAL EDITION
+   ========================================================================== */
+.aspirasi-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 2rem;
+    /* Super rounded biar modern */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Biar card-nya berasa "deep" */
+.aspirasi-card:hover {
+    box-shadow: 0 20px 40px rgba(128, 0, 0, 0.08) !important;
+}
+
+/* Custom Checkbox/Switch Maroon */
+.form-check-input:checked {
+    background-color: #800000 !important;
+    border-color: #800000 !important;
+}
+
+/* Styling Input agar lebih "Multimedia" */
+.form-control,
+.form-select {
+    border: 1.5px solid #eee;
+    border-radius: 12px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #800000;
+    background-color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(128, 0, 0, 0.1);
+}
+
+/* Floating Label Warna Maroon saat aktif */
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label,
+.form-floating>.form-select~label {
+    color: #800000;
+    font-weight: 600;
+}
+
+/* Icon Header Section */
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: rgba(128, 0, 0, 0.05);
+    color: #800000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+/* ==========================================================================
+   GALLERY FILTER BUTTONS (RESPONSIVE FIX)
+   ========================================================================== */
+.nav-pills-custom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px !important;
+}
+
+.nav-pills-custom .nav-item {
+    margin: 0;
+    /* Hapus margin default */
+}
+
+.nav-pills-custom .nav-link {
+    color: #444;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 50px !important;
+    /* Paksa jadi pill */
+    padding: 8px 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+/* State Aktif & Hover */
+.nav-pills-custom .nav-link.active,
+.nav-pills-custom .nav-link:hover {
+    background-color: #800000 !important;
+    color: white !important;
+    border-color: #800000;
+    box-shadow: 0 4px 12px rgba(128, 0, 0, 0.15);
+}
+
+/* KHUSUS TAMPILAN HP */
+@media (max-width: 576px) {
+    .nav-pills-custom {
+        gap: 8px !important;
+    }
+
+    .nav-pills-custom .nav-item {
+        flex: 1 1 45%;
+        /* Di HP jadi 2 kolom per baris agar proporsional */
+    }
+
+    .nav-pills-custom .nav-link {
+        width: 100%;
+        /* Tombol memenuhi kolom */
+        font-size: 0.85rem;
+        padding: 10px 5px;
+        text-align: center;
+    }
+}

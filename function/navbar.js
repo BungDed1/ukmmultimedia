@@ -29,7 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto fw-bold" style="font-size: 1rem;">
-                            <li class="nav-item"><a class="nav-link px-3 py-2 hover-maroon-text" href="/index.html">Beranda</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3 py-2 hover-maroon-text" href="/index.html">Beranda</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle px-3 py-2 hover-maroon-text" href="#" data-bs-toggle="dropdown">Profil</a>
                                 <ul class="dropdown-menu border-0 shadow mt-2 py-2">
@@ -37,14 +39,22 @@ document.addEventListener("DOMContentLoaded", function () {
                                     <li><a class="dropdown-item fw-bold py-2" href="/pages/Profil/Visi Misi/index.html">Visi & Misi</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item"><a class="nav-link px-3 py-2 hover-maroon-text" href="/pages/Kegiatan/index.html">Kegiatan</a></li>
-                            <li class="nav-item"><a class="nav-link px-3 py-2 hover-maroon-text" href="/pages/Galeri/index.html">Galeri</a></li>
-                            <li class="nav-item"><a class="nav-link px-3 py-2 hover-maroon-text" href="/pages/Struktur Organisasi/index.html">Struktur</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3 py-2 hover-maroon-text" href="/pages/Kegiatan/index.html">Kegiatan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3 py-2 hover-maroon-text" href="/pages/Galeri/index.html">Galeri</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-3 py-2 hover-maroon-text" href="/pages/Struktur Organisasi/index.html">Struktur</a>
+                            </li>
+                            
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle px-3 py-2 hover-maroon-text" href="#" data-bs-toggle="dropdown">Hubungi Kami</a>
                                 <ul class="dropdown-menu border-0 shadow mt-2 py-2">
                                     <li><a class="dropdown-item fw-bold py-2" href="/pages/Hubungi Kami/Kontak Admin/index.html">Kontak Admin</a></li>
                                     <li><a class="dropdown-item fw-bold py-2" href="/pages/Hubungi Kami/Partnership/index.html">Partnership</a></li>
+                                    <li><a class="dropdown-item fw-bold py-2" href="/pages/Hubungi Kami/kritik/index.html">Kotak Aspirasi</a></li>
                                 </ul>
                             </li>
                         </ul>

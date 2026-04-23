@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotak Aspirasi - UKM Multimedia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/style/main.css">
+</head>
+
+<body class="bg-light" style="font-family: 'Poppins', sans-serif;">
+    <div id="tempat-navbar"></div>
+
+    <section class="global-hero-rounded">
+        <div class="container text-center">
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="/index.html"
+                            class="text-white-50 text-decoration-none small">Beranda</a></li>
+                    <li class="breadcrumb-item active text-white small fw-bold" aria-current="page">Kotak Aspirasi</li>
+                </ol>
+            </nav>
+            <h1 class="fw-bold display-4 mb-3">Kotak Aspirasi</h1>
+            <p class="lead mx-auto"
+                style="font-family: 'Cardo', serif; font-style: italic; max-width: 600px; opacity: 0.9;">
+                Suara Anda adalah fondasi perkembangan UKM Multimedia ke arah yang lebih baik.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-5 mt-4 mb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="aspirasi-card shadow-sm p-4 p-md-5">
+                        <div class="text-center mb-5">
+                            <div class="icon-circle">
+                                <i class="bi bi-chat-quote-fill fs-1"></i>
+                            </div>
+                            <h3 class="fw-bold text-dark">Sampaikan Sesuatu</h3>
+                            <p class="text-muted small">Kritik, saran, atau ide gila? Kami sangat menghargai kejujuran
+                                Anda.</p>
+                        </div>
+
+                        <form action="https://formspree.io/f/xojyyada" method="POST">
+
+                            <div
+                                class="d-flex align-items-center justify-content-between mb-4 p-3 rounded-4 bg-light border border-dashed">
+                                <div>
+                                    <label class="fw-bold text-dark d-block mb-0" for="checkAnonim">Kirim sebagai
+                                        Anonim</label>
+                                    <small class="text-muted" style="font-size: 0.75rem;">Identitas Anda akan
+                                        disembunyikan</small>
+                                </div>
+                                <div class="form-check form-switch p-0 m-0">
+                                    <input class="form-check-input h4 m-0" type="checkbox" role="switch"
+                                        id="checkAnonim" name="kirim_sebagai_anonim" style="cursor: pointer;">
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3" id="wrapperNama">
+                                <input type="text" class="form-control" id="inputNama" name="nama_lengkap"
+                                    placeholder="Nama Lengkap">
+                                <label for="inputNama">Nama Lengkap (Opsional)</label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="selectKategori" name="kategori_pesan" required>
+                                    <option value="" disabled selected>Pilih Kategori</option>
+                                    <option value="Kritik">Kritik Membangun</option>
+                                    <option value="Saran">Saran Program Kerja</option>
+                                    <option value="Ide">Ide Kreatif & Kolaborasi</option>
+                                    <option value="Apresiasi">Apresiasi</option>
+                                </select>
+                                <label for="selectKategori">Kategori Aspirasi</label>
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                <textarea class="form-control" placeholder="Tulis aspirasi..." id="textPesan"
+                                    name="isi_aspirasi" style="height: 160px" required></textarea>
+                                <label for="textPesan">Tuliskan Aspirasi Anda...</label>
+                            </div>
+
+                            <button type="submit"
+                                class="btn btn-maroon w-100 py-3 rounded-pill shadow-sm fw-bold border-0">
+                                <i class="bi bi-send-fill me-2"></i> Kirim Aspirasi
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <div class="d-inline-flex align-items-center bg-white px-4 py-2 rounded-pill shadow-sm border">
+                            <i class="bi bi-shield-check text-success me-2 fs-5"></i>
+                            <span class="text-muted small fw-medium">Privasi Terjaga & Enkripsi Formspree Aktif</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="tempat-footer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/function/navbar.js"></script>
+    <script src="/function/footer.js"></script>
+    <script src="/function/aspirasi.js"></script>
+</body>
+
+</html>
