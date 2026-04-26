@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto fw-bold" style="font-size: 1rem;">
+                        <ul class="navbar-nav ms-auto fw-bold align-items-center" style="font-size: 1rem;">
                             <li class="nav-item">
                                 <a class="nav-link px-3 py-2 hover-maroon-text" href="/index.html">Beranda</a>
                             </li>
@@ -57,10 +57,45 @@ document.addEventListener("DOMContentLoaded", function () {
                                     <li><a class="dropdown-item fw-bold py-2" href="/pages/Hubungi Kami/kritik/index.html">Kotak Aspirasi</a></li>
                                 </ul>
                             </li>
+<li class="nav-item ms-lg-3 mt-3 mt-lg-0" id="mrcMenuWrapper">
+    </li>
+                            
                         </ul>
                     </div>
                 </div>
             </nav>
         `;
+
+        const isMember = sessionStorage.getItem('isMember');
+        const targetID = sessionStorage.getItem('targetID');
+        const mrcWrapper = document.getElementById('mrcMenuWrapper');
+
+        if (isMember) {
+            // Jika Anggota: Link ke Dashboard + Tombol Logout
+            mrcWrapper.innerHTML = `
+            <div class="d-flex gap-2">
+                <a class="btn btn-maroon text-white rounded-pill px-4 py-2 small" href="/pages/MRC/index.html">DASHBOARD</a>
+                <button onclick="logout()" class="btn btn-outline-danger rounded-circle"><i class="bi bi-power"></i></button>
+            </div>
+        `;
+        } else if (targetID) {
+            // Jika Peserta Umum: Sembunyikan tombol akses internal, ganti tombol Logout aja
+            mrcWrapper.innerHTML = `
+            <button onclick="logout()" class="btn btn-outline-danger rounded-pill px-4">Logout (Sertifikat)</button>
+        `;
+        } else {
+            // Jika Belum Login: Tampilkan tombol login biasa
+            mrcWrapper.innerHTML = `
+            <a class="btn btn-maroon text-white rounded-pill px-4 py-2" href="/pages/MRC/login/index.html">
+                <i class="bi bi-shield-lock-fill me-2"></i> MRC ACCESS
+            </a>
+        `;
+        }
+
+        // Fungsi Logout
+        window.logout = function () {
+            sessionStorage.clear();
+            window.location.href = "/index.html";
+        };
     }
 });
