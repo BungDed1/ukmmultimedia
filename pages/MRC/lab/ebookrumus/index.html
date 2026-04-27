@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100+ Rumus Excel — TI, Multimedia, Manajemen, Ekonomi</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --card: #fffdf8;
+            --border: #ddd8cc;
+            --accent1: #1a6b3c;
+            --accent2: #c0392b;
+            --accent3: #2c5f8a;
+            --accent4: #7b3f00;
+            --text: #1a1814;
+            --muted: #7a756a;
+            --formula-bg: #1a1814;
+            --formula-text: #a8ff78;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0, 0, 0, 0.04) 39px, rgba(0, 0, 0, 0.04) 40px),
+                repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0, 0, 0, 0.04) 39px, rgba(0, 0, 0, 0.04) 40px);
+        }
+
+        /* HERO */
+        .hero {
+            background: var(--accent1);
+            padding: 60px 50px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: 'f(x)';
+            position: absolute;
+            right: -20px;
+            top: -30px;
+            font-family: 'Instrument Serif', serif;
+            font-size: 200px;
+            color: rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .hero-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 14px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: #a8ff78;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 550px;
+            line-height: 1.65;
+            font-size: 1rem;
+        }
+
+        .pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 26px;
+        }
+
+        .pill {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            padding: 5px 14px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 1px;
+        }
+
+        /* SECTION */
+        .section-bar {
+            padding: 38px 40px 16px;
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .section-bar h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.8rem;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .section-bar .cat-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 2px;
+            color: #fff;
+        }
+
+        .section-desc {
+            padding: 0 40px 20px;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            max-width: 680px;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1px;
+            padding: 0 40px 10px;
+            background: var(--border);
+        }
+
+        /* FORMULA CARD */
+        .fx-card {
+            background: var(--card);
+            padding: 20px 22px;
+            border-left: 3px solid transparent;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .fx-card:hover {
+            border-left-color: var(--cat-clr, var(--accent1));
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.06);
+            z-index: 2;
+            position: relative;
+        }
+
+        .fx-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--muted);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        .fx-name {
+            font-family: 'DM Mono', monospace;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--cat-clr, var(--accent1));
+            margin-bottom: 6px;
+        }
+
+        .fx-syntax {
+            background: var(--formula-bg);
+            color: var(--formula-text);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.78rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+
+        .fx-syntax .arg {
+            color: #ffd60a;
+        }
+
+        .fx-syntax .sep {
+            color: #888;
+        }
+
+        .fx-desc {
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .fx-example {
+            margin-top: 7px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--muted);
+            background: rgba(0, 0, 0, 0.04);
+            padding: 4px 8px;
+            border-radius: 3px;
+            border-left: 2px solid var(--border);
+        }
+
+        .fx-example span {
+            color: var(--cat-clr, var(--accent1));
+        }
+
+        /* cat colors */
+        .cat-math {
+            --cat-clr: #1a6b3c;
+        }
+
+        .cat-logic {
+            --cat-clr: #c0392b;
+        }
+
+        .cat-text {
+            --cat-clr: #2c5f8a;
+        }
+
+        .cat-lookup {
+            --cat-clr: #7b3f00;
+        }
+
+        .cat-date {
+            --cat-clr: #6a3d8f;
+        }
+
+        .cat-stat {
+            --cat-clr: #1a5276;
+        }
+
+        .cat-fin {
+            --cat-clr: #1e6b4e;
+        }
+
+        .cat-info {
+            --cat-clr: #7d6608;
+        }
+
+        .cat-db {
+            --cat-clr: #922b21;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-family: 'DM Mono', monospace;
+            border-top: 1px solid var(--border);
+            background: var(--card);
+        }
+
+        footer strong {
+            color: var(--accent1);
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 50px 20px 40px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                padding: 0 16px;
+            }
+
+            .section-bar,
+            .section-desc {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <div class="hero-label">E-Book Referensi · Microsoft Excel</div>
+        <h1>100+ Rumus <em>Excel</em><br>Lengkap & Praktis</h1>
+        <p>Panduan rumus Excel untuk kebutuhan Teknologi Informasi, Multimedia, Manajemen, dan Ekonomi — disertai
+            sintaks dan contoh penggunaan nyata.</p>
+        <div class="pills">
+            <div class="pill">Matematika & Statistik</div>
+            <div class="pill">Logika & Kondisi</div>
+            <div class="pill">Teks & String</div>
+            <div class="pill">Lookup & Referensi</div>
+            <div class="pill">Tanggal & Waktu</div>
+            <div class="pill">Keuangan</div>
+            <div class="pill">Informasi & Database</div>
+        </div>
+    </div>
+
+    <!-- ========== MATEMATIKA ========== -->
+    <div class="section-bar">
+        <h2>Matematika & Kalkulasi</h2>
+        <div class="cat-label" style="background:#1a6b3c">MATH</div>
+    </div>
+    <div class="section-desc">Rumus dasar hitung-menghitung untuk laporan keuangan, analisis data, dan kalkulasi bisnis.
+    </div>
+    <div class="grid">
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#001</div>
+            <div class="fx-name">SUM</div>
+            <div class="fx-syntax">=SUM(<span class="arg">angka1</span><span class="sep">;</span><span
+                    class="arg">angka2</span><span class="sep">; ...</span>)</div>
+            <div class="fx-desc">Menjumlahkan semua angka dalam range atau daftar nilai.</div>
+            <div class="fx-example">Contoh: <span>=SUM(B2:B20)</span> — total penjualan bulan ini</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#002</div>
+            <div class="fx-name">SUMIF</div>
+            <div class="fx-syntax">=SUMIF(<span class="arg">range</span><span class="sep">;</span><span
+                    class="arg">kriteria</span><span class="sep">;</span><span class="arg">sum_range</span>)</div>
+            <div class="fx-desc">Menjumlahkan nilai yang memenuhi satu syarat/kriteria tertentu.</div>
+            <div class="fx-example">Contoh: <span>=SUMIF(C2:C100;"Laptop";D2:D100)</span></div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#003</div>
+            <div class="fx-name">SUMIFS</div>
+            <div class="fx-syntax">=SUMIFS(<span class="arg">sum_range</span><span class="sep">;</span><span
+                    class="arg">range1</span><span class="sep">;</span><span class="arg">krit1</span><span class="sep">;
+                    ...</span>)</div>
+            <div class="fx-desc">Menjumlahkan nilai berdasarkan banyak syarat sekaligus.</div>
+            <div class="fx-example">Contoh: <span>=SUMIFS(D2:D100;C2:C100;"Laptop";E2:E100;"Jakarta")</span></div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#004</div>
+            <div class="fx-name">AVERAGE</div>
+            <div class="fx-syntax">=AVERAGE(<span class="arg">angka1</span><span class="sep">;</span><span
+                    class="arg">angka2</span><span class="sep">; ...</span>)</div>
+            <div class="fx-desc">Menghitung rata-rata dari sekumpulan angka.</div>
+            <div class="fx-example">Contoh: <span>=AVERAGE(C2:C30)</span> — rata-rata nilai ujian</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#005</div>
+            <div class="fx-name">AVERAGEIF</div>
+            <div class="fx-syntax">=AVERAGEIF(<span class="arg">range</span><span class="sep">;</span><span
+                    class="arg">kriteria</span><span class="sep">;</span><span class="arg">avg_range</span>)</div>
+            <div class="fx-desc">Rata-rata nilai yang memenuhi satu kondisi tertentu.</div>
+            <div class="fx-example">Contoh: <span>=AVERAGEIF(B2:B50;"Lulus";C2:C50)</span></div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#006</div>
+            <div class="fx-name">AVERAGEIFS</div>
+            <div class="fx-syntax">=AVERAGEIFS(<span class="arg">avg_range</span><span class="sep">;</span><span
+                    class="arg">range1</span><span class="sep">;</span><span class="arg">krit1</span><span class="sep">;
+                    ...</span>)</div>
+            <div class="fx-desc">Rata-rata berdasarkan banyak kondisi.</div>
+            <div class="fx-example">Contoh: <span>=AVERAGEIFS(D2:D50;B2:B50;"A";C2:C50;"TI")</span></div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#007</div>
+            <div class="fx-name">COUNT</div>
+            <div class="fx-syntax">=COUNT(<span class="arg">value1</span><span class="sep">;</span><span
+                    class="arg">value2</span><span class="sep">; ...</span>)</div>
+            <div class="fx-desc">Menghitung jumlah sel yang berisi angka.</div>
+            <div class="fx-example">Contoh: <span>=COUNT(B2:B100)</span> — berapa data angka ada</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#008</div>
+            <div class="fx-name">COUNTA</div>
+            <div class="fx-syntax">=COUNTA(<span class="arg">value1</span><span class="sep">;</span><span
+                    class="arg">value2</span><span class="sep">; ...</span>)</div>
+            <div class="fx-desc">Menghitung semua sel yang tidak kosong (termasuk teks).</div>
+            <div class="fx-example">Contoh: <span>=COUNTA(A2:A200)</span> — jumlah baris terisi</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#009</div>
+            <div class="fx-name">COUNTIF</div>
+            <div class="fx-syntax">=COUNTIF(<span class="arg">range</span><span class="sep">;</span><span
+                    class="arg">kriteria</span>)</div>
+            <div class="fx-desc">Menghitung sel yang memenuhi satu syarat.</div>
+            <div class="fx-example">Contoh: <span>=COUNTIF(C2:C100;"Aktif")</span></div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#010</div>
+            <div class="fx-name">COUNTIFS</div>
+            <div class="fx-syntax">=COUNTIFS(<span class="arg">range1</span><span class="sep">;</span><span
+                    class="arg">krit1</span><span class="sep">;</span><span class="arg">range2</span><span
+                    class="sep">;</span><span class="arg">krit2</span>)</div>
+            <div class="fx-desc">Menghitung sel yang memenuhi banyak syarat.</div>
+            <div class="fx-example">Contoh: <span>=COUNTIFS(B:B;"Laki-laki";C:C;"S1")</span></div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#011</div>
+            <div class="fx-name">PRODUCT</div>
+            <div class="fx-syntax">=PRODUCT(<span class="arg">angka1</span><span class="sep">;</span><span
+                    class="arg">angka2</span><span class="sep">; ...</span>)</div>
+            <div class="fx-desc">Mengalikan semua angka dalam range (perkalian massal).</div>
+            <div class="fx-example">Contoh: <span>=PRODUCT(B2:B5)</span></div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#012</div>
+            <div class="fx-name">MOD</div>
+            <div class="fx-syntax">=MOD(<span class="arg">angka</span><span class="sep">;</span><span
+                    class="arg">pembagi</span>)</div>
+            <div class="fx-desc">Sisa hasil bagi (modulus). Berguna cek genap/ganjil.</div>
+            <div class="fx-example">Contoh: <span>=MOD(A2;2)</span> → 0=genap, 1=ganjil</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#013</div>
+            <div class="fx-name">ROUND</div>
+            <div class="fx-syntax">=ROUND(<span class="arg">angka</span><span class="sep">;</span><span
+                    class="arg">desimal</span>)</div>
+            <div class="fx-desc">Membulatkan angka ke sejumlah digit desimal.</div>
+            <div class="fx-example">Contoh: <span>=ROUND(3.1415;2)</span> → 3.14</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#014</div>
+            <div class="fx-name">ROUNDUP / ROUNDDOWN</div>
+            <div class="fx-syntax">=ROUNDUP(<span class="arg">angka</span><span class="sep">;</span><span
+                    class="arg">desimal</span>)</div>
+            <div class="fx-desc">Bulatkan selalu ke atas atau selalu ke bawah.</div>
+            <div class="fx-example">Contoh: <span>=ROUNDUP(2.3;0)</span> → 3</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#015</div>
+            <div class="fx-name">ABS</div>
+            <div class="fx-syntax">=ABS(<span class="arg">angka</span>)</div>
+            <div class="fx-desc">Mengembalikan nilai absolut (tanpa tanda minus).</div>
+            <div class="fx-example">Contoh: <span>=ABS(-500)</span> → 500</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#016</div>
+            <div class="fx-name">POWER / ^</div>
+            <div class="fx-syntax">=POWER(<span class="arg">basis</span><span class="sep">;</span><span
+                    class="arg">eksponen</span>)</div>
+            <div class="fx-desc">Menghitung hasil perpangkatan (basis^eksponen).</div>
+            <div class="fx-example">Contoh: <span>=POWER(2;10)</span> → 1024</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#017</div>
+            <div class="fx-name">SQRT</div>
+            <div class="fx-syntax">=SQRT(<span class="arg">angka</span>)</div>
+            <div class="fx-desc">Menghitung akar kuadrat dari sebuah angka.</div>
+            <div class="fx-example">Contoh: <span>=SQRT(144)</span> → 12</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#018</div>
+            <div class="fx-name">INT</div>
+            <div class="fx-syntax">=INT(<span class="arg">angka</span>)</div>
+            <div class="fx-desc">Membulatkan angka ke bilangan bulat terdekat ke bawah.</div>
+            <div class="fx-example">Contoh: <span>=INT(7.9)</span> → 7</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#019</div>
+            <div class="fx-name">TRUNC</div>
+            <div class="fx-syntax">=TRUNC(<span class="arg">angka</span><span class="sep">;</span><span
+                    class="arg">desimal</span>)</div>
+            <div class="fx-desc">Memotong desimal tanpa pembulatan.</div>
+            <div class="fx-example">Contoh: <span>=TRUNC(9.99;0)</span> → 9</div>
+        </div>
+
+        <div class="fx-card cat-math">
+            <div class="fx-num">#020</div>
+            <div class="fx-name">SUBTOTAL</div>
+            <div class="fx-syntax">=SUBTOTAL(<span class="arg">no_fungsi</span><span class="sep">;</span><span
+                    class="arg">range</span>)</div>
+            <div class="fx-desc">Kalkulasi pada data yang difilter (SUM, AVG, COUNT, dll.) tanpa menghitung baris
+                tersembunyi.</div>
+            <div class="fx-example">Contoh: <span>=SUBTOTAL(9;D2:D100)</span> — SUM filtered</div>
+        </div>
+
+    </div>
+
+    <!-- ========== LOGIKA ========== -->
+    <div class="section-bar">
+        <h2>Logika & Kondisi</h2>
+        <div class="cat-label" style="background:#c0392b">LOGIC</div>
+    </div>
+    <div class="section-desc">Pengambilan keputusan otomatis berdasarkan kondisi — sangat vital untuk laporan manajemen
+        dan sistem penilaian.</div>
+    <div class="grid">
+
+        <div class="fx-card cat-logic">
+            <div class="fx-num">#021</div>
+            <div class="fx-name">IF</div>
+            <div class="fx-syntax">=IF(<span class="arg">kondisi</span><span class="sep">;</span><span
+                    class="arg">jika_benar</span><span class="sep">;</span><span class="arg">jika_salah</span>)</div>
+            <div class="fx-desc">Rumus kondisional paling dasar — evaluasi benar/salah.</div>
+            <div class="fx-example">Contoh: <span>=IF(B2>=70;"Lulus";"Tidak Lulus")</span></div>
+        </div>
+
+        <div class="fx-card cat-logic">
+            <div class="fx-num">#022</div>
+            <div class="fx-name">IFS</div>
+            <div class="fx-syntax">=IFS(<span class="arg">kond1</span><span class="sep">;</span><span
+                    class="arg">hasil1</span><span class="sep">;</span><span class="arg">kond2</span><span
+                    class="sep">;</span><span class="arg">hasil2</span><span class="sep">; ...</span>)</div>
+            <div class="fx-desc">Evaluasi banyak kondisi berurutan tanpa IF bertingkat.</div>
+            <div class="fx-example">Contoh: <span>=IFS(A2>=90;"A";A2>=80;"B";A2>=70;"C";TRUE;"D")</span></div>
+        </div>
+
+        <div class="fx-card cat-logic">
+            <div class="fx-num">#023</div>
+            <div class="fx-name">AND</div>
+            <div class="fx-syntax">=AND(<span class="arg">kondisi1</span><span class="sep">;</span><span
+                    class="arg">kondisi2</span><span class="sep">; ...</span>)</div>
+            <div class="fx-desc">Benar hanya jika SEMUA kondisi terpenuhi.</div>
+            <div class="fx-example">Contoh: <span>=AND(B2>=70;C2="Hadir")</span></div>
+        </div>
+
+        <div class="fx-card cat-logic">
+            <div class="fx-num">#024</div>
+            <div class="fx-name">OR</div>
+            <div class="fx-syntax">=OR(<span class="arg">kondisi1</span><span class="sep">;</span><span
+                    class="arg">kondisi2</span><span class="sep">; ...</span>)</div>
+            <div class="fx-desc">Benar jika SALAH SATU kondisi terpenuhi.</div>
+            <div class="fx-example">Contoh: <span>=OR(B2="Manager";B2="Director")</span></div>
+        </div>
+
+        <div class="fx-card cat-logic">
+            <div class="fx-num">#025</div>
+            <div class="fx-name">NOT</div>
+            <div class="fx-syntax">=NOT(<span class="arg">kondisi</span>)</div>
+            <div class="fx-desc">Membalik nilai logika (TRUE jadi FALSE dan sebaliknya).</div>
+            <div class="fx-example">Contoh: <span>=NOT(ISBLANK(A2))</span></div>
+        </div>
+
+        <div class="fx-card cat-logic">
+            <div class="fx-num">#026</div>
+            <div class="fx-name">IFERROR</div>
+            <div class="fx-syntax">=IFERROR(<span class="arg">nilai</span><span class="sep">;</span><span
+                    class="arg">jika_error</span>)</div>
+            <div class="fx-desc">Menampilkan nilai alternatif jika rumus menghasilkan error.</div>
+            <div class="fx-example">Contoh: <span>=IFERROR(VLOOKUP(A2;data;2;0);"Tidak Ditemukan")</span></div>
+        </div>
+
+        <div class="fx-card cat-logic">
+            <div class="fx-num">#027</div>
+            <div class="fx-name">IFNA</div>
+            <div class="fx-syntax">=IFNA(<span class="arg">nilai</span><span class="sep">;</span><span
+                    class="arg">jika_NA</span>)</div>
+            <div class="fx-desc">Tangani hanya error #N/A (lebih spesifik dari IFERROR).</div>
+            <div class="fx-example">Contoh: <span>=IFNA(VLOOKUP(A2;tabel;3;0);"–")</span></div>
+        </div>
+
+        <div class="fx-card cat-logic">
+            <div class="fx-num">#028</div>
+            <div class="fx-name">SWITCH</div>
+            <div class="fx-syntax">=SWITCH(<span class="arg">ekspresi</span><span class="sep">;</span><span
+                    class="arg">nilai1</span><span class="sep">;</span><span class="arg">hasil1</span><span
+                    class="sep">; ...</span>)</div>
+            <div class="fx-desc">Cocokkan nilai ke daftar kasus seperti switch-case di pemrograman.</div>
+            <div class="fx-example">Contoh: <span>=SWITCH(A2;1;"Jan";2;"Feb";3;"Mar";"Lainnya")</span></div>
+        </div>
+
+        <div class="fx-card cat-logic">
+            <div class="fx-num">#029</div>
+            <div class="fx-name">XOR</div>
+            <div class="fx-syntax">=XOR(<span class="arg">kondisi1</span><span class="sep">;</span><span
+                    class="arg">kondisi2</span>)</div>
+            <div class="fx-desc">TRUE jika tepat SATU kondisi yang benar (exclusive OR).</div>
+            <div class="fx-example">Contoh: <span>=XOR(A2>10;B2>10)</span></div>
+        </div>
+
+    </div>
+
+    <!-- ========== TEKS ========== -->
+    <div class="section-bar">
+        <h2>Teks & String</h2>
+        <div class="cat-label" style="background:#2c5f8a">TEXT</div>
+    </div>
+    <div class="section-desc">Manipulasi teks untuk pengolahan data, pembuatan laporan, dan pembersihan data kotor (data
+        cleaning).</div>
+    <div class="grid">
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#030</div>
+            <div class="fx-name">CONCATENATE / &</div>
+            <div class="fx-syntax">=CONCATENATE(<span class="arg">teks1</span><span class="sep">;</span><span
+                    class="arg">teks2</span>) <span class="sep">atau</span> =<span class="arg">A1</span>&<span
+                    class="arg">B1</span></div>
+            <div class="fx-desc">Menggabungkan dua atau lebih string teks menjadi satu.</div>
+            <div class="fx-example">Contoh: <span>=A2&" "&B2</span> → "Budi Santoso"</div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#031</div>
+            <div class="fx-name">TEXTJOIN</div>
+            <div class="fx-syntax">=TEXTJOIN(<span class="arg">pemisah</span><span class="sep">;</span><span
+                    class="arg">abaikan_kosong</span><span class="sep">;</span><span class="arg">teks1</span><span
+                    class="sep">; ...</span>)</div>
+            <div class="fx-desc">Gabungkan banyak teks dengan pemisah, bisa skip sel kosong.</div>
+            <div class="fx-example">Contoh: <span>=TEXTJOIN(", ";TRUE;A2:A10)</span></div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#032</div>
+            <div class="fx-name">LEFT</div>
+            <div class="fx-syntax">=LEFT(<span class="arg">teks</span><span class="sep">;</span><span
+                    class="arg">n_karakter</span>)</div>
+            <div class="fx-desc">Ambil sejumlah karakter dari kiri string.</div>
+            <div class="fx-example">Contoh: <span>=LEFT("Jakarta";3)</span> → "Jak"</div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#033</div>
+            <div class="fx-name">RIGHT</div>
+            <div class="fx-syntax">=RIGHT(<span class="arg">teks</span><span class="sep">;</span><span
+                    class="arg">n_karakter</span>)</div>
+            <div class="fx-desc">Ambil sejumlah karakter dari kanan string.</div>
+            <div class="fx-example">Contoh: <span>=RIGHT("ID-2024";4)</span> → "2024"</div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#034</div>
+            <div class="fx-name">MID</div>
+            <div class="fx-syntax">=MID(<span class="arg">teks</span><span class="sep">;</span><span
+                    class="arg">mulai</span><span class="sep">;</span><span class="arg">panjang</span>)</div>
+            <div class="fx-desc">Ambil karakter dari posisi tengah string.</div>
+            <div class="fx-example">Contoh: <span>=MID("Komputer";4;4)</span> → "pute"</div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#035</div>
+            <div class="fx-name">LEN</div>
+            <div class="fx-syntax">=LEN(<span class="arg">teks</span>)</div>
+            <div class="fx-desc">Menghitung jumlah karakter dalam sebuah teks.</div>
+            <div class="fx-example">Contoh: <span>=LEN("Excel")</span> → 5</div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#036</div>
+            <div class="fx-name">UPPER / LOWER / PROPER</div>
+            <div class="fx-syntax">=UPPER(<span class="arg">teks</span>) / =LOWER(<span class="arg">teks</span>) /
+                =PROPER(<span class="arg">teks</span>)</div>
+            <div class="fx-desc">Ubah teks ke huruf BESAR, kecil, atau Kapital Setiap Kata.</div>
+            <div class="fx-example">Contoh: <span>=PROPER("budi santoso")</span> → "Budi Santoso"</div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#037</div>
+            <div class="fx-name">TRIM</div>
+            <div class="fx-syntax">=TRIM(<span class="arg">teks</span>)</div>
+            <div class="fx-desc">Hapus spasi berlebih di awal, akhir, dan tengah teks.</div>
+            <div class="fx-example">Contoh: <span>=TRIM(" Data Kotor ")</span></div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#038</div>
+            <div class="fx-name">SUBSTITUTE</div>
+            <div class="fx-syntax">=SUBSTITUTE(<span class="arg">teks</span><span class="sep">;</span><span
+                    class="arg">lama</span><span class="sep">;</span><span class="arg">baru</span>)</div>
+            <div class="fx-desc">Ganti teks tertentu dalam string dengan teks lain.</div>
+            <div class="fx-example">Contoh: <span>=SUBSTITUTE(A2;"-";"/")</span></div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#039</div>
+            <div class="fx-name">FIND / SEARCH</div>
+            <div class="fx-syntax">=FIND(<span class="arg">cari</span><span class="sep">;</span><span
+                    class="arg">dalam_teks</span><span class="sep">;</span><span class="arg">mulai</span>)</div>
+            <div class="fx-desc">Temukan posisi karakter/kata dalam teks. FIND case-sensitive, SEARCH tidak.</div>
+            <div class="fx-example">Contoh: <span>=FIND("@";B2)</span> — posisi @ di email</div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#040</div>
+            <div class="fx-name">TEXT</div>
+            <div class="fx-syntax">=TEXT(<span class="arg">nilai</span><span class="sep">;</span><span
+                    class="arg">format</span>)</div>
+            <div class="fx-desc">Mengubah angka/tanggal menjadi teks berformat tertentu.</div>
+            <div class="fx-example">Contoh: <span>=TEXT(A2;"Rp#.##0")</span> → "Rp5.000"</div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#041</div>
+            <div class="fx-name">VALUE</div>
+            <div class="fx-syntax">=VALUE(<span class="arg">teks</span>)</div>
+            <div class="fx-desc">Mengubah teks berupa angka menjadi nilai angka sesungguhnya.</div>
+            <div class="fx-example">Contoh: <span>=VALUE("12345")</span> → 12345</div>
+        </div>
+
+        <div class="fx-card cat-text">
+            <div class="fx-num">#042</div>
+            <div class="fx-name">REPT</div>
+            <div class="fx-syntax">=REPT(<span class="arg">teks</span><span class="sep">;</span><span
+                    class="arg">kali</span>)</div>
+            <div class="fx-desc">Mengulang teks sebanyak n kali. Bisa buat progress bar sederhana.</div>
+            <div class="fx-example">Contoh: <span>=REPT("★";A2)</span> — rating bintang</div>
+        </div>
+
+    </div>
+
+    <!-- ========== LOOKUP ========== -->
+    <div class="section-bar">
+        <h2>Lookup & Referensi</h2>
+        <div class="cat-label" style="background:#7b3f00">LOOKUP</div>
+    </div>
+    <div class="section-desc">Mencari dan mengambil data dari tabel lain — fondasi pembuatan database & laporan
+        otomatis.</div>
+    <div class="grid">
+
+        <div class="fx-card cat-lookup">
+            <div class="fx-num">#043</div>
+            <div class="fx-name">VLOOKUP</div>
+            <div class="fx-syntax">=VLOOKUP(<span class="arg">nilai</span><span class="sep">;</span><span
+                    class="arg">tabel</span><span class="sep">;</span><span class="arg">kolom</span><span
+                    class="sep">;</span><span class="arg">0</span>)</div>
+            <div class="fx-desc">Cari nilai di kolom pertama tabel, ambil data kolom lain di baris yang sama. Argumen
+                ke-4: 0=tepat, 1=perkiraan.</div>
+            <div class="fx-example">Contoh: <span>=VLOOKUP(A2;TabelProduk;3;0)</span></div>
+        </div>
+
+        <div class="fx-card cat-lookup">
+            <div class="fx-num">#044</div>
+            <div class="fx-name">HLOOKUP</div>
+            <div class="fx-syntax">=HLOOKUP(<span class="arg">nilai</span><span class="sep">;</span><span
+                    class="arg">tabel</span><span class="sep">;</span><span class="arg">baris</span><span
+                    class="sep">;</span><span class="arg">0</span>)</div>
+            <div class="fx-desc">Sama seperti VLOOKUP tapi mencari secara horizontal (baris pertama).</div>
+            <div class="fx-example">Contoh: <span>=HLOOKUP("Q3";TabelKuartal;2;0)</span></div>
+        </div>
+
+        <div class="fx-card cat-lookup">
+            <div class="fx-num">#045</div>
+            <div class="fx-name">XLOOKUP</div>
+            <div class="fx-syntax">=XLOOKUP(<span class="arg">cari</span><span class="sep">;</span><span
+                    class="arg">range_cari</span><span class="sep">;</span><span class="arg">range_hasil</span><span
+                    class="sep">;</span><span class="arg">not_found</span>)</div>
+            <div class="fx-desc">Penerus modern VLOOKUP — lebih fleksibel, bisa cari ke kiri, tidak perlu nomor kolom.
+            </div>
+            <div class="fx-example">Contoh: <span>=XLOOKUP(A2;B:B;D:D;"N/A")</span></div>
+        </div>
+
+        <div class="fx-card cat-lookup">
+            <div class="fx-num">#046</div>
+            <div class="fx-name">INDEX</div>
+            <div class="fx-syntax">=INDEX(<span class="arg">array</span><span class="sep">;</span><span
+                    class="arg">baris</span><span class="sep">;</span><span class="arg">kolom</span>)</div>
+            <div class="fx-desc">Ambil nilai dari posisi baris & kolom tertentu dalam range.</div>
+            <div class="fx-example">Contoh: <span>=INDEX(B2:D10;3;2)</span></div>
+        </div>
+
+        <div class="fx-card cat-lookup">
+            <div class="fx-num">#047</div>
+            <div class="fx-name">MATCH</div>
+            <div class="fx-syntax">=MATCH(<span class="arg">nilai</span><span class="sep">;</span><span
+                    class="arg">range</span><span class="sep">;</span><span class="arg">0</span>)</div>
+            <div class="fx-desc">Mengembalikan posisi (nomor urut) suatu nilai dalam range.</div>
+            <div class="fx-example">Contoh: <span>=MATCH("Budi";A2:A100;0)</span></div>
+        </div>
+
+        <div class="fx-card cat-lookup">
+            <div class="fx-num">#048</div>
+            <div class="fx-name">INDEX + MATCH</div>
+            <div class="fx-syntax">=INDEX(<span class="arg">kolom_hasil</span><span class="sep">;</span>MATCH(<span
+                    class="arg">nilai</span><span class="sep">;</span><span class="arg">kolom_cari</span><span
+                    class="sep">;</span>0))</div>
+            <div class="fx-desc">Kombinasi paling powerful — lebih fleksibel dari VLOOKUP, bisa cari ke segala arah.
+            </div>
+            <div class="fx-example">Contoh: <span>=INDEX(C:C;MATCH(A2;B:B;0))</span></div>
+        </div>
+
+        <div class="fx-card cat-lookup">
+            <div class="fx-num">#049</div>
+            <div class="fx-name">CHOOSE</div>
+            <div class="fx-syntax">=CHOOSE(<span class="arg">indeks</span><span class="sep">;</span><span
+                    class="arg">val1</span><span class="sep">;</span><span class="arg">val2</span><span class="sep">;
+                    ...</span>)</div>
+            <div class="fx-desc">Pilih nilai dari daftar berdasarkan nomor indeks.</div>
+            <div class="fx-example">Contoh: <span>=CHOOSE(A2;"Jan";"Feb";"Mar")</span></div>
+        </div>
+
+        <div class="fx-card cat-lookup">
+            <div class="fx-num">#050</div>
+            <div class="fx-name">OFFSET</div>
+            <div class="fx-syntax">=OFFSET(<span class="arg">referensi</span><span class="sep">;</span><span
+                    class="arg">baris</span><span class="sep">;</span><span class="arg">kolom</span><span
+                    class="sep">;</span><span class="arg">tinggi</span><span class="sep">;</span><span
+                    class="arg">lebar</span>)</div>
+            <div class="fx-desc">Menggeser referensi sel sejauh n baris/kolom. Berguna untuk range dinamis.</div>
+            <div class="fx-example">Contoh: <span>=SUM(OFFSET(A1;0;0;COUNTA(A:A);1))</span></div>
+        </div>
+
+        <div class="fx-card cat-lookup">
+            <div class="fx-num">#051</div>
+            <div class="fx-name">INDIRECT</div>
+            <div class="fx-syntax">=INDIRECT(<span class="arg">ref_teks</span>)</div>
+            <div class="fx-desc">Membuat referensi sel dari teks — referensi dinamis berubah saat teks berubah.</div>
+            <div class="fx-example">Contoh: <span>=SUM(INDIRECT("Sheet"&A1&"!B:B"))</span></div>
+        </div>
+
+        <div class="fx-card cat-lookup">
+            <div class="fx-num">#052</div>
+            <div class="fx-name">TRANSPOSE</div>
+            <div class="fx-syntax">=TRANSPOSE(<span class="arg">array</span>)</div>
+            <div class="fx-desc">Mengubah baris menjadi kolom dan sebaliknya (rotasi data).</div>
+            <div class="fx-example">Contoh: <span>=TRANSPOSE(A1:D1)</span> → data kolom</div>
+        </div>
+
+    </div>
+
+    <!-- ========== TANGGAL ========== -->
+    <div class="section-bar">
+        <h2>Tanggal & Waktu</h2>
+        <div class="cat-label" style="background:#6a3d8f">DATE</div>
+    </div>
+    <div class="section-desc">Kalkulasi tanggal untuk laporan bulanan, penghitungan umur aset, deadline, dan jadwal
+        proyek.</div>
+    <div class="grid">
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#053</div>
+            <div class="fx-name">TODAY</div>
+            <div class="fx-syntax">=TODAY()</div>
+            <div class="fx-desc">Mengembalikan tanggal hari ini (diperbarui otomatis setiap hari).</div>
+            <div class="fx-example">Contoh: <span>=TODAY()-B2</span> → selisih hari dari tanggal B2</div>
+        </div>
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#054</div>
+            <div class="fx-name">NOW</div>
+            <div class="fx-syntax">=NOW()</div>
+            <div class="fx-desc">Mengembalikan tanggal dan jam saat ini.</div>
+            <div class="fx-example">Contoh: <span>=NOW()</span> → 27/04/2026 14:35</div>
+        </div>
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#055</div>
+            <div class="fx-name">DATE</div>
+            <div class="fx-syntax">=DATE(<span class="arg">tahun</span><span class="sep">;</span><span
+                    class="arg">bulan</span><span class="sep">;</span><span class="arg">hari</span>)</div>
+            <div class="fx-desc">Membuat nilai tanggal dari angka tahun, bulan, dan hari.</div>
+            <div class="fx-example">Contoh: <span>=DATE(2026;4;1)</span> → 01/04/2026</div>
+        </div>
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#056</div>
+            <div class="fx-name">DAY / MONTH / YEAR</div>
+            <div class="fx-syntax">=DAY(<span class="arg">tanggal</span>) / =MONTH(<span class="arg">tanggal</span>) /
+                =YEAR(<span class="arg">tanggal</span>)</div>
+            <div class="fx-desc">Ekstrak komponen hari, bulan, atau tahun dari sebuah tanggal.</div>
+            <div class="fx-example">Contoh: <span>=YEAR(A2)</span> → 2026</div>
+        </div>
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#057</div>
+            <div class="fx-name">DATEDIF</div>
+            <div class="fx-syntax">=DATEDIF(<span class="arg">mulai</span><span class="sep">;</span><span
+                    class="arg">akhir</span><span class="sep">;</span><span class="arg">"Y"/"M"/"D"</span>)</div>
+            <div class="fx-desc">Hitung selisih antara dua tanggal dalam tahun, bulan, atau hari.</div>
+            <div class="fx-example">Contoh: <span>=DATEDIF(B2;TODAY();"Y")</span> → usia karyawan</div>
+        </div>
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#058</div>
+            <div class="fx-name">NETWORKDAYS</div>
+            <div class="fx-syntax">=NETWORKDAYS(<span class="arg">mulai</span><span class="sep">;</span><span
+                    class="arg">akhir</span><span class="sep">;</span><span class="arg">hari_libur</span>)</div>
+            <div class="fx-desc">Hitung jumlah hari kerja antara dua tanggal (ekskl. Sabtu/Minggu/libur).</div>
+            <div class="fx-example">Contoh: <span>=NETWORKDAYS(B2;C2;F2:F10)</span></div>
+        </div>
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#059</div>
+            <div class="fx-name">WORKDAY</div>
+            <div class="fx-syntax">=WORKDAY(<span class="arg">mulai</span><span class="sep">;</span><span
+                    class="arg">hari_kerja</span><span class="sep">;</span><span class="arg">libur</span>)</div>
+            <div class="fx-desc">Hitung tanggal setelah n hari kerja dari suatu tanggal.</div>
+            <div class="fx-example">Contoh: <span>=WORKDAY(TODAY();14)</span> → deadline 2 minggu kerja</div>
+        </div>
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#060</div>
+            <div class="fx-name">EOMONTH</div>
+            <div class="fx-syntax">=EOMONTH(<span class="arg">tanggal</span><span class="sep">;</span><span
+                    class="arg">bulan</span>)</div>
+            <div class="fx-desc">Tanggal akhir bulan, n bulan setelah/sebelum tanggal tertentu.</div>
+            <div class="fx-example">Contoh: <span>=EOMONTH(TODAY();0)</span> → akhir bulan ini</div>
+        </div>
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#061</div>
+            <div class="fx-name">WEEKDAY</div>
+            <div class="fx-syntax">=WEEKDAY(<span class="arg">tanggal</span><span class="sep">;</span><span
+                    class="arg">tipe</span>)</div>
+            <div class="fx-desc">Mengembalikan angka hari dalam seminggu (1=Senin dst).</div>
+            <div class="fx-example">Contoh: <span>=WEEKDAY(TODAY();2)</span> → 1=Senin</div>
+        </div>
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#062</div>
+            <div class="fx-name">WEEKNUM</div>
+            <div class="fx-syntax">=WEEKNUM(<span class="arg">tanggal</span><span class="sep">;</span><span
+                    class="arg">tipe</span>)</div>
+            <div class="fx-desc">Nomor minggu dalam setahun untuk sebuah tanggal.</div>
+            <div class="fx-example">Contoh: <span>=WEEKNUM(TODAY())</span> → minggu ke-17</div>
+        </div>
+
+        <div class="fx-card cat-date">
+            <div class="fx-num">#063</div>
+            <div class="fx-name">HOUR / MINUTE / SECOND</div>
+            <div class="fx-syntax">=HOUR(<span class="arg">waktu</span>) / =MINUTE(<span class="arg">waktu</span>)</div>
+            <div class="fx-desc">Ekstrak jam, menit, atau detik dari nilai waktu.</div>
+            <div class="fx-example">Contoh: <span>=HOUR(B2)</span> → 14 (pukul 14:30)</div>
+        </div>
+
+    </div>
+
+    <!-- ========== STATISTIK ========== -->
+    <div class="section-bar">
+        <h2>Statistik & Analisis Data</h2>
+        <div class="cat-label" style="background:#1a5276">STAT</div>
+    </div>
+    <div class="section-desc">Analisis statistik untuk riset, laporan akademik, evaluasi kinerja, dan riset pasar
+        ekonomi.</div>
+    <div class="grid">
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#064</div>
+            <div class="fx-name">MAX / MIN</div>
+            <div class="fx-syntax">=MAX(<span class="arg">range</span>) / =MIN(<span class="arg">range</span>)</div>
+            <div class="fx-desc">Nilai terbesar atau terkecil dalam sekumpulan data.</div>
+            <div class="fx-example">Contoh: <span>=MAX(B2:B100)</span> — penjualan tertinggi</div>
+        </div>
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#065</div>
+            <div class="fx-name">LARGE / SMALL</div>
+            <div class="fx-syntax">=LARGE(<span class="arg">range</span><span class="sep">;</span><span
+                    class="arg">k</span>)</div>
+            <div class="fx-desc">Nilai terbesar/terkecil ke-k dari sekumpulan data.</div>
+            <div class="fx-example">Contoh: <span>=LARGE(B2:B50;3)</span> → nilai terbesar ke-3</div>
+        </div>
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#066</div>
+            <div class="fx-name">MEDIAN</div>
+            <div class="fx-syntax">=MEDIAN(<span class="arg">angka1</span><span class="sep">;</span><span
+                    class="arg">angka2</span><span class="sep">; ...</span>)</div>
+            <div class="fx-desc">Nilai tengah dari sekumpulan data yang diurutkan.</div>
+            <div class="fx-example">Contoh: <span>=MEDIAN(C2:C50)</span></div>
+        </div>
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#067</div>
+            <div class="fx-name">MODE.SNGL</div>
+            <div class="fx-syntax">=MODE.SNGL(<span class="arg">angka1</span><span class="sep">;</span><span
+                    class="arg">angka2</span><span class="sep">; ...</span>)</div>
+            <div class="fx-desc">Nilai yang paling sering muncul (modus) dalam data.</div>
+            <div class="fx-example">Contoh: <span>=MODE.SNGL(B2:B100)</span></div>
+        </div>
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#068</div>
+            <div class="fx-name">STDEV.S / STDEV.P</div>
+            <div class="fx-syntax">=STDEV.S(<span class="arg">range</span>)</div>
+            <div class="fx-desc">Standar deviasi dari sampel (S) atau populasi (P). Ukuran sebaran data.</div>
+            <div class="fx-example">Contoh: <span>=STDEV.S(C2:C100)</span></div>
+        </div>
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#069</div>
+            <div class="fx-name">VAR.S</div>
+            <div class="fx-syntax">=VAR.S(<span class="arg">range</span>)</div>
+            <div class="fx-desc">Varians dari sampel data. Kuadrat dari standar deviasi.</div>
+            <div class="fx-example">Contoh: <span>=VAR.S(B2:B50)</span></div>
+        </div>
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#070</div>
+            <div class="fx-name">RANK.EQ</div>
+            <div class="fx-syntax">=RANK.EQ(<span class="arg">angka</span><span class="sep">;</span><span
+                    class="arg">range</span><span class="sep">;</span><span class="arg">0</span>)</div>
+            <div class="fx-desc">Peringkat sebuah angka dalam daftar. 0=urutan besar ke kecil.</div>
+            <div class="fx-example">Contoh: <span>=RANK.EQ(B2;$B$2:$B$50;0)</span></div>
+        </div>
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#071</div>
+            <div class="fx-name">PERCENTILE.INC</div>
+            <div class="fx-syntax">=PERCENTILE.INC(<span class="arg">range</span><span class="sep">;</span><span
+                    class="arg">k</span>)</div>
+            <div class="fx-desc">Nilai pada persentil ke-k dari sekumpulan data (0 sampai 1).</div>
+            <div class="fx-example">Contoh: <span>=PERCENTILE.INC(B2:B100;0.9)</span> → persentil ke-90</div>
+        </div>
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#072</div>
+            <div class="fx-name">CORREL</div>
+            <div class="fx-syntax">=CORREL(<span class="arg">array1</span><span class="sep">;</span><span
+                    class="arg">array2</span>)</div>
+            <div class="fx-desc">Koefisien korelasi Pearson antara dua rangkaian data (-1 hingga 1).</div>
+            <div class="fx-example">Contoh: <span>=CORREL(B2:B100;C2:C100)</span></div>
+        </div>
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#073</div>
+            <div class="fx-name">FORECAST.LINEAR</div>
+            <div class="fx-syntax">=FORECAST.LINEAR(<span class="arg">x</span><span class="sep">;</span><span
+                    class="arg">y_known</span><span class="sep">;</span><span class="arg">x_known</span>)</div>
+            <div class="fx-desc">Prediksi nilai berdasarkan tren linear (regresi sederhana).</div>
+            <div class="fx-example">Contoh: <span>=FORECAST.LINEAR(13;B2:B12;A2:A12)</span></div>
+        </div>
+
+        <div class="fx-card cat-stat">
+            <div class="fx-num">#074</div>
+            <div class="fx-name">FREQUENCY</div>
+            <div class="fx-syntax">=FREQUENCY(<span class="arg">data</span><span class="sep">;</span><span
+                    class="arg">bins</span>)</div>
+            <div class="fx-desc">Distribusi frekuensi — berapa data masuk tiap interval (array formula).</div>
+            <div class="fx-example">Contoh: <span>=FREQUENCY(B2:B100;{60;70;80;90})</span></div>
+        </div>
+
+    </div>
+
+    <!-- ========== KEUANGAN ========== -->
+    <div class="section-bar">
+        <h2>Keuangan & Ekonomi</h2>
+        <div class="cat-label" style="background:#1e6b4e">FINANCE</div>
+    </div>
+    <div class="section-desc">Rumus keuangan untuk analisis investasi, kalkulasi pinjaman, arus kas, dan laporan
+        keuangan bisnis.</div>
+    <div class="grid">
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#075</div>
+            <div class="fx-name">PMT</div>
+            <div class="fx-syntax">=PMT(<span class="arg">rate</span><span class="sep">;</span><span
+                    class="arg">nper</span><span class="sep">;</span><span class="arg">pv</span>)</div>
+            <div class="fx-desc">Hitung cicilan tetap pinjaman/kredit per periode (angsuran bulanan).</div>
+            <div class="fx-example">Contoh: <span>=PMT(6%/12;60;-100000000)</span> — cicilan KPR 100jt, 5 tahun,
+                6%/tahun</div>
+        </div>
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#076</div>
+            <div class="fx-name">PV</div>
+            <div class="fx-syntax">=PV(<span class="arg">rate</span><span class="sep">;</span><span
+                    class="arg">nper</span><span class="sep">;</span><span class="arg">pmt</span><span
+                    class="sep">;</span><span class="arg">fv</span>)</div>
+            <div class="fx-desc">Present Value — nilai sekarang dari arus kas di masa depan.</div>
+            <div class="fx-example">Contoh: <span>=PV(8%/12;36;-2000000)</span></div>
+        </div>
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#077</div>
+            <div class="fx-name">FV</div>
+            <div class="fx-syntax">=FV(<span class="arg">rate</span><span class="sep">;</span><span
+                    class="arg">nper</span><span class="sep">;</span><span class="arg">pmt</span><span
+                    class="sep">;</span><span class="arg">pv</span>)</div>
+            <div class="fx-desc">Future Value — nilai investasi di masa depan dengan bunga majemuk.</div>
+            <div class="fx-example">Contoh: <span>=FV(5%/12;120;-500000;0)</span> — tabungan 10 tahun</div>
+        </div>
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#078</div>
+            <div class="fx-name">NPV</div>
+            <div class="fx-syntax">=NPV(<span class="arg">rate</span><span class="sep">;</span><span
+                    class="arg">nilai1</span><span class="sep">;</span><span class="arg">nilai2</span><span
+                    class="sep">; ...</span>)</div>
+            <div class="fx-desc">Net Present Value dari investasi — dasar analisis kelayakan proyek.</div>
+            <div class="fx-example">Contoh: <span>=NPV(10%;C2:C6)-B1</span> — NPV minus investasi awal</div>
+        </div>
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#079</div>
+            <div class="fx-name">IRR</div>
+            <div class="fx-syntax">=IRR(<span class="arg">values</span><span class="sep">;</span><span
+                    class="arg">perkiraan</span>)</div>
+            <div class="fx-desc">Internal Rate of Return — tingkat pengembalian internal suatu investasi.</div>
+            <div class="fx-example">Contoh: <span>=IRR(B1:B6)</span> — IRR dari arus kas proyek</div>
+        </div>
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#080</div>
+            <div class="fx-name">RATE</div>
+            <div class="fx-syntax">=RATE(<span class="arg">nper</span><span class="sep">;</span><span
+                    class="arg">pmt</span><span class="sep">;</span><span class="arg">pv</span><span
+                    class="sep">;</span><span class="arg">fv</span>)</div>
+            <div class="fx-desc">Hitung suku bunga per periode dari suatu pinjaman atau investasi.</div>
+            <div class="fx-example">Contoh: <span>=RATE(60;-2000000;100000000)*12</span></div>
+        </div>
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#081</div>
+            <div class="fx-name">NPER</div>
+            <div class="fx-syntax">=NPER(<span class="arg">rate</span><span class="sep">;</span><span
+                    class="arg">pmt</span><span class="sep">;</span><span class="arg">pv</span>)</div>
+            <div class="fx-desc">Jumlah periode yang dibutuhkan untuk melunasi pinjaman atau mencapai target.</div>
+            <div class="fx-example">Contoh: <span>=NPER(6%/12;-2000000;100000000)</span></div>
+        </div>
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#082</div>
+            <div class="fx-name">IPMT</div>
+            <div class="fx-syntax">=IPMT(<span class="arg">rate</span><span class="sep">;</span><span
+                    class="arg">per</span><span class="sep">;</span><span class="arg">nper</span><span
+                    class="sep">;</span><span class="arg">pv</span>)</div>
+            <div class="fx-desc">Komponen bunga dari cicilan pinjaman pada periode tertentu.</div>
+            <div class="fx-example">Contoh: <span>=IPMT(6%/12;1;60;-100000000)</span></div>
+        </div>
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#083</div>
+            <div class="fx-name">PPMT</div>
+            <div class="fx-syntax">=PPMT(<span class="arg">rate</span><span class="sep">;</span><span
+                    class="arg">per</span><span class="sep">;</span><span class="arg">nper</span><span
+                    class="sep">;</span><span class="arg">pv</span>)</div>
+            <div class="fx-desc">Komponen pokok dari cicilan pinjaman pada periode tertentu.</div>
+            <div class="fx-example">Contoh: <span>=PPMT(6%/12;1;60;-100000000)</span></div>
+        </div>
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#084</div>
+            <div class="fx-name">SLN</div>
+            <div class="fx-syntax">=SLN(<span class="arg">cost</span><span class="sep">;</span><span
+                    class="arg">salvage</span><span class="sep">;</span><span class="arg">life</span>)</div>
+            <div class="fx-desc">Depresiasi garis lurus (Straight-Line) per periode untuk aset.</div>
+            <div class="fx-example">Contoh: <span>=SLN(50000000;5000000;5)</span> — depresiasi mesin 5 tahun</div>
+        </div>
+
+        <div class="fx-card cat-fin">
+            <div class="fx-num">#085</div>
+            <div class="fx-name">DB</div>
+            <div class="fx-syntax">=DB(<span class="arg">cost</span><span class="sep">;</span><span
+                    class="arg">salvage</span><span class="sep">;</span><span class="arg">life</span><span
+                    class="sep">;</span><span class="arg">period</span>)</div>
+            <div class="fx-desc">Depresiasi metode saldo menurun (Declining Balance) per periode.</div>
+            <div class="fx-example">Contoh: <span>=DB(50000000;5000000;5;1)</span></div>
+        </div>
+
+    </div>
+
+    <!-- ========== INFO & DATABASE ========== -->
+    <div class="section-bar">
+        <h2>Informasi, Database & Array</h2>
+        <div class="cat-label" style="background:#922b21">DB / INFO</div>
+    </div>
+    <div class="section-desc">Rumus pemeriksaan data, fungsi database, dan array dinamis untuk analisis data tingkat
+        lanjut.</div>
+    <div class="grid">
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#086</div>
+            <div class="fx-name">ISBLANK</div>
+            <div class="fx-syntax">=ISBLANK(<span class="arg">nilai</span>)</div>
+            <div class="fx-desc">Memeriksa apakah sebuah sel kosong (TRUE/FALSE).</div>
+            <div class="fx-example">Contoh: <span>=IF(ISBLANK(B2);"Kosong";"Terisi")</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#087</div>
+            <div class="fx-name">ISNUMBER / ISTEXT</div>
+            <div class="fx-syntax">=ISNUMBER(<span class="arg">nilai</span>) / =ISTEXT(<span class="arg">nilai</span>)
+            </div>
+            <div class="fx-desc">Cek apakah sel berisi angka atau teks. Berguna untuk validasi data.</div>
+            <div class="fx-example">Contoh: <span>=IF(ISNUMBER(A2);"Angka";"Bukan Angka")</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#088</div>
+            <div class="fx-name">ISERROR / ISERR</div>
+            <div class="fx-syntax">=ISERROR(<span class="arg">nilai</span>)</div>
+            <div class="fx-desc">Cek apakah sel mengandung error apapun.</div>
+            <div class="fx-example">Contoh: <span>=IF(ISERROR(A2/B2);0;A2/B2)</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#089</div>
+            <div class="fx-name">CELL</div>
+            <div class="fx-syntax">=CELL(<span class="arg">"info_type"</span><span class="sep">;</span><span
+                    class="arg">referensi</span>)</div>
+            <div class="fx-desc">Ambil informasi tentang sel: format, alamat, lebar kolom, dll.</div>
+            <div class="fx-example">Contoh: <span>=CELL("address";A1)</span> → "$A$1"</div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#090</div>
+            <div class="fx-name">DSUM</div>
+            <div class="fx-syntax">=DSUM(<span class="arg">database</span><span class="sep">;</span><span
+                    class="arg">field</span><span class="sep">;</span><span class="arg">kriteria</span>)</div>
+            <div class="fx-desc">Jumlahkan field dalam database berdasarkan kriteria di range terpisah.</div>
+            <div class="fx-example">Contoh: <span>=DSUM(A1:D100;"Penjualan";F1:F2)</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#091</div>
+            <div class="fx-name">DCOUNT / DAVERAGE</div>
+            <div class="fx-syntax">=DCOUNT(<span class="arg">database</span><span class="sep">;</span><span
+                    class="arg">field</span><span class="sep">;</span><span class="arg">kriteria</span>)</div>
+            <div class="fx-desc">Hitung/rata-rata field dalam database berdasarkan kriteria kompleks.</div>
+            <div class="fx-example">Contoh: <span>=DAVERAGE(A1:D50;"Gaji";H1:H2)</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#092</div>
+            <div class="fx-name">UNIQUE</div>
+            <div class="fx-syntax">=UNIQUE(<span class="arg">array</span><span class="sep">;</span><span
+                    class="arg">by_col</span><span class="sep">;</span><span class="arg">exactly_once</span>)</div>
+            <div class="fx-desc">Keluarkan daftar nilai unik dari range (Excel 365/2019+). Hasil otomatis tumpah ke sel
+                bawah.</div>
+            <div class="fx-example">Contoh: <span>=UNIQUE(B2:B100)</span> — daftar kota unik</div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#093</div>
+            <div class="fx-name">SORT / SORTBY</div>
+            <div class="fx-syntax">=SORT(<span class="arg">array</span><span class="sep">;</span><span
+                    class="arg">kolom</span><span class="sep">;</span><span class="arg">urutan</span>)</div>
+            <div class="fx-desc">Urutkan array/range secara dinamis tanpa mengubah data asli.</div>
+            <div class="fx-example">Contoh: <span>=SORT(A2:C100;3;-1)</span> — urutkan kolom 3 menurun</div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#094</div>
+            <div class="fx-name">FILTER</div>
+            <div class="fx-syntax">=FILTER(<span class="arg">array</span><span class="sep">;</span><span
+                    class="arg">termasuk</span><span class="sep">;</span><span class="arg">jika_kosong</span>)</div>
+            <div class="fx-desc">Filter data secara dinamis berdasarkan kondisi — hasil otomatis diperbarui.</div>
+            <div class="fx-example">Contoh: <span>=FILTER(A2:D100;C2:C100="Jakarta";"Tidak ada")</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#095</div>
+            <div class="fx-name">SEQUENCE</div>
+            <div class="fx-syntax">=SEQUENCE(<span class="arg">baris</span><span class="sep">;</span><span
+                    class="arg">kolom</span><span class="sep">;</span><span class="arg">mulai</span><span
+                    class="sep">;</span><span class="arg">langkah</span>)</div>
+            <div class="fx-desc">Buat urutan angka otomatis dalam array (nomor urut, tahun, dll.).</div>
+            <div class="fx-example">Contoh: <span>=SEQUENCE(12;1;2020;1)</span> → 2020 s.d. 2031</div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#096</div>
+            <div class="fx-name">LET</div>
+            <div class="fx-syntax">=LET(<span class="arg">nama1</span><span class="sep">;</span><span
+                    class="arg">nilai1</span><span class="sep">; ...</span><span class="sep">;</span><span
+                    class="arg">kalkulasi</span>)</div>
+            <div class="fx-desc">Definisikan variabel dalam rumus untuk formula lebih bersih dan efisien.</div>
+            <div class="fx-example">Contoh: <span>=LET(x;B2-C2;y;D2/E2;x*y)</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#097</div>
+            <div class="fx-name">LAMBDA</div>
+            <div class="fx-syntax">=LAMBDA(<span class="arg">param</span><span class="sep">;</span><span
+                    class="arg">kalkulasi</span>)</div>
+            <div class="fx-desc">Buat fungsi kustom sendiri yang bisa dipakai ulang (Excel 365+).</div>
+            <div class="fx-example">Contoh: <span>=LAMBDA(x;x^2+2*x+1)</span> — fungsi kuadrat</div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#098</div>
+            <div class="fx-name">ISNUMBER + SEARCH</div>
+            <div class="fx-syntax">=ISNUMBER(SEARCH(<span class="arg">"kata"</span><span class="sep">;</span><span
+                    class="arg">sel</span>))</div>
+            <div class="fx-desc">Cek apakah suatu kata/teks terkandung dalam sel (teknik contains).</div>
+            <div class="fx-example">Contoh: <span>=ISNUMBER(SEARCH("Manager";B2))</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#099</div>
+            <div class="fx-name">MMULT</div>
+            <div class="fx-syntax">=MMULT(<span class="arg">array1</span><span class="sep">;</span><span
+                    class="arg">array2</span>)</div>
+            <div class="fx-desc">Perkalian matriks — berguna untuk kalkulasi linear algebra dan ekonometri.</div>
+            <div class="fx-example">Contoh: <span>=MMULT(A1:B2;D1:E2)</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#100</div>
+            <div class="fx-name">GETPIVOTDATA</div>
+            <div class="fx-syntax">=GETPIVOTDATA(<span class="arg">"field"</span><span class="sep">;</span><span
+                    class="arg">pivot_table</span><span class="sep">;</span><span class="arg">field1</span><span
+                    class="sep">;</span><span class="arg">item1</span>)</div>
+            <div class="fx-desc">Ambil data spesifik dari PivotTable berdasarkan field dan item tertentu.</div>
+            <div class="fx-example">Contoh: <span>=GETPIVOTDATA("Penjualan";A3;"Wilayah";"Jakarta")</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#101</div>
+            <div class="fx-name">ARRAYFORMULA / CTRL+SHIFT+ENTER</div>
+            <div class="fx-syntax">{ =<span class="arg">rumus_biasa</span> } (tekan Ctrl+Shift+Enter)</div>
+            <div class="fx-desc">Jalankan rumus pada seluruh array sekaligus — satu rumus untuk banyak baris.</div>
+            <div class="fx-example">Contoh: <span>{=SUM(B2:B10*C2:C10)}</span> — total harga×qty</div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#102</div>
+            <div class="fx-name">HYPERLINK</div>
+            <div class="fx-syntax">=HYPERLINK(<span class="arg">url</span><span class="sep">;</span><span
+                    class="arg">teks_tayang</span>)</div>
+            <div class="fx-desc">Buat tautan klik di dalam sel — menuju URL web atau lokasi lain dalam workbook.</div>
+            <div class="fx-example">Contoh: <span>=HYPERLINK("https://example.com";"Kunjungi")</span></div>
+        </div>
+
+        <div class="fx-card cat-db">
+            <div class="fx-num">#103</div>
+            <div class="fx-name">ROW / COLUMN</div>
+            <div class="fx-syntax">=ROW(<span class="arg">referensi</span>) / =COLUMN(<span
+                    class="arg">referensi</span>)</div>
+            <div class="fx-desc">Kembalikan nomor baris atau kolom dari referensi sel.</div>
+            <div class="fx-example">Contoh: <span>=ROW()-1</span> — nomor urut mulai dari 1</div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>E-Book Rumus Excel &nbsp;|&nbsp; <strong>103 Rumus Lengkap</strong> &nbsp;|&nbsp; Dedy Indra Setiawan</p>
+        <p style="margin-top:8px;font-size:0.72rem;opacity:0.5">Sintaks menggunakan pemisah titik-koma (;) — sesuaikan
+            ke koma (,) jika Excel Anda berbahasa Inggris</p>
+    </footer>
+
+</body>
+
+</html>

@@ -57,42 +57,47 @@ document.addEventListener("DOMContentLoaded", function () {
                                     <li><a class="dropdown-item fw-bold py-2" href="/pages/Hubungi Kami/kritik/index.html">Kotak Aspirasi</a></li>
                                 </ul>
                             </li>
-<li class="nav-item ms-lg-3 mt-3 mt-lg-0" id="mrcMenuWrapper">
-    </li>
-                            
+                            <li class="nav-item ms-lg-3 mt-3 mt-lg-0" id="mrcMenuWrapper">
+                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         `;
 
+        // AMBIL SEMUA JENIS TIKET
         const isMember = sessionStorage.getItem('isMember');
         const targetID = sessionStorage.getItem('targetID');
+        const isParticipant = sessionStorage.getItem('isParticipant');
         const mrcWrapper = document.getElementById('mrcMenuWrapper');
 
         if (isMember) {
-            // Jika Anggota: Link ke Dashboard + Tombol Logout
+            // JIKA ANGGOTA/PENGURUS: Tombol Dashboard + Power Button Bulat
             mrcWrapper.innerHTML = `
-            <div class="d-flex gap-2">
-                <a class="btn btn-maroon text-white rounded-pill px-4 py-2 small" href="/pages/MRC/index.html">DASHBOARD</a>
-                <button onclick="logout()" class="btn btn-outline-danger rounded-circle"><i class="bi bi-power"></i></button>
+            <div class="d-flex gap-2 align-items-center">
+                <a class="btn btn-maroon text-white rounded-pill px-4 py-2 small fw-bold" href="/pages/MRC/index.html" style="font-size: 0.9rem;">DASHBOARD</a>
+                <button onclick="logout()" class="btn btn-outline-danger rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                    <i class="bi bi-power fs-5"></i>
+                </button>
             </div>
-        `;
-        } else if (targetID) {
-            // Jika Peserta Umum: Sembunyikan tombol akses internal, ganti tombol Logout aja
+            `;
+        } else if (targetID || isParticipant) {
+            // JIKA PESERTA UMUM: Tombol Power + Teks "KELUAR" biar senada
             mrcWrapper.innerHTML = `
-            <button onclick="logout()" class="btn btn-outline-danger rounded-pill px-4">Logout (Sertifikat)</button>
-        `;
+            <button onclick="logout()" class="btn btn-outline-danger rounded-pill px-4 py-2 small fw-bold" style="font-size: 0.9rem;">
+                <i class="bi bi-power me-2"></i> KELUAR
+            </button>
+            `;
         } else {
-            // Jika Belum Login: Tampilkan tombol login biasa
+            // JIKA BELUM LOGIN
             mrcWrapper.innerHTML = `
-            <a class="btn btn-maroon text-white rounded-pill px-4 py-2" href="/pages/MRC/login/index.html">
+            <a class="btn btn-maroon text-white rounded-pill px-4 py-2 small fw-bold" href="/pages/MRC/login/index.html" style="font-size: 0.9rem;">
                 <i class="bi bi-shield-lock-fill me-2"></i> MRC ACCESS
             </a>
-        `;
+            `;
         }
 
-        // Fungsi Logout
+        // FUNGSI LOGOUT (Udah super aman pakai .clear)
         window.logout = function () {
             sessionStorage.clear();
             window.location.href = "/index.html";

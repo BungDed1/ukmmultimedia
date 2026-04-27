@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100+ Shortcut Keyboard — TI, Multimedia, Manajemen</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --card: #12121a;
+            --border: #1e1e2e;
+            --accent1: #00f5d4;
+            --accent2: #f72585;
+            --accent3: #ffd60a;
+            --accent4: #7b2fff;
+            --text: #e8e8f0;
+            --muted: #888899;
+            --key-bg: #1a1a2e;
+            --key-shadow: #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Syne', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            padding: 70px 40px 50px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 245, 212, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--accent1);
+            color: #000;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            padding: 5px 14px;
+            border-radius: 2px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 7vw, 5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: var(--accent1);
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 520px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .stat-pill {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            color: var(--accent3);
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* DIVIDER */
+        .section-header {
+            padding: 40px 40px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .section-header .line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .section-header .badge {
+            background: var(--accent2);
+            color: #fff;
+            font-size: 11px;
+            font-family: 'Space Mono', monospace;
+            padding: 3px 10px;
+            border-radius: 2px;
+            letter-spacing: 1px;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2px;
+            padding: 0 40px 40px;
+        }
+
+        /* CARD */
+        .sc-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 18px 20px;
+            transition: border-color 0.2s, transform 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sc-card:hover {
+            border-color: var(--accent1);
+            transform: translateY(-2px);
+            z-index: 2;
+        }
+
+        .sc-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--cat-color, var(--accent1));
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .sc-card:hover::after {
+            opacity: 1;
+        }
+
+        .sc-keys {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .key {
+            display: inline-block;
+            background: var(--key-bg);
+            border: 1px solid #333355;
+            border-bottom: 3px solid #0d0d1a;
+            border-radius: 5px;
+            padding: 4px 10px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent1);
+            white-space: nowrap;
+            box-shadow: 0 2px 0 var(--key-shadow);
+        }
+
+        .key.plus {
+            background: transparent;
+            border: none;
+            border-bottom: none;
+            box-shadow: none;
+            color: var(--muted);
+            padding: 4px 2px;
+            font-size: 0.9rem;
+        }
+
+        .sc-desc {
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .sc-cat {
+            font-size: 0.7rem;
+            color: var(--muted);
+            font-family: 'Space Mono', monospace;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        /* cat colors */
+        .cat-windows {
+            --cat-color: #00f5d4;
+        }
+
+        .cat-browser {
+            --cat-color: #f72585;
+        }
+
+        .cat-office {
+            --cat-color: #ffd60a;
+        }
+
+        .cat-vscode {
+            --cat-color: #7b2fff;
+        }
+
+        .cat-system {
+            --cat-color: #00b4d8;
+        }
+
+        .cat-media {
+            --cat-color: #ff6b35;
+        }
+
+        .cat-design {
+            --cat-color: #a8ff78;
+        }
+
+        .cat-text {
+            --cat-color: #f8961e;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-family: 'Space Mono', monospace;
+            border-top: 1px solid var(--border);
+        }
+
+        footer span {
+            color: var(--accent1);
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 50px 20px 40px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                padding: 0 16px 30px;
+            }
+
+            .section-header {
+                padding: 30px 16px 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <div class="hero-tag">E-Book Interaktif</div>
+        <h1>Shortcut <span>Keyboard</span><br>Esensial</h1>
+        <p>100+ pintasan keyboard penting untuk produktivitas di bidang Teknologi Informasi, Multimedia, Manajemen &
+            Ekonomi.</p>
+        <div class="stats-row">
+            <div class="stat-pill">💻 Windows & OS</div>
+            <div class="stat-pill">🌐 Browser</div>
+            <div class="stat-pill">📄 Office</div>
+            <div class="stat-pill">🎨 Design</div>
+            <div class="stat-pill">💻 VS Code</div>
+        </div>
+    </div>
+
+    <!-- WINDOWS & SISTEM -->
+    <div class="section-header">
+        <h2>Windows & Sistem</h2>
+        <div class="line"></div>
+        <div class="badge" style="background:#00f5d4;color:#000">OS</div>
+    </div>
+    <div class="grid">
+
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">C</span>
+            </div>
+            <div class="sc-desc">Salin (Copy) teks atau objek yang dipilih</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">X</span>
+            </div>
+            <div class="sc-desc">Potong (Cut) teks atau objek yang dipilih</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">V</span>
+            </div>
+            <div class="sc-desc">Tempel (Paste) dari clipboard</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">Z</span>
+            </div>
+            <div class="sc-desc">Batalkan aksi terakhir (Undo)</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">Y</span>
+            </div>
+            <div class="sc-desc">Ulangi aksi yang dibatalkan (Redo)</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">A</span>
+            </div>
+            <div class="sc-desc">Pilih semua item atau teks (Select All)</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">S</span>
+            </div>
+            <div class="sc-desc">Simpan file yang sedang aktif</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">P</span>
+            </div>
+            <div class="sc-desc">Buka dialog cetak (Print)</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Win</span><span class="key plus">+</span><span class="key">D</span>
+            </div>
+            <div class="sc-desc">Tampilkan/sembunyikan Desktop</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Win</span><span class="key plus">+</span><span class="key">E</span>
+            </div>
+            <div class="sc-desc">Buka File Explorer</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Win</span><span class="key plus">+</span><span class="key">L</span>
+            </div>
+            <div class="sc-desc">Kunci layar komputer</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Win</span><span class="key plus">+</span><span class="key">R</span>
+            </div>
+            <div class="sc-desc">Buka dialog Run</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Alt</span><span class="key plus">+</span><span class="key">F4</span>
+            </div>
+            <div class="sc-desc">Tutup aplikasi/jendela aktif</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Alt</span><span class="key plus">+</span><span class="key">Tab</span>
+            </div>
+            <div class="sc-desc">Beralih antar aplikasi yang terbuka</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Win</span><span class="key plus">+</span><span class="key">Tab</span>
+            </div>
+            <div class="sc-desc">Task View — lihat semua jendela & virtual desktop</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Alt</span><span class="key plus">+</span><span class="key">Del</span></div>
+            <div class="sc-desc">Akses Task Manager, logout, restart</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">Esc</span></div>
+            <div class="sc-desc">Buka Task Manager langsung</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Win</span><span class="key plus">+</span><span class="key">←/→</span>
+            </div>
+            <div class="sc-desc">Snap jendela ke kiri atau kanan layar</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">PrtScn</span></div>
+            <div class="sc-desc">Ambil screenshot seluruh layar ke clipboard</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Win</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">S</span></div>
+            <div class="sc-desc">Snipping Tool — screenshot area tertentu</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">F2</span></div>
+            <div class="sc-desc">Rename file/folder yang dipilih</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Delete</span></div>
+            <div class="sc-desc">Hapus item ke Recycle Bin</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Shift</span><span class="key plus">+</span><span
+                    class="key">Delete</span></div>
+            <div class="sc-desc">Hapus permanen (bypass Recycle Bin)</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">F</span>
+            </div>
+            <div class="sc-desc">Cari (Find) dalam file atau explorer</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">N</span>
+            </div>
+            <div class="sc-desc">Buka jendela/dokumen baru</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">W</span>
+            </div>
+            <div class="sc-desc">Tutup tab atau jendela yang aktif</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Win</span><span class="key plus">+</span><span class="key">I</span>
+            </div>
+            <div class="sc-desc">Buka Settings Windows</div>
+        </div>
+        <div class="sc-card cat-windows">
+            <div class="sc-cat">Windows</div>
+            <div class="sc-keys"><span class="key">Win</span><span class="key plus">+</span><span class="key">S</span>
+            </div>
+            <div class="sc-desc">Buka Search / Cortana</div>
+        </div>
+    </div>
+
+    <!-- BROWSER -->
+    <div class="section-header">
+        <h2>Browser (Chrome / Edge / Firefox)</h2>
+        <div class="line"></div>
+        <div class="badge" style="background:#f72585">WEB</div>
+    </div>
+    <div class="grid">
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">T</span>
+            </div>
+            <div class="sc-desc">Buka tab baru</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">T</span></div>
+            <div class="sc-desc">Buka kembali tab yang baru ditutup</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">W</span>
+            </div>
+            <div class="sc-desc">Tutup tab aktif</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">L</span>
+            </div>
+            <div class="sc-desc">Fokus ke address bar / omnibox</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">R</span>
+            </div>
+            <div class="sc-desc">Refresh / muat ulang halaman</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">R</span></div>
+            <div class="sc-desc">Hard refresh (bypass cache)</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">D</span>
+            </div>
+            <div class="sc-desc">Bookmark halaman saat ini</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">H</span>
+            </div>
+            <div class="sc-desc">Buka riwayat browsing (History)</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">J</span>
+            </div>
+            <div class="sc-desc">Buka halaman unduhan (Downloads)</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">N</span></div>
+            <div class="sc-desc">Buka jendela Incognito / Private</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">F12</span></div>
+            <div class="sc-desc">Buka Developer Tools (untuk TI & web dev)</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">+</span>
+            </div>
+            <div class="sc-desc">Perbesar tampilan halaman (Zoom In)</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">-</span>
+            </div>
+            <div class="sc-desc">Perkecil tampilan halaman (Zoom Out)</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">0</span>
+            </div>
+            <div class="sc-desc">Reset zoom ke 100%</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">1..9</span></div>
+            <div class="sc-desc">Lompat ke tab ke-1 sampai ke-9</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Space</span></div>
+            <div class="sc-desc">Scroll ke bawah satu layar</div>
+        </div>
+        <div class="sc-card cat-browser">
+            <div class="sc-cat">Browser</div>
+            <div class="sc-keys"><span class="key">Alt</span><span class="key plus">+</span><span class="key">←</span>
+            </div>
+            <div class="sc-desc">Kembali ke halaman sebelumnya (Back)</div>
+        </div>
+    </div>
+
+    <!-- MS OFFICE / TEXT -->
+    <div class="section-header">
+        <h2>Microsoft Office — Word, PowerPoint</h2>
+        <div class="line"></div>
+        <div class="badge" style="background:#ffd60a;color:#000">OFFICE</div>
+    </div>
+    <div class="grid">
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">B</span>
+            </div>
+            <div class="sc-desc">Tebalkan teks (Bold)</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">I</span>
+            </div>
+            <div class="sc-desc">Miringkan teks (Italic)</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">U</span>
+            </div>
+            <div class="sc-desc">Garis bawah teks (Underline)</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">E</span>
+            </div>
+            <div class="sc-desc">Rata tengah (Center Align)</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">L</span>
+            </div>
+            <div class="sc-desc">Rata kiri (Left Align)</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">R</span>
+            </div>
+            <div class="sc-desc">Rata kanan (Right Align)</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">J</span>
+            </div>
+            <div class="sc-desc">Rata kiri-kanan (Justify)</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">H</span>
+            </div>
+            <div class="sc-desc">Find & Replace — cari dan ganti teks</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">K</span>
+            </div>
+            <div class="sc-desc">Sisipkan hyperlink</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">+</span></div>
+            <div class="sc-desc">Superscript (pangkat atas, mis: x²)</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">=</span>
+            </div>
+            <div class="sc-desc">Subscript (pangkat bawah, mis: H₂O)</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">F7</span></div>
+            <div class="sc-desc">Periksa ejaan dan tata bahasa</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">S</span></div>
+            <div class="sc-desc">Buka panel Styles (gaya paragraf)</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">1</span>
+            </div>
+            <div class="sc-desc">Spasi baris tunggal</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">2</span>
+            </div>
+            <div class="sc-desc">Spasi baris ganda</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Enter</span></div>
+            <div class="sc-desc">Tambah halaman baru (page break) di Word</div>
+        </div>
+        <div class="sc-card cat-office">
+            <div class="sc-cat">Office</div>
+            <div class="sc-keys"><span class="key">Alt</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">D</span></div>
+            <div class="sc-desc">Sisipkan tanggal otomatis di Word</div>
+        </div>
+    </div>
+
+    <!-- VS CODE & CODING -->
+    <div class="section-header">
+        <h2>VS Code & Coding (TI)</h2>
+        <div class="line"></div>
+        <div class="badge" style="background:#7b2fff">CODE</div>
+    </div>
+    <div class="grid">
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">`</span>
+            </div>
+            <div class="sc-desc">Buka/tutup Terminal terintegrasi</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">P</span></div>
+            <div class="sc-desc">Command Palette — akses semua perintah</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">P</span>
+            </div>
+            <div class="sc-desc">Quick Open — cari dan buka file</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">/</span>
+            </div>
+            <div class="sc-desc">Komen/uncomment baris kode terpilih</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Alt</span><span class="key plus">+</span><span class="key">↑/↓</span>
+            </div>
+            <div class="sc-desc">Pindah baris kode ke atas atau bawah</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">D</span>
+            </div>
+            <div class="sc-desc">Pilih kemunculan kata berikutnya (multi-cursor)</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Shift</span><span class="key plus">+</span><span
+                    class="key">Alt</span><span class="key plus">+</span><span class="key">↓</span></div>
+            <div class="sc-desc">Duplikat baris ke bawah</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">G</span>
+            </div>
+            <div class="sc-desc">Pergi ke nomor baris tertentu</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">F</span></div>
+            <div class="sc-desc">Cari teks di semua file proyek</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">F5</span></div>
+            <div class="sc-desc">Jalankan / debug program</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">I</span></div>
+            <div class="sc-desc">Format / rapikan kode otomatis</div>
+        </div>
+        <div class="sc-card cat-vscode">
+            <div class="sc-cat">VS Code</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">B</span>
+            </div>
+            <div class="sc-desc">Tampilkan/sembunyikan sidebar file explorer</div>
+        </div>
+    </div>
+
+    <!-- MULTIMEDIA & DESAIN -->
+    <div class="section-header">
+        <h2>Multimedia & Design (Photoshop, dll.)</h2>
+        <div class="line"></div>
+        <div class="badge" style="background:#a8ff78;color:#000">MEDIA</div>
+    </div>
+    <div class="grid">
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">Z</span>
+            </div>
+            <div class="sc-desc">Undo langkah terakhir</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Alt</span><span class="key plus">+</span><span class="key">Z</span></div>
+            <div class="sc-desc">Undo multiple langkah (Step Backward)</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">T</span>
+            </div>
+            <div class="sc-desc">Free Transform — ubah ukuran/rotasi objek</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">J</span>
+            </div>
+            <div class="sc-desc">Duplikat layer aktif</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">G</span>
+            </div>
+            <div class="sc-desc">Grup layer-layer yang dipilih</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">E</span></div>
+            <div class="sc-desc">Merge All Layers / Flatten Image</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">N</span></div>
+            <div class="sc-desc">Buat layer baru</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">V</span></div>
+            <div class="sc-desc">Pilih Move Tool</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">M</span></div>
+            <div class="sc-desc">Pilih Marquee Selection Tool</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">B</span></div>
+            <div class="sc-desc">Pilih Brush Tool</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">E</span></div>
+            <div class="sc-desc">Pilih Eraser Tool</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">T</span></div>
+            <div class="sc-desc">Pilih Text Tool</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Alt</span><span class="key plus">+</span><span class="key">I</span></div>
+            <div class="sc-desc">Buka dialog Image Size (ubah resolusi)</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Photoshop / Design</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">Alt</span><span
+                    class="key plus">+</span><span class="key">S</span></div>
+            <div class="sc-desc">Save for Web — ekspor untuk keperluan web/digital</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Illustrator / Vector</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">O</span></div>
+            <div class="sc-desc">Create Outlines — ubah teks jadi path/vektor</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Premiere Pro</div>
+            <div class="sc-keys"><span class="key">Space</span></div>
+            <div class="sc-desc">Play / Pause video di timeline</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Premiere Pro</div>
+            <div class="sc-keys"><span class="key">C</span></div>
+            <div class="sc-desc">Pilih Razor Tool — potong klip</div>
+        </div>
+        <div class="sc-card cat-design">
+            <div class="sc-cat">Premiere Pro</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">M</span>
+            </div>
+            <div class="sc-desc">Export / render video (Media Encoder)</div>
+        </div>
+    </div>
+
+    <!-- SPREADSHEET / EXCEL -->
+    <div class="section-header">
+        <h2>Excel & Spreadsheet (Manajemen & Ekonomi)</h2>
+        <div class="line"></div>
+        <div class="badge" style="background:#00b4d8">DATA</div>
+    </div>
+    <div class="grid">
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Home</span></div>
+            <div class="sc-desc">Lompat ke sel A1 (awal spreadsheet)</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">End</span></div>
+            <div class="sc-desc">Lompat ke sel terakhir berisi data</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">F4</span></div>
+            <div class="sc-desc">Toggle referensi absolut/relatif ($ pada formula)</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">L</span></div>
+            <div class="sc-desc">Aktifkan/nonaktifkan AutoFilter pada data</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">T</span>
+            </div>
+            <div class="sc-desc">Ubah range menjadi Table terformat</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Alt</span><span class="key plus">+</span><span class="key">=</span>
+            </div>
+            <div class="sc-desc">AutoSum — jumlahkan kolom/baris otomatis</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">;</span>
+            </div>
+            <div class="sc-desc">Sisipkan tanggal hari ini ke sel</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">;</span></div>
+            <div class="sc-desc">Sisipkan waktu saat ini ke sel</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">1</span>
+            </div>
+            <div class="sc-desc">Buka dialog Format Cells</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">F11</span></div>
+            <div class="sc-desc">Buat chart dari data terpilih di sheet baru</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span class="key">Page
+                    Up/Down</span></div>
+            <div class="sc-desc">Pindah antar sheet/tab worksheet</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">$</span></div>
+            <div class="sc-desc">Format sel sebagai mata uang (Currency)</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">Ctrl</span><span class="key plus">+</span><span
+                    class="key">Shift</span><span class="key plus">+</span><span class="key">%</span></div>
+            <div class="sc-desc">Format sel sebagai persentase</div>
+        </div>
+        <div class="sc-card cat-system">
+            <div class="sc-cat">Excel</div>
+            <div class="sc-keys"><span class="key">F2</span></div>
+            <div class="sc-desc">Masuk ke mode edit sel aktif</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>E-Book Shortcut Keyboard &nbsp;|&nbsp; <span>100+ Pintasan Esensial</span> &nbsp;|&nbsp; Dedy Indra Setiawan</p>
+        <p style="margin-top:8px;font-size:0.72rem;opacity:0.5">Edisi Digital — Bebas disebarluaskan untuk kepentingan
+            pendidikan</p>
+    </footer>
+
+</body>
+
+</html>
