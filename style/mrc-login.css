@@ -1,4 +1,10 @@
-/* --- mrc-login.css --- */
+/* ==========================================================================
+   MRC LOGIN STYLE - BUNG DED SIGNATURE
+   ========================================================================== */
+
+/* -----------------------------------------
+   1. BASE & LAYOUT
+   ----------------------------------------- */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f6f9;
@@ -23,6 +29,9 @@ body {
     /* Aksen garis atas maroon */
 }
 
+/* -----------------------------------------
+   2. BRANDING & ICONOGRAPHY
+   ----------------------------------------- */
 .brand-icon {
     width: 60px;
     height: 60px;
@@ -36,7 +45,9 @@ body {
     margin: 0 auto 20px;
 }
 
-/* Styling Input */
+/* -----------------------------------------
+   3. FORM & INPUT STYLING
+   ----------------------------------------- */
 .custom-input-group {
     background: #f8f9fa;
     border: 1px solid #e9ecef;
@@ -64,9 +75,10 @@ body {
     cursor: pointer;
 }
 
-/* =========================================
-   1. BASMI MATA KEMBAR (Maksa Browser Minggat!)
-   ========================================= */
+/* -----------------------------------------
+   4. BROWSER OVERRIDES (Basmi Mata Kembar)
+   ----------------------------------------- */
+/* Maksa Browser Default Minggat! */
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
     display: none !important;
@@ -80,10 +92,9 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
     display: none !important;
 }
 
-
-/* =========================================
-   2. BUTTON KHAS BUNG-DED (Rounded Pill & Bold)
-   ========================================= */
+/* -----------------------------------------
+   5. BUTTON SIGNATURE (Khas Ketum)
+   ----------------------------------------- */
 .btn-khas-tum {
     background-color: #800000;
     /* Maroon khas UKM */
@@ -101,7 +112,7 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
 
 .btn-khas-tum:hover {
     background-color: #ffffff;
-    /* Berubah Hitam pas kursor masuk (Elegan) */
+    /* Berubah Putih Elegan pas kursor masuk */
     color: #681111;
     transform: translateY(-3px);
     border-color: #800000;

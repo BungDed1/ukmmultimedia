@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         <div class="col-lg-4 col-md-6">
                             <div class="d-flex align-items-center mb-3">
-                                <img src="/public/logomm.webp" alt="Logo UKM" width="50" class="me-3 bg-white rounded-circle p-1">
+                                <img src="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Logo/logomm.webp" alt="Logo UKM" width="50" class="me-3 bg-white rounded-circle p-1">
                                 <div class="d-flex flex-column">
                                     <h5 class="fw-bold m-0" style="letter-spacing: 1px;">UKM MULTIMEDIA</h5>
                                     <span style="font-family: 'Cardo', serif; font-style: italic; font-size: 0.9rem; color: #cccccc; letter-spacing: 0.5px;">
@@ -57,11 +57,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </div>
 
-                <div class="mt-5 py-3 text-center" style="background-color: #800000;">
-                    <p class="m-0 text-white" style="font-size: 0.85rem; font-weight: 500;">
-                        &copy; 2026 UKM MULTIMEDIA IKIP PGRI BOJONEGORO. All Rights Reserved.
-                    </p>
+                <div class="mt-5 py-3" style="background-color: #800000;">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                                <p class="m-0 text-white" style="font-size: 0.8rem; font-weight: 500; opacity: 0.9;">
+                                    &copy; 2026 UKM MULTIMEDIA IKIP PGRI BOJONEGORO. All Rights Reserved.
+                                </p>
+                            </div>
+                            <div class="col-md-6 text-center text-md-end">
+                                <p class="m-0 text-white" style="font-size: 0.7rem; font-weight: 300; opacity: 0.7; letter-spacing: 0.5px;">
+                                    Dibuat oleh <span class="fw-bold" style="opacity: 0.9;">BungDed Group</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </footer>
         `;
     }

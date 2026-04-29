@@ -1,8 +1,10 @@
 /* ==========================================================================
-   MRC MASTER STYLE - FINAL CLEAN (NO DUPLICATE)
+   MRC MASTER STYLE - BUNG DED & UKM MM SIGNATURE
    ========================================================================== */
 
-/* Layout Fix: Memastikan footer selalu di bawah */
+/* -----------------------------------------
+   1. LAYOUT & WRAPPER
+   ----------------------------------------- */
 .mrc-page-wrapper {
     display: flex;
     flex-direction: column;
@@ -15,17 +17,19 @@
     /* Jarak aman dari footer */
 }
 
-/* Gateway Cards (Halaman Utama MRC) */
+/* -----------------------------------------
+   2. GATEWAY CARDS (Halaman Utama MRC)
+   ----------------------------------------- */
 .mrc-gateway-card {
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 25px;
     padding: 40px 30px;
     text-align: center;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     text-decoration: none !important;
     display: block;
     height: 100%;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .mrc-gateway-card:hover {
@@ -44,27 +48,9 @@
     font-size: 2.2rem;
 }
 
-.bg-library {
-    background: #fdf2f2;
-    color: #800000;
-}
-
-.bg-lab {
-    background: #f0f7ff;
-    color: #0056b3;
-}
-
-.bg-production {
-    background: #f8f9fa;
-    color: #212529;
-}
-
-.bg-cert {
-    background: #fffdf0;
-    color: #d4a017;
-}
-
-/* Lab Card: Tanpa Border Keliling & Tombol Sejajar */
+/* -----------------------------------------
+   3. LAB CARDS & ACCENT LINES
+   ----------------------------------------- */
 .lab-card {
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -83,7 +69,6 @@
     box-shadow: 0 20px 50px rgba(128, 0, 0, 0.08);
 }
 
-/* Accent Lines Top */
 .accent-maroon {
     border-top: 6px solid #800000;
 }
@@ -96,60 +81,9 @@
     border-top: 6px solid #ffc107;
 }
 
-/* TOMBOL SIGNATURE BUNG DED & UKM MM */
-.btn-mrc-pro {
-    background-color: #800000 !important;
-    color: #ffffff !important;
-    border: 2px solid #800000 !important;
-    border-radius: 12px;
-    padding: 12px 24px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-    display: inline-block;
-    text-decoration: none !important;
-}
-
-.btn-mrc-pro:hover {
-    background-color: #ffffff !important;
-    color: #800000 !important;
-    border-color: #800000 !important;
-    transform: scale(1.05);
-}
-
-/* KBD & List Item Styling */
-.kbd-box {
-    display: inline-block;
-    padding: 3px 8px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 0.75rem;
-    color: #444;
-    background: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 6px;
-    box-shadow: 0 3px 0 #dee2e6;
-    margin: 2px;
-}
-
-.lab-list-item {
-    background: #fcfcfc;
-    padding: 15px;
-    border-radius: 15px;
-    margin-bottom: 12px;
-    border: 1px solid #f1f1f1;
-}
-
-.excel-code {
-    color: #198754;
-    font-weight: 800;
-    font-family: monospace;
-    display: block;
-}
-
-/* ==========================================================================
-   CERTIFICATE CENTER STYLES (AWARD CARD)
-   ========================================================================== */
+/* -----------------------------------------
+   4. CERTIFICATE CENTER (AWARD CARDS)
+   ----------------------------------------- */
 .cert-award-card {
     background: #ffffff;
     border-radius: 24px;
@@ -161,8 +95,8 @@
 
 .cert-award-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(128, 0, 0, 0.08) !important;
     border-color: rgba(128, 0, 0, 0.2);
+    box-shadow: 0 20px 40px rgba(128, 0, 0, 0.08) !important;
 }
 
 .cert-icon-wrapper {
@@ -192,22 +126,98 @@
     color: #555;
 }
 
+/* -----------------------------------------
+   5. BUTTONS SIGNATURE BUNG DED & UKM MM
+   ----------------------------------------- */
+.btn-mrc-pro {
+    background-color: #800000 !important;
+    color: #ffffff !important;
+    border: 2px solid #800000 !important;
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none !important;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-mrc-pro:hover {
+    background-color: #ffffff !important;
+    color: #800000 !important;
+    border-color: #800000 !important;
+    transform: scale(1.05);
+}
+
 .btn-mrc-pill {
     background-color: transparent !important;
     color: #800000 !important;
     border: 2px solid #800000 !important;
     border-radius: 50rem;
-    /* Bentuk kapsul */
+    /* Bentuk kapsul khas Ketum */
     padding: 10px 24px;
     font-weight: 700;
     font-size: 0.85rem;
-    transition: all 0.3s ease;
-    display: inline-block;
     text-decoration: none !important;
+    display: inline-block;
+    transition: all 0.3s ease;
 }
 
 .btn-mrc-pill:hover {
     background-color: #800000 !important;
     color: #ffffff !important;
     box-shadow: 0 10px 20px rgba(128, 0, 0, 0.15);
+}
+
+/* -----------------------------------------
+   6. UTILITIES (KBD, Lists, Badge Colors)
+   ----------------------------------------- */
+.kbd-box {
+    display: inline-block;
+    padding: 3px 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: #444;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    box-shadow: 0 3px 0 #dee2e6;
+    margin: 2px;
+}
+
+.lab-list-item {
+    background: #fcfcfc;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    border: 1px solid #f1f1f1;
+}
+
+.excel-code {
+    color: #198754;
+    font-weight: 800;
+    font-family: monospace;
+    display: block;
+}
+
+/* Background Colors Custom untuk Icon Box */
+.bg-library {
+    background: #fdf2f2;
+    color: #800000;
+}
+
+.bg-lab {
+    background: #f0f7ff;
+    color: #0056b3;
+}
+
+.bg-production {
+    background: #f8f9fa;
+    color: #212529;
+}
+
+.bg-cert {
+    background: #fffdf0;
+    color: #d4a017;
 }

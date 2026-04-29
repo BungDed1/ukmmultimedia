@@ -67,37 +67,22 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="bg-white p-5 shadow-sm rounded-4 h-100 border border-light">
-                        <h4 class="fw-bold mb-4" style="color: #1a1a1a;">Kirim Pesan Cepat</h4>
+                    <div class="bg-white p-5 shadow-sm rounded-4 h-100 border border-light d-flex flex-column">
+                        <h4 class="fw-bold mb-4" style="color: #1a1a1a;">Lokasi Sekretariat</h4>
 
-                        <form id="waForm">
-                            <div class="mb-3">
-                                <label class="form-label text-dark fw-semibold small">Nama Lengkap</label>
-                                <input type="text" id="inputNama" class="form-control py-2 bg-light"
-                                    placeholder="Contoh: Budi Santoso" required>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label text-dark fw-semibold small">Kategori Pertanyaan</label>
-                                <select id="inputKategori" class="form-select py-2 bg-light" required>
-                                    <option value="" disabled selected>-- Pilih Kategori --</option>
-                                    <option value="Pendaftaran Anggota Baru">Pendaftaran Anggota Baru</option>
-                                    <option value="Informasi Kegiatan & Event">Informasi Kegiatan & Event</option>
-                                    <option value="Layanan Jasa & Publikasi">Layanan Jasa & Publikasi</option>
-                                    <option value="Pertanyaan Lainnya">Lainnya</option>
-                                </select>
-                            </div>
-                            <div class="mb-4">
-                                <label class="form-label text-dark fw-semibold small">Pesan</label>
-                                <textarea id="inputPesan" class="form-control bg-light" rows="5"
-                                    placeholder="Tuliskan detail pertanyaan atau keperluan Anda di sini..."
-                                    required></textarea>
-                            </div>
+                        <div class="w-100 flex-grow-1 rounded-3 overflow-hidden shadow-sm"
+                            style="min-height: 300px; border: 1px solid #eaeaea;">
+                            <iframe
+                                src="https://maps.google.com/maps?q=IKIP%20PGRI%20Bojonegoro&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                width="100%" height="100%" style="border:0; min-height: 300px;" allowfullscreen=""
+                                loading="lazy">
+                            </iframe>
+                        </div>
 
-                            <button type="button" onclick="sendToWhatsApp()"
-                                class="btn w-100 text-white fw-bold py-3 rounded-pill btn-maroon shadow-sm mt-2">
-                                <i class="bi bi-whatsapp me-2"></i> Kirim via WhatsApp
-                            </button>
-                        </form>
+                        <a href="https://www.google.com/maps/search/IKIP+PGRI+Bojonegoro/" target="_blank"
+                            class="btn w-100 text-white fw-bold py-3 rounded-pill btn-maroon shadow-sm mt-4">
+                            <i class="bi bi-geo-alt-fill me-2"></i> Buka di Google Maps
+                        </a>
 
                     </div>
                 </div>
@@ -107,10 +92,10 @@
     </section>
 
     <div id="tempat-footer"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/function/navbar.js"></script>
     <script src="/function/footer.js"></script>
-    <script src="/function/contact.js"></script>
 </body>
 
 </html>

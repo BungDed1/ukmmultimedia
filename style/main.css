@@ -1,20 +1,38 @@
 /* ==========================================================================
-   BASE & SCROLL BEHAVIOR
+   UKM MULTIMEDIA - MASTER CSS STYLESHEET
+   Daftar Isi:
+   1. Base & Scroll Behavior
+   2. Global Section & Layout
+   3. Navbar & Footer
+   4. Hero, Carousel & Headers
+   5. Buttons (Tombol)
+   6. Forms & Kotak Aspirasi
+   7. Cards & Components (Galeri, MRC, Katalog, dll)
+   8. Section Specifics (Statistik, Partners)
+   9. Mobile Responsive (Media Queries)
    ========================================================================== */
+
+/* ==========================================================================
+   1. BASE & SCROLL BEHAVIOR
+   ========================================================================== */
+
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
-    /* Sesuaikan dengan tinggi navbarmu */
+    scroll-padding-top: 110px;
+    /* Jarak aman scroll saat klik link/id */
 }
 
 body {
     font-family: 'Poppins', Arial, sans-serif;
     background-color: #f4f7f6;
+
+    /* INI OBATNYA TUM! Bikin ruang kosong biar konten gak nyungsep */
+    padding-top: 105px;
 }
 
 /* Hilangkan garis fokus biru saat diklik & atur offset */
 :target {
-    scroll-margin-top: 90px;
+    scroll-margin-top: 110px;
 }
 
 .section-offset {
@@ -26,7 +44,7 @@ body {
 }
 
 /* ==========================================================================
-   GLOBAL SECTION STYLING
+   2. GLOBAL SECTION & LAYOUT
    ========================================================================== */
 section {
     margin: 0 !important;
@@ -46,8 +64,9 @@ section {
 }
 
 /* ==========================================================================
-   NAVBAR, DROPDOWN & FOOTER
+   3. NAVBAR & FOOTER
    ========================================================================== */
+/* Navbar Styling */
 .custom-nav-link {
     border: 2px solid transparent;
     transition: background-color 0.3s, color 0.3s, border 0.3s;
@@ -84,7 +103,7 @@ section {
     margin: 0 12px;
 }
 
-/* Override Dropdown Bootstrap */
+/* Dropdown Navbar Override */
 .dropdown-menu .dropdown-item {
     background-color: transparent !important;
     color: #000000 !important;
@@ -99,7 +118,7 @@ section {
     color: #800000 !important;
 }
 
-/* Footer Link & Floating Logo */
+/* Footer & Social Media */
 .hover-white {
     transition: all 0.3s ease;
 }
@@ -135,8 +154,27 @@ section {
 }
 
 /* ==========================================================================
-   HERO CAROUSEL & INDICATORS
+   4. HERO, CAROUSEL & HEADERS
    ========================================================================== */
+/* Global Rounded Hero (Header Halaman Umum) */
+.global-hero-rounded {
+    background: linear-gradient(135deg, #800000 0%, #4a0000 100%);
+    color: white;
+    padding: 80px 0;
+    border-radius: 0 0 40px 40px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 30px rgba(128, 0, 0, 0.1);
+}
+
+/* Hero Carousel (Halaman Utama) */
+#hero-carousel-section {
+    border-radius: 0 0 40px 40px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(128, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+}
+
 .hero-bg-image {
     width: 100%;
     min-height: 85vh;
@@ -168,21 +206,6 @@ section {
     z-index: 1;
 }
 
-.hero-badge {
-    background-color: #800000;
-    color: #ffffff;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-    font-size: 0.85rem;
-}
-
-.hero-overline {
-    color: #F2C94C;
-    font-size: 0.9rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
 .hero-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
@@ -199,6 +222,23 @@ section {
     max-width: 650px;
 }
 
+/* Badges di Hero */
+.hero-badge {
+    background-color: #800000;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.hero-overline {
+    color: #F2C94C;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Custom Indicators Carousel */
 .custom-indicators {
     margin-bottom: 2rem;
     z-index: 5;
@@ -223,9 +263,9 @@ section {
 }
 
 /* ==========================================================================
-   TOMBOL (BUTTONS) - DIGABUNGKAN AGAR RAPI
+   5. BUTTONS (TOMBOL)
    ========================================================================== */
-/* 1. Tombol Hero / Hubungi Sekarang */
+/* Tombol Hero / Hubungi Sekarang */
 .btn-hero-custom {
     background-color: #800000;
     color: #ffffff;
@@ -248,25 +288,40 @@ section {
     filter: brightness(0) !important;
 }
 
-/* 2. Tombol Maroon & Layanan (Fill -> Transparan) */
+/* Tombol Maroon Khas UKM MM (Solid ke Outline) */
 .btn-maroon,
-.btn-layanan-custom {
+.btn-layanan-custom,
+.paket-btn-custom {
     background-color: #800000 !important;
     color: #ffffff !important;
     border: 2px solid #800000 !important;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease !important;
 }
 
 .btn-maroon:hover,
 .btn-maroon:active,
 .btn-layanan-custom:hover,
-.btn-layanan-custom:active {
+.btn-layanan-custom:active,
+.paket-btn-custom:hover {
     background-color: transparent !important;
     color: #800000 !important;
     border: 2px solid #800000 !important;
 }
 
-/* 3. Tombol Outline Dark (Transparan -> Fill Gelap) */
+/* Tombol Outline Maroon (Transparan ke Solid Maroon) */
+.paket-btn-outline {
+    background-color: transparent !important;
+    color: #800000 !important;
+    border: 2px solid #800000 !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+.paket-btn-outline:hover {
+    background-color: #800000 !important;
+    color: #ffffff !important;
+}
+
+/* Tombol Outline Gelap (Transparan ke Solid Gelap) */
 .btn-outline-dark-custom {
     background-color: transparent !important;
     color: #1a1a1a !important;
@@ -280,7 +335,7 @@ section {
     color: #ffffff !important;
 }
 
-/* 4. Tombol Khusus Animasi Banner Event */
+/* Tombol Event Putih */
 .btn-event-primary {
     background-color: #ffffff;
     color: #800000 !important;
@@ -305,7 +360,7 @@ section {
     color: #800000 !important;
 }
 
-/* 5. Tombol Order / Paket */
+/* Tombol Paket Detail */
 .btn-order {
     background-color: #800000;
     color: #ffffff;
@@ -324,35 +379,341 @@ section {
     background-color: #4d0000;
 }
 
-.paket-btn-custom {
+/* ==========================================================================
+   6. FORMS & KOTAK ASPIRASI
+   ========================================================================== */
+/* General Input Forms */
+.form-control,
+.form-select {
+    border: 1.5px solid #eee;
+    border-radius: 12px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #800000;
+    background-color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(128, 0, 0, 0.1);
+}
+
+/* Floating Label Aktif Maroon */
+.form-floating>.form-control:focus~label,
+.form-floating>.form-control:not(:placeholder-shown)~label,
+.form-floating>.form-select~label {
+    color: #800000;
+    font-weight: 600;
+}
+
+/* Switch & Checkbox */
+.form-check-input:checked {
     background-color: #800000 !important;
-    color: #ffffff !important;
-    border: 2px solid #800000 !important;
-    transition: all 0.3s ease-in-out !important;
+    border-color: #800000 !important;
 }
 
-.paket-btn-custom:hover {
-    background-color: #ffffff !important;
-    color: #800000 !important;
-    border: 2px solid #000000 !important;
+/* Kotak Aspirasi Card */
+.aspirasi-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.paket-btn-outline {
-    background-color: transparent !important;
-    color: #800000 !important;
-    border: 2px solid #800000 !important;
-    transition: all 0.3s ease-in-out !important;
+.aspirasi-card:hover {
+    box-shadow: 0 20px 40px rgba(128, 0, 0, 0.08) !important;
 }
 
-.paket-btn-outline:hover {
-    background-color: #800000 !important;
-    color: #ffffff !important;
+/* Icon Bulat di Form Header */
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: rgba(128, 0, 0, 0.05);
+    color: #800000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+/* Info Card di Kontak Admin */
+.contact-info-card {
+    background-color: #fff9f9;
+    border-left: 4px solid #800000;
+}
+
+/* Tombol Kirim Aspirasi Khusus */
+.btn-kirim-aspirasi {
+    background: linear-gradient(135deg, #800000 0%, #4a0000 100%);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-kirim-aspirasi:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(128, 0, 0, 0.2);
+    color: white;
+    filter: brightness(1.1);
+}
+
+.btn-kirim-aspirasi:active {
+    transform: translateY(1px) scale(0.98);
+    background: #330000;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-kirim-aspirasi.is-sending {
+    background: #212529 !important;
+    pointer-events: none;
+    opacity: 0.8;
 }
 
 /* ==========================================================================
-   KOMPONEN KARTU & LAYOUT
+   7. CARDS & COMPONENTS
    ========================================================================== */
-/* Katalog Buku / Layanan */
+/* General Hover Card (Home Departemen) */
+.custom-card-hover {
+    transition: all 0.3s ease;
+    border-radius: 20px !important;
+}
+
+.custom-card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dept-icon {
+    width: 70px;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.custom-card-hover:hover .dept-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Event Banner Card */
+.event-banner-hover {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 20px;
+}
+
+.event-banner-hover:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(128, 0, 0, 0.25) !important;
+}
+
+/* Struktur Organisasi Cards (BPH, Dept) */
+.org-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
+}
+
+.org-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(128, 0, 0, 0.15);
+}
+
+.avatar-bph {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #800000;
+    padding: 3px;
+}
+
+.avatar-dept {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #1a1a1a;
+    padding: 3px;
+}
+
+.avatar-subdept {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #800000;
+    padding: 2px;
+}
+
+.avatar-anggota {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.label-jabatan {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #800000;
+    background: #fff0f0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.label-jabatan.dark {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.member-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.member-item:hover {
+    background-color: #fff0f0;
+    border-color: #800000;
+}
+
+.hierarchy-line {
+    width: 2px;
+    height: 30px;
+    background-color: #800000;
+    margin: 0 auto;
+}
+
+/* MRC Resource Cards */
+.resource-card {
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+}
+
+.resource-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(128, 0, 0, 0.1);
+    border-color: #800000;
+}
+
+.icon-wrapper-mrc {
+    width: 60px;
+    height: 60px;
+    background: rgba(128, 0, 0, 0.05);
+    color: #800000;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.resource-card:hover .icon-wrapper-mrc {
+    background: #800000;
+    color: #ffffff;
+}
+
+.category-badge {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 50px;
+    background: #f8f9fa;
+    color: #666;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+/* Gallery & Portfolio Cards */
+.gallery-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(128, 0, 0, 0.15);
+}
+
+.gallery-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-card:hover .gallery-img {
+    transform: scale(1.05);
+}
+
+.img-preview {
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.img-preview:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.video-card-body {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 1.5rem;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Activity / Kegiatan Cards */
+.activity-card {
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.activity-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(128, 0, 0, 0.1) !important;
+}
+
+.activity-img {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.badge-date {
+    background-color: #800000;
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+}
+
+/* Katalog Buku */
 .katalog-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -404,7 +765,6 @@ section {
     font-weight: bold;
     color: #800000;
     margin: 0 0 8px 0;
-    text-align: left;
     line-height: 1.3;
 }
 
@@ -412,7 +772,6 @@ section {
     font-size: 0.85rem;
     color: #6c757d;
     margin-bottom: 10px;
-    text-align: left;
 }
 
 .book-price {
@@ -420,356 +779,9 @@ section {
     color: #333333;
     font-size: 1.1rem;
     margin-bottom: 15px;
-    text-align: left;
 }
 
-/* Kartu Departemen Hover */
-.custom-card-hover {
-    transition: all 0.3s ease;
-    border-radius: 20px !important;
-}
-
-.custom-card-hover:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
-}
-
-.dept-icon {
-    width: 70px;
-    height: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.custom-card-hover:hover .dept-icon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* Banner Animasi Event */
-.event-banner-hover {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border-radius: 20px;
-}
-
-.event-banner-hover:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 25px 50px rgba(128, 0, 0, 0.25) !important;
-}
-
-/* Preview Galeri */
-.img-preview {
-    height: 280px;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-}
-
-.img-preview:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Statistik Angka */
-.stat-number {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: #800000;
-    display: block;
-    line-height: 1;
-    margin-bottom: 5px;
-}
-
-.stat-box {
-    border-right: 1px solid #dee2e6;
-}
-
-.stat-box:last-child {
-    border-right: none;
-}
-
-/* Logo Partner */
-.partner-logo {
-    filter: grayscale(100%);
-    opacity: 0.5;
-    transition: all 0.4s ease;
-    max-height: 45px;
-}
-
-.partner-logo:hover {
-    filter: grayscale(0%);
-    opacity: 1;
-}
-
-/* ==========================================================================
-   SWIPER 3D EFFECT (JIKA DIGUNAKAN)
-   ========================================================================== */
-#tokobuku {
-    perspective: 1500px;
-}
-
-.swiper-container-custom .swiper-slide {
-    width: 260px;
-    opacity: 0.1;
-    transition: all 0.5s ease;
-}
-
-.swiper-container-custom .swiper-slide-active {
-    opacity: 1 !important;
-    transform: translateZ(250px) scale(1.1);
-    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.4);
-    z-index: 10;
-}
-
-.swiper-container-custom .swiper-slide-next,
-.swiper-container-custom .swiper-slide-prev {
-    opacity: 0.6 !important;
-    transform: translateZ(100px);
-    z-index: 5;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-    display: none !important;
-}
-
-/* ==========================================================================
-   CSS KHUSUS STRUKTUR ORGANISASI V4
-   ========================================================================== */
-.org-card {
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f0f0f0;
-    transition: transform 0.3s ease;
-}
-
-.org-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(128, 0, 0, 0.15);
-}
-
-/* Ukuran Foto */
-.avatar-bph {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #800000;
-    padding: 3px;
-}
-
-.avatar-dept {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #1a1a1a;
-    padding: 3px;
-}
-
-.avatar-subdept {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #800000;
-    padding: 2px;
-}
-
-.avatar-anggota {
-    width: 45px;
-    height: 45px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-/* Label / Jabatan */
-.label-jabatan {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-    color: #800000;
-    background: #fff0f0;
-    padding: 4px 12px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.label-jabatan.dark {
-    background: #1a1a1a;
-    color: #fff;
-}
-
-/* Item Anggota */
-.member-item {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
-    padding: 8px 12px;
-    display: flex;
-    align-items: center;
-    transition: all 0.2s ease;
-}
-
-.member-item:hover {
-    background-color: #fff0f0;
-    border-color: #800000;
-}
-
-/* Garis Penghubung Hirarki */
-.hierarchy-line {
-    width: 2px;
-    height: 30px;
-    background-color: #800000;
-    margin: 0 auto;
-}
-
-/* ==========================================================================
-   CSS KHUSUS HALAMAN KEGIATAN & PROGRAM (ALBUM GRID)
-   ========================================================================== */
-.activity-card {
-    transition: all 0.3s ease;
-    border: 1px solid #f0f0f0;
-}
-
-.activity-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(128, 0, 0, 0.1) !important;
-}
-
-.activity-img {
-    height: 220px;
-    object-fit: cover;
-    width: 100%;
-}
-
-.badge-date {
-    background-color: #800000;
-    letter-spacing: 1px;
-    font-size: 0.75rem;
-}
-
-/* ==========================================================================
-   CSS KHUSUS HALAMAN GALERI KARYA (TABS & ALBUM)
-   ========================================================================== */
-/* Styling Tab Filter Navigasi */
-.nav-pills-custom .nav-link {
-    color: #444;
-    font-weight: 600;
-    border-radius: 50rem;
-    padding: 10px 25px;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.nav-pills-custom .nav-link:hover {
-    color: #800000;
-}
-
-.nav-pills-custom .nav-link.active {
-    background-color: #800000;
-    color: white;
-    border-color: #800000;
-}
-
-/* Efek Kartu Galeri (Foto & Publikasi) */
-.gallery-card {
-    border: none;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.gallery-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(128, 0, 0, 0.15);
-}
-
-/* Gambar dalam Galeri */
-.gallery-img {
-    height: 250px;
-    width: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.gallery-card:hover .gallery-img {
-    transform: scale(1.05);
-}
-
-/* Styling Container Player Video */
-.video-card-body {
-    background-color: #1a1a1a;
-    color: white;
-    padding: 1.5rem;
-}
-
-/* ==========================================================================
-   MOBILE RESPONSIVE ADJUSTMENTS (Selalu di Posisi Paling Bawah)
-   ========================================================================== */
-@media (max-width: 991.98px) {
-
-    /* Navbar Rata Kiri & Rapi */
-    .navbar-nav {
-        text-align: left !important;
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-
-    .nav-item {
-        border-bottom: 1px solid #f1f1f1;
-    }
-
-    .nav-link {
-        padding: 15px 0 !important;
-    }
-
-    .dropdown-menu {
-        border: none !important;
-        padding-left: 20px !important;
-        background: #fafafa !important;
-    }
-
-    /* Hero Section */
-    .hero-title {
-        font-size: 1.8rem !important;
-        line-height: 1.3;
-    }
-
-    .hero-desc {
-        font-size: 0.95rem !important;
-        opacity: 0.8;
-    }
-
-    /* Section Padding */
-    .section-padding {
-        padding-top: 50px !important;
-        padding-bottom: 50px !important;
-    }
-
-    /* Statistik menjadi 2x2 grid */
-    .stat-number {
-        font-size: 2rem !important;
-    }
-
-    .stat-box {
-        border-right: none !important;
-        border-bottom: 1px solid #dee2e6;
-        padding-bottom: 15px;
-    }
-
-    .stat-box:nth-child(even) {
-        border-left: 1px solid #dee2e6;
-    }
-}
-
-/* ==========================================================================
-   CSS KHUSUS HALAMAN PARTNERSHIP V3 (MINIMALIST & CLEAN)
-   ========================================================================== */
+/* Partnership Proposal Card */
 .partnership-hero {
     background: linear-gradient(135deg, #800000 0%, #4a0000 100%);
     color: white;
@@ -805,7 +817,6 @@ section {
 
 .proposal-card-v3:hover .proposal-v3-header {
     background-color: #fff4f4;
-    /* Efek kemerahan tipis saat di-hover */
 }
 
 .proposal-v3-icon {
@@ -844,7 +855,6 @@ section {
 
 .benefit-list li::before {
     content: '\F26A';
-    /* Unicode untuk bootstrap icon check-circle-fill */
     font-family: 'bootstrap-icons';
     position: absolute;
     left: 0;
@@ -853,41 +863,75 @@ section {
     font-size: 1.2rem;
 }
 
-/* ==========================================================================
-   GLOBAL ROUNDED HERO (Digunakan untuk semua header halaman)
-   ========================================================================== */
-.global-hero-rounded {
-    background: linear-gradient(135deg, #800000 0%, #4a0000 100%);
-    color: white;
-    padding: 80px 0;
-    border-radius: 0 0 40px 40px;
-    margin-bottom: 50px;
-    box-shadow: 0 10px 30px rgba(128, 0, 0, 0.1);
+/* Swiper 3D Effect */
+#tokobuku {
+    perspective: 1500px;
+}
+
+.swiper-container-custom .swiper-slide {
+    width: 260px;
+    opacity: 0.1;
+    transition: all 0.5s ease;
+}
+
+.swiper-container-custom .swiper-slide-active {
+    opacity: 1 !important;
+    transform: translateZ(250px) scale(1.1);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.4);
+    z-index: 10;
+}
+
+.swiper-container-custom .swiper-slide-next,
+.swiper-container-custom .swiper-slide-prev {
+    opacity: 0.6 !important;
+    transform: translateZ(100px);
+    z-index: 5;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    display: none !important;
 }
 
 /* ==========================================================================
-   CSS KHUSUS HALAMAN KONTAK ADMIN
+   8. SECTION SPECIFICS (Statistik, Partners & Filters)
    ========================================================================== */
-.form-control:focus,
-.form-select:focus {
-    border-color: #800000;
-    box-shadow: 0 0 0 0.25rem rgba(128, 0, 0, 0.15);
+/* Statistik Numbers */
+.stat-number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #800000;
+    display: block;
+    line-height: 1;
+    margin-bottom: 5px;
 }
 
-.contact-info-card {
-    background-color: #fff9f9;
-    border-left: 4px solid #800000;
+.stat-box {
+    border-right: 1px solid #dee2e6;
 }
 
-/* ==========================================================================
-   CSS KHUSUS PARTNER LOGO V2 (LEBIH BESAR & RAPAT)
-   ========================================================================== */
+.stat-box:last-child {
+    border-right: none;
+}
+
+/* Partner Logos */
+.partner-logo {
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: all 0.4s ease;
+    max-height: 45px;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
 .partner-logo-v2 {
     filter: grayscale(100%);
     opacity: 0.5;
     transition: all 0.4s ease;
     max-height: 80px;
-    /* Ukuran dibesarkan dari 45px ke 80px */
     width: auto;
     object-fit: contain;
 }
@@ -896,111 +940,9 @@ section {
     filter: grayscale(0%);
     opacity: 1;
     transform: scale(1.05);
-    /* Tambahan efek sedikit membesar saat disentuh */
 }
 
-/* ==========================================================================
-   INTERAKSI TOMBOL ASPIRASI
-   ========================================================================== */
-.btn-kirim-aspirasi {
-    background: linear-gradient(135deg, #800000 0%, #4a0000 100%);
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 15px;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    /* Dipercepat dikit biar responsif */
-}
-
-/* Saat kursor di atas tombol */
-.btn-kirim-aspirasi:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(128, 0, 0, 0.2);
-    color: white;
-    filter: brightness(1.1);
-}
-
-/* EFEK SAAT DITEKAN (CLICKED) */
-.btn-kirim-aspirasi:active {
-    transform: translateY(1px) scale(0.98);
-    /* Tombol kerasa mendem ke dalem */
-    background: #330000;
-    /* Berubah jadi maroon gelap pekat */
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.3);
-}
-
-/* State saat JS aktif mengirim */
-.btn-kirim-aspirasi.is-sending {
-    background: #212529 !important;
-    /* Berubah jadi hitam/gelap */
-    pointer-events: none;
-    /* Biar nggak diklik berkali-kali */
-    opacity: 0.8;
-}
-
-/* ==========================================================================
-   KOTAK ASPIRASI - PROFESSIONAL EDITION
-   ========================================================================== */
-.aspirasi-card {
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    border-radius: 2rem;
-    /* Super rounded biar modern */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Biar card-nya berasa "deep" */
-.aspirasi-card:hover {
-    box-shadow: 0 20px 40px rgba(128, 0, 0, 0.08) !important;
-}
-
-/* Custom Checkbox/Switch Maroon */
-.form-check-input:checked {
-    background-color: #800000 !important;
-    border-color: #800000 !important;
-}
-
-/* Styling Input agar lebih "Multimedia" */
-.form-control,
-.form-select {
-    border: 1.5px solid #eee;
-    border-radius: 12px;
-    padding: 12px 15px;
-    transition: all 0.3s ease;
-}
-
-.form-control:focus,
-.form-select:focus {
-    border-color: #800000;
-    background-color: #fff;
-    box-shadow: 0 0 0 0.25rem rgba(128, 0, 0, 0.1);
-}
-
-/* Floating Label Warna Maroon saat aktif */
-.form-floating>.form-control:focus~label,
-.form-floating>.form-control:not(:placeholder-shown)~label,
-.form-floating>.form-select~label {
-    color: #800000;
-    font-weight: 600;
-}
-
-/* Icon Header Section */
-.icon-circle {
-    width: 80px;
-    height: 80px;
-    background: rgba(128, 0, 0, 0.05);
-    color: #800000;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-}
-
-/* ==========================================================================
-   GALLERY FILTER BUTTONS (RESPONSIVE FIX)
-   ========================================================================== */
+/* Gallery Filter Navigation (Pills) */
 .nav-pills-custom {
     display: flex;
     flex-wrap: wrap;
@@ -1010,7 +952,6 @@ section {
 
 .nav-pills-custom .nav-item {
     margin: 0;
-    /* Hapus margin default */
 }
 
 .nav-pills-custom .nav-link {
@@ -1018,14 +959,12 @@ section {
     background-color: #fff;
     border: 1px solid #dee2e6;
     border-radius: 50px !important;
-    /* Paksa jadi pill */
     padding: 8px 20px;
     font-weight: 600;
     font-size: 0.95rem;
     transition: all 0.3s ease;
 }
 
-/* State Aktif & Hover */
 .nav-pills-custom .nav-link.active,
 .nav-pills-custom .nav-link:hover {
     background-color: #800000 !important;
@@ -1034,20 +973,79 @@ section {
     box-shadow: 0 4px 12px rgba(128, 0, 0, 0.15);
 }
 
-/* KHUSUS TAMPILAN HP */
+/* ==========================================================================
+   9. MOBILE RESPONSIVE (MEDIA QUERIES)
+   Harus selalu berada di posisi paling bawah agar tidak tertimpa!
+   ========================================================================== */
+@media (max-width: 991.98px) {
+
+    /* Navbar Mobile Fix */
+    .navbar-nav {
+        text-align: left !important;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .nav-item {
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .nav-link {
+        padding: 15px 0 !important;
+    }
+
+    .dropdown-menu {
+        border: none !important;
+        padding-left: 20px !important;
+        background: #fafafa !important;
+    }
+
+    /* Hero Section Mobile */
+    .hero-title {
+        font-size: 1.8rem !important;
+        line-height: 1.3;
+    }
+
+    .hero-desc {
+        font-size: 0.95rem !important;
+        opacity: 0.8;
+    }
+
+    /* Layout Spacing */
+    .section-padding {
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+    }
+
+    /* Statistik 2x2 Grid di Tablet/Mobile */
+    .stat-number {
+        font-size: 2rem !important;
+    }
+
+    .stat-box {
+        border-right: none !important;
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 15px;
+    }
+
+    .stat-box:nth-child(even) {
+        border-left: 1px solid #dee2e6;
+    }
+}
+
 @media (max-width: 576px) {
+
+    /* Gallery Filter Fix HP */
     .nav-pills-custom {
         gap: 8px !important;
     }
 
     .nav-pills-custom .nav-item {
         flex: 1 1 45%;
-        /* Di HP jadi 2 kolom per baris agar proporsional */
     }
 
     .nav-pills-custom .nav-link {
         width: 100%;
-        /* Tombol memenuhi kolom */
         font-size: 0.85rem;
         padding: 10px 5px;
         text-align: center;
@@ -1055,50 +1053,20 @@ section {
 }
 
 /* ==========================================================================
-   MULTIMEDIA RESOURCE CENTER (MRC) STYLING
+   STYLE KHUSUS HALAMAN EVENT & LOMBA
    ========================================================================== */
-.resource-card {
-    background: #ffffff;
-    border: 1px solid #eee;
-    border-radius: 20px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    height: 100%;
-}
 
-.resource-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(128, 0, 0, 0.1);
-    border-color: #800000;
-}
-
-.icon-wrapper-mrc {
-    width: 60px;
-    height: 60px;
-    background: rgba(128, 0, 0, 0.05);
-    color: #800000;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+/* Efek Hover Khusus untuk Tombol Gelap (Event yang masih buka) */
+.btn-dark-custom {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    border: 2px solid #1a1a1a !important;
     transition: all 0.3s ease;
 }
 
-.resource-card:hover .icon-wrapper-mrc {
-    background: #800000;
-    color: #ffffff;
-}
-
-.category-badge {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-    padding: 5px 12px;
-    border-radius: 50px;
-    background: #f8f9fa;
-    color: #666;
-    margin-bottom: 10px;
-    display: inline-block;
+.btn-dark-custom:hover,
+.btn-dark-custom:active {
+    background-color: transparent !important;
+    color: #1a1a1a !important;
+    border: 2px solid #1a1a1a !important;
 }
