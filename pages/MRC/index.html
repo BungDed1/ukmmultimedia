@@ -2,7 +2,7 @@
 <html lang="id">
 
 <head>
-    <script src="/function/mrc/protection.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multimedia Resource Center - UKM MM</title>
@@ -37,52 +37,75 @@
 
     <main class="mrc-content-flex py-5 mt-3">
         <div class="container">
+            <!-- 4 PILAR UTAMA -->
             <div class="row g-4 justify-content-center d-flex align-items-stretch">
-
                 <div class="col-lg-3 col-md-6">
-                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm">
+                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
                         <div class="mrc-icon-box bg-library"><i class="bi bi-book-half"></i></div>
                         <h5 class="fw-bold text-dark">Digital Library</h5>
                         <p class="text-muted small">Modul pelatihan, arsip naskah, dan literasi digital.</p>
-                        <div class="mt-auto pt-3">
-                            <a href="/pages/MRC/library/index.html" class="btn-mrc-pro w-100">Buka Library</a>
-                        </div>
+                        <div class="mt-auto pt-3"><a href="/pages/MRC/library/index.html" class="btn-mrc-pro w-100">Buka
+                                Library</a></div>
                     </div>
                 </div>
-
                 <div class="col-lg-3 col-md-6">
-                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm">
+                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
                         <div class="mrc-icon-box bg-lab"><i class="bi bi-cpu-fill"></i></div>
                         <h5 class="fw-bold text-dark">Productivity Lab</h5>
                         <p class="text-muted small">Shortcut master, rumus excel, dan tools fungsional sdm.</p>
-                        <div class="mt-auto pt-3">
-                            <a href="/pages/MRC/lab/index.html" class="btn-mrc-pro w-100">Masuk Lab</a>
-                        </div>
+                        <div class="mt-auto pt-3"><a href="/pages/MRC/lab/index.html" class="btn-mrc-pro w-100">Masuk
+                                Lab</a></div>
                     </div>
                 </div>
-
                 <div class="col-lg-3 col-md-6">
-                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm">
+                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
                         <div class="mrc-icon-box bg-production"><i class="bi bi-camera-reels-fill"></i></div>
                         <h5 class="fw-bold text-dark">Production Suite</h5>
                         <p class="text-muted small">Template RAB, skenario standar, dan dokumen produksi.</p>
-                        <div class="mt-auto pt-3">
-                            <a href="/pages/MRC/production/index.html" class="btn-mrc-pro w-100">Akses Suite</a>
-                        </div>
+                        <div class="mt-auto pt-3"><a href="/pages/MRC/production/index.html"
+                                class="btn-mrc-pro w-100">Akses Suite</a></div>
                     </div>
                 </div>
-
                 <div class="col-lg-3 col-md-6">
-                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm">
+                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
                         <div class="mrc-icon-box bg-cert"><i class="bi bi-patch-check-fill"></i></div>
                         <h5 class="fw-bold text-dark">Certificate Center</h5>
                         <p class="text-muted small">Cari dan unduh sertifikat pelatihan resmi anggota UKM.</p>
-                        <div class="mt-auto pt-3">
-                            <a href="/pages/MRC/certificates/index.html" class="btn-mrc-pro w-100">Cek Sertifikat</a>
-                        </div>
+                        <div class="mt-auto pt-3"><a href="/pages/MRC/certificates/index.html"
+                                class="btn-mrc-pro w-100">Cek Sertifikat</a></div>
                     </div>
                 </div>
+            </div>
 
+            <hr class="my-5 opacity-25">
+
+            <!-- PEMILIHAN RUANG KERJA -->
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-dark">Ruang Kerja Departemen</h3>
+                <p class="text-muted small">Pilih subdepartemen untuk laporan harian.</p>
+            </div>
+            <div class="row g-3 justify-content-center">
+                <div class="col-md-4 col-6"><a href="/pages/MRC/tugas-harian/index.html?divisi=Fotografi"
+                        class="btn btn-outline-dark w-100 py-3 fw-bold rounded-4 shadow-sm border-2"><i
+                            class="bi bi-camera me-2"></i> Fotografi</a></div>
+                <div class="col-md-4 col-6"><a href="/pages/MRC/tugas-harian/index.html?divisi=Videografi"
+                        class="btn btn-outline-dark w-100 py-3 fw-bold rounded-4 shadow-sm border-2"><i
+                            class="bi bi-camera-video me-2"></i> Videografi</a></div>
+                <div class="col-md-4 col-6"><a href="/pages/MRC/tugas-harian/index.html?divisi=Editing"
+                        class="btn btn-outline-dark w-100 py-3 fw-bold rounded-4 shadow-sm border-2"><i
+                            class="bi bi-laptop me-2"></i> Editing</a></div>
+                <div class="col-md-4 col-6"><a href="/pages/MRC/tugas-harian/index.html?divisi=Publikasi"
+                        class="btn btn-outline-dark w-100 py-3 fw-bold rounded-4 shadow-sm border-2"><i
+                            class="bi bi-share me-2"></i> Publikasi</a></div>
+                <div class="col-md-4 col-6"><a href="/pages/MRC/tugas-harian/index.html?divisi=Kerjasama"
+                        class="btn btn-outline-dark w-100 py-3 fw-bold rounded-4 shadow-sm border-2"><i
+                            class="bi bi-briefcase me-2"></i> Kerjasama</a></div>
+                <div class="col-md-4 col-6"><a href="/pages/MRC/tugas-harian/index.html?divisi=Kewirausahaan"
+                        class="btn btn-outline-dark w-100 py-3 fw-bold rounded-4 shadow-sm border-2"><i
+                            class="bi bi-shop me-2"></i> Kewirausahaan</a></div>
+                <div class="col-12 mt-4"><a href="/pages/MRC/sdm-control/index.html"
+                        class="btn btn-maroon w-100 py-3 fw-bold rounded-4 shadow-sm"><i
+                            class="bi bi-shield-lock-fill me-2"></i> Ruang Kontrol SDM</a></div>
             </div>
         </div>
     </main>

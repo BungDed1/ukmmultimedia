@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDM Control Room - UKM MM</title>
+
+    <!-- Library Inti -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Internal & Global -->
+    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/mrc-style.css">
+    <link rel="stylesheet" href="/style/mrc-control.css">
+
+    <style>
+        /* Injeksi Style Maroon & Bold Navbar */
+        :root {
+            --mrc-maroon: #800000;
+            --mrc-soft-maroon: #fff5f5;
+        }
+
+        #tempat-navbar .nav-link {
+            font-weight: 700 !important;
+            color: #333 !important;
+        }
+
+        .text-maroon {
+            color: var(--mrc-maroon) !important;
+        }
+
+        .btn-maroon {
+            background-color: var(--mrc-maroon);
+            color: white;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-maroon:hover {
+            background-color: #600000;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .bg-soft-maroon {
+            background-color: var(--mrc-soft-maroon);
+            color: var(--mrc-maroon);
+            border: 1px solid var(--mrc-maroon);
+        }
+
+        .fw-800 {
+            font-weight: 800;
+        }
+
+        .mrc-preview-box {
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #eee;
+            overflow: hidden;
+        }
+
+        .mrc-preview-box:hover {
+            transform: scale(1.02);
+            border-color: var(--mrc-maroon);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-berkas-mrc {
+            padding: 8px 16px !important;
+            font-size: 12px !important;
+            font-weight: 700;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <div id="tempat-navbar"></div>
+
+    <!-- 1. SECURITY GATEWAY (LOGIN OVERLAY) -->
+    <div id="sdm_auth_gate"
+        class="position-fixed top-0 start-0 w-100 h-100 bg-white d-flex align-items-center justify-content-center"
+        style="z-index: 9999; display: none;">
+        <div class="text-center p-5 shadow-lg rounded-5 border bg-white" style="max-width: 420px;">
+            <i class="bi bi-shield-lock-fill text-maroon display-1 mb-4"></i>
+            <h4 class="fw-800 text-dark mb-2">SDM Access Only</h4>
+            <p class="text-muted small mb-4">Masukkan kode akses khusus pengurus SDM untuk mengelola database harian.
+            </p>
+            <input type="password" id="sdm_password_input" class="form-control mrc-input text-center mb-3"
+                placeholder="Masukkan Sandi">
+            <button onclick="window.verifikasi_akses_sdm()"
+                class="btn btn-maroon w-100 fw-bold py-2 rounded-pill shadow">BUKA AKSES KONTROL</button>
+            <div id="auth_error" class="mt-3 small text-danger fw-bold"></div>
+        </div>
+    </div>
+
+    <!-- 2. MAIN CONTENT WRAPPER -->
+    <div id="sdm_main_content" style="display: none;">
+        <main class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <a href="/pages/MRC/index.html" class="btn btn-back-mrc rounded-pill px-4 fw-bold shadow-sm">
+                            <i class="bi bi-chevron-left me-1"></i> Dashboard
+                        </a>
+                        <div class="d-flex gap-2">
+                            <span class="badge bg-soft-maroon rounded-pill px-3 py-2 d-none d-md-inline-block">
+                                <i class="bi bi-shield-check me-1"></i> SDM Authorized
+                            </span>
+                            <button onclick="window.sdm_logout()"
+                                class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold shadow-sm">
+                                <i class="bi bi-box-arrow-right me-1"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card mrc-control-card border-0 shadow-lg p-4 p-md-5">
+                        <div class="d-flex justify-content-between align-items-end mb-5">
+                            <div class="header-section">
+                                <h2 class="fw-800 text-dark mb-1">Master Checklist</h2>
+                                <p class="text-muted small mb-0">Pemantauan harian oleh Lita Marga Ningrum, Pipin Dwi, &
+                                    Rina Praptiwi.</p>
+                            </div>
+                            <button onclick="window.mrc_refresh_halaman()"
+                                class="btn btn-refresh-mrc rounded-pill px-4 fw-bold shadow-sm">
+                                <i class="bi bi-arrow-clockwise me-2"></i> Refresh
+                            </button>
+                        </div>
+
+                        <div class="table-responsive rounded-4 border border-light">
+                            <table class="table table-hover align-middle text-center mb-0">
+                                <thead class="bg-dark text-white">
+                                    <tr style="font-size: 0.85rem; letter-spacing: 1px;">
+                                        <th class="py-3 px-4">WAKTU</th>
+                                        <th class="py-3">ANGGOTA</th>
+                                        <th class="py-3">DIVISI</th>
+                                        <th class="py-3">BERKAS / KARYA</th>
+                                        <th class="py-3">STATUS</th>
+                                        <th class="py-3 px-4">AKSI</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="mrc_tabel_sdm_body" class="small">
+                                    <tr>
+                                        <td colspan="6" class="py-5 text-center text-muted">Sinkronisasi Database...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="mrc_error_log" class="mt-3 small text-danger fw-bold text-center"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 3. MODAL ZOOM KARYA PUBLIKASI -->
+    <div class="modal fade" id="modalZoomKarya" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+                <div class="modal-header border-0 bg-light">
+                    <h6 class="modal-title fw-bold text-dark"><i class="bi bi-image me-2"></i> Detail Karya & Caption
+                    </h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <img id="zoom_img" src="" class="img-fluid rounded-3 mb-4 shadow-sm"
+                        style="max-height: 450px; width: auto;">
+                    <div class="p-3 bg-light rounded-3 text-start border-start border-4 border-danger">
+                        <h6 class="fw-bold text-dark mb-2 small text-uppercase">Isi Caption:</h6>
+                        <p id="zoom_caption" class="small text-secondary mb-0"
+                            style="white-space: pre-wrap; font-size: 14px; line-height: 1.6;"></p>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 bg-light p-2">
+                    <button type="button" class="btn btn-secondary btn-sm rounded-pill px-4"
+                        data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tempat-footer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/function/navbar.js"></script>
+    <script src="/function/footer.js"></script>
+    <script src="/function/mrc/mrc-sdm.js"></script>
+</body>
+
+</html>

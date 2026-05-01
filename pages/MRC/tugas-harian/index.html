@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRC Submission - UKM MM</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/style/main.css">
+    <link rel="stylesheet" href="/style/mrc-style.css">
+    <link rel="stylesheet" href="/style/mrc-submission.css">
+
+</head>
+
+<body class="bg-white">
+    <div id="tempat-navbar"></div>
+
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <a href="/pages/MRC/index.html" class="btn btn-back-mrc rounded-pill px-4 fw-bold shadow-sm">
+                        <i class="bi bi-chevron-left me-1"></i> Dashboard
+                    </a>
+                    <h5 class="fw-800 mb-0 text-maroon" id="mrc_label_divisi">DIVISI</h5>
+                </div>
+
+                <div class="card mrc-submission-card border-0 shadow-lg p-4 p-md-5 bg-white rounded-4">
+                    <div class="header-section mb-4 text-center">
+                        <h2 class="fw-800 text-dark mb-1">MRC Submission</h2>
+                        <p class="text-muted small">Multimedia Reporting Center • UKM Multimedia Bojonegoro</p>
+                    </div>
+
+                    <!-- TUPOKSI BOX: TAMPILAN LEBIH RAPI & LENGKAP -->
+                    <div
+                        class="tupoksi-container p-4 mb-5 border-start border-4 border-danger rounded-3 bg-light shadow-sm">
+                        <h6 class="fw-800 mb-3 text-dark border-bottom pb-2">
+                            <i class="bi bi-person-lines-fill me-2 text-maroon"></i> DAFTAR ANGGOTA & TUGAS:
+                        </h6>
+                        <div id="mrc_target_list" class="small text-secondary list-tupoksi">
+                            <!-- Diisi lengkap oleh mrc-setor.js -->
+                        </div>
+                    </div>
+
+                    <!-- PREVIEW KARYA TERBARU (KHUSUS PUBLIKASI) -->
+                    <div id="section_auto_karya" class="mb-5 d-none">
+                        <div class="p-3 rounded-4 border bg-light text-center shadow-sm">
+                            <h6 class="fw-800 small mb-3"><i class="bi bi-stars text-warning"></i> KARYA EDITING
+                                TERBARU:</h6>
+                            <div id="mrc_preview_display" class="mb-3">
+                                <div class="spinner-border spinner-border-sm text-maroon"></div>
+                                <span class="small ms-2">Mencari karya...</span>
+                            </div>
+                            <div id="mrc_info_karya" class="x-small text-muted fw-bold"></div>
+                            <input type="hidden" id="mrc_hidden_url">
+                        </div>
+                    </div>
+
+                    <!-- FORM IDENTITAS -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-700 small text-dark">Nama Kamu</label>
+                            <input type="text" class="form-control mrc-input py-2" id="mrc_form_nama"
+                                placeholder="Masukkan nama lengkap kamu" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-700 small text-dark">Nomor WhatsApp</label>
+                            <input type="number" class="form-control mrc-input py-2" id="mrc_form_wa"
+                                placeholder="0822xxxxxxxx" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-700 small text-dark" id="label_catatan">Catatan Progres</label>
+                        <textarea class="form-control mrc-input" id="mrc_form_catatan" rows="3"
+                            placeholder="Apa progres kamu hari ini?"></textarea>
+                    </div>
+
+                    <!-- UPLOAD SECTION -->
+                    <div id="section_upload" class="mb-5">
+                        <label class="form-label fw-700 small d-block mb-3" id="label_upload">Lampiran File</label>
+                        <div class="upload-zone text-center p-5 border-2 rounded-4 bg-light">
+                            <i class="bi bi-cloud-arrow-up display-4 text-maroon"></i>
+                            <input class="form-control form-control-sm mt-3 border-0 bg-transparent mx-auto shadow-none"
+                                style="max-width: 250px;" type="file" id="mrc_form_files" multiple>
+                            <p id="info_upload" class="text-muted x-small mt-2 mb-0">Format: JPG, PNG, atau MP4.</p>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="window.mrc_proses_submit()"
+                        class="btn btn-submit-mrc w-100 fw-800 py-3 text-white rounded-pill shadow" id="mrc_btn_setor">
+                        SUBMIT PROGRESS SEKARANG
+                    </button>
+
+                    <div id="mrc_status" class="mt-4 small fw-bold text-center"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="tempat-footer"></div>
+    <script src="/function/navbar.js"></script>
+    <script src="/function/footer.js"></script>
+    <script src="/function/mrc/mrc-setor.js"></script>
+</body>
+
+</html>

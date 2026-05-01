@@ -1,0 +1,90 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.text-maroon {
+    color: #800000;
+}
+
+.mrc-submission-card {
+    background: #ffffff;
+    border-radius: 30px !important;
+    border: 1px solid #f0f0f0 !important;
+}
+
+.btn-back-mrc {
+    background: #f8f9fa;
+    border: 1px solid #eee;
+    color: #444;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.btn-back-mrc:hover {
+    background: #eee;
+    transform: translateX(-3px);
+}
+
+.tupoksi-container {
+    background: #fffafa;
+    border-radius: 20px;
+    border: 1px dashed #ffd6d6;
+}
+
+.list-tupoksi ul {
+    padding-left: 1.2rem;
+    margin-bottom: 0;
+}
+
+.list-tupoksi li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.mrc-input {
+    background: #fcfcfc !important;
+    border: 1px solid #eee !important;
+    border-radius: 12px !important;
+    padding: 12px 15px !important;
+    font-size: 0.9rem !important;
+    transition: 0.3s !important;
+}
+
+.mrc-input:focus {
+    background: #fff !important;
+    border-color: #800000 !important;
+    box-shadow: 0 0 0 4px rgba(128, 0, 0, 0.05) !important;
+}
+
+.upload-zone {
+    background: #fdfdfd;
+    border: 2px dashed #eee;
+    transition: 0.3s;
+}
+
+.upload-zone:hover {
+    border-color: #800000;
+    background: #fff9f9;
+}
+
+.btn-submit-mrc {
+    background: #800000;
+    border: none;
+    border-radius: 15px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 20px rgba(128, 0, 0, 0.15);
+    transition: 0.3s;
+}
+
+.btn-submit-mrc:hover {
+    background: #600000;
+    transform: translateY(-2px);
+}

@@ -1,0 +1,73 @@
+/* --- MRC SDM ELEGANT REVISION --- */
+:root {
+    --mrc-maroon: #800000;
+}
+
+/* Gambar Publikasi: Tidak terlalu panjang & proporsional */
+.mrc-preview-box {
+    width: 120px;
+    /* Lebar tetap */
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #eee;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0 auto;
+}
+
+.mrc-preview-box img {
+    height: 70px;
+    /* Tinggi dibatasi agar tidak "panjang" */
+    width: 100%;
+    object-fit: cover;
+    /* Gambar tetap proporsional di dalam kotak */
+}
+
+/* Keterangan Caption di Tabel (Terpotong) */
+.mrc-caption-preview {
+    font-size: 10px;
+    color: #777;
+    padding: 4px 8px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Menampilkan "..." */
+}
+
+.mrc-see-more {
+    font-size: 9px;
+    color: var(--mrc-maroon);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Status Select: Mengecilkan background agar tidak tabrakan dengan icon arrow */
+.status-select {
+    width: 115px;
+    font-size: 11px !important;
+    font-weight: 800;
+    padding: 4px 28px 4px 12px !important;
+    /* Memberi ruang aman untuk icon arrow */
+    border-radius: 20px !important;
+    cursor: pointer;
+    background-size: 12px !important;
+    /* Mengecilkan ukuran icon arrow bawaan browser */
+}
+
+/* Warna Status yang lebih soft agar teks terlihat jelas */
+.bg-soft-done {
+    background-color: #d1e7dd !important;
+    color: #0f5132 !important;
+}
+
+.bg-soft-revisi {
+    background-color: #f8d7da !important;
+    color: #842029 !important;
+}
+
+.bg-soft-menunggu {
+    background-color: #fff3cd !important;
+    color: #856404 !important;
+}
