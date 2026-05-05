@@ -123,3 +123,33 @@ input[type="password"]::-webkit-credentials-auto-fill-button {
     transform: translateY(0);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+/* --- LOGIN GATEWAY PERFECT CENTER FIX --- */
+.login-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    z-index: 9999;
+    /* Memastikan dia di atas segala elemen lain */
+    margin: 0;
+    padding: 0;
+}
+
+.login-card {
+    width: 90%;
+    max-width: 400px;
+    border-top: 5px solid #800000;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    padding: 40px;
+}
+
+/* Pastikan tidak ada elemen navbar atau footer yang ikut ter-render di halaman login 
+   karena akan menambah tinggi halaman dan menggeser posisi center */

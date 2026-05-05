@@ -977,79 +977,68 @@ section {
    9. MOBILE RESPONSIVE (MEDIA QUERIES)
    Harus selalu berada di posisi paling bawah agar tidak tertimpa!
    ========================================================================== */
+/* --- LOGIN GATEWAY FIX --- */
+.login-wrapper {
+    min-height: 100vh;
+    /* Paksa tinggi layar penuh */
+    display: flex;
+    align-items: center;
+    /* Center vertikal sempurna */
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.login-card {
+    border-top: 5px solid #800000;
+    /* Aksen Maroon di atas */
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+/* --- NAVBAR MOBILE SLIMMER (Update di main.css) --- */
 @media (max-width: 991.98px) {
 
-    /* Navbar Mobile Fix */
-    .navbar-nav {
-        text-align: left !important;
-        padding-top: 20px;
-        padding-bottom: 20px;
+    /* Menciutkan tinggi Navbar utama */
+    .navbar {
+        padding: 8px 0 !important;
     }
 
-    .nav-item {
-        border-bottom: 1px solid #f1f1f1;
+    /* Menciutkan Logo & Brand */
+    .navbar-brand img {
+        width: 35px !important;
     }
 
+    .navbar-brand span.fs-4 {
+        font-size: 1.1rem !important;
+    }
+
+    .navbar-brand span[style*="font-size: 0.85rem"] {
+        font-size: 0.7rem !important;
+    }
+
+    /* Menciutkan Spasi List Menu agar tidak memenuhi layar */
     .nav-link {
-        padding: 15px 0 !important;
+        padding: 10px 0 !important;
+        /* Dari 15px ke 10px */
+        font-size: 0.95rem;
     }
 
     .dropdown-menu {
-        border: none !important;
-        padding-left: 20px !important;
-        background: #fafafa !important;
-    }
-
-    /* Hero Section Mobile */
-    .hero-title {
-        font-size: 1.8rem !important;
-        line-height: 1.3;
-    }
-
-    .hero-desc {
-        font-size: 0.95rem !important;
-        opacity: 0.8;
-    }
-
-    /* Layout Spacing */
-    .section-padding {
-        padding-top: 50px !important;
-        padding-bottom: 50px !important;
-    }
-
-    /* Statistik 2x2 Grid di Tablet/Mobile */
-    .stat-number {
-        font-size: 2rem !important;
-    }
-
-    .stat-box {
-        border-right: none !important;
-        border-bottom: 1px solid #dee2e6;
-        padding-bottom: 15px;
-    }
-
-    .stat-box:nth-child(even) {
-        border-left: 1px solid #dee2e6;
+        margin-top: 0 !important;
+        padding: 0 0 10px 20px !important;
     }
 }
 
-@media (max-width: 576px) {
+/* Hover & Active State Maroon */
+.nav-link.active {
+    color: #800000 !important;
+}
 
-    /* Gallery Filter Fix HP */
-    .nav-pills-custom {
-        gap: 8px !important;
-    }
-
-    .nav-pills-custom .nav-item {
-        flex: 1 1 45%;
-    }
-
-    .nav-pills-custom .nav-link {
-        width: 100%;
-        font-size: 0.85rem;
-        padding: 10px 5px;
-        text-align: center;
-    }
+.hover-maroon-text:hover {
+    color: #800000 !important;
 }
 
 /* ==========================================================================
@@ -1069,4 +1058,228 @@ section {
     background-color: transparent !important;
     color: #1a1a1a !important;
     border: 2px solid #1a1a1a !important;
+}
+
+/* --- NAVBAR ACTIVE & HOVER STATE FIX --- */
+.navbar-nav .nav-link {
+    color: #2d3436 !important;
+    /* Warna dasar gelap */
+    transition: 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    /* Hilangkan blok warna saat disentuh di HP */
+}
+
+/* Hanya class .active yang warnanya menetap jadi Maroon */
+.navbar-nav .nav-link.active {
+    color: #800000 !important;
+}
+
+/* Efek hover biasa */
+.navbar-nav .nav-link:hover {
+    color: #800000 !important;
+}
+
+/* Mencegah Dropdown Toggle nyangkut warna maroon setelah diklik di HP */
+.navbar-nav .dropdown-toggle:focus {
+    color: #2d3436 !important;
+}
+
+.navbar-nav .dropdown-toggle.active,
+.navbar-nav .dropdown-toggle.active:focus {
+    color: #800000 !important;
+}
+
+/* ==========================================================================
+   PERBAIKAN WARNA NAVBAR (HOVER, KLIK, AKTIF)
+   ========================================================================== */
+.navbar-nav .nav-link {
+    color: #2d3436 !important;
+    transition: 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Kembalikan warna maroon saat di-hover, diklik, atau aktif */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:active,
+.navbar-nav .nav-link.active,
+.navbar-nav .show>.nav-link {
+    color: #800000 !important;
+}
+
+/* Warna dropdown item saat diklik */
+.dropdown-item:hover,
+.dropdown-item:focus,
+.dropdown-item:active {
+    background-color: #fff5f5 !important;
+    color: #800000 !important;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE (ANTI-MENCENG)
+   ========================================================================== */
+@media (max-width: 991.98px) {
+
+    /* Kembalikan rata kiri agar rapi, tidak menceng ke tengah */
+    .navbar-nav {
+        text-align: left !important;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        width: 100%;
+    }
+
+    .nav-item {
+        border-bottom: 1px solid #f1f1f1;
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 12px 0 !important;
+        font-size: 0.95rem;
+    }
+
+    /* Perbaikan Dropdown di HP agar menyatu, tidak melayang kotak sendiri */
+    .dropdown-menu {
+        border: none !important;
+        box-shadow: none !important;
+        /* Hilangkan bayangan kotak aneh di HP */
+        background: transparent !important;
+        padding: 0 0 10px 15px !important;
+        /* Geser ke kanan dikit sbg sub-menu */
+        margin-top: 0 !important;
+    }
+
+    .dropdown-item {
+        padding: 8px 0 !important;
+    }
+
+    /* Spasi tombol MRC Access di mobile */
+    #mrcMenuWrapper {
+        margin-top: 15px !important;
+        margin-bottom: 10px !important;
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+/* ==========================================================================
+   FIX JARAK BOLONG NAVBAR & HERO SECTION DI HP
+   ========================================================================== */
+@media (max-width: 991.98px) {
+
+    /* Kurangi padding body khusus di HP karena top-bar hitam hilang */
+    body {
+        padding-top: 68px !important;
+        /* Angka ideal tinggi navbar mobile lu */
+    }
+
+    /* Kalau lu pake bungkus main atau hero yang punya margin-top bawaan, kita reset di sini */
+    main,
+    .hero-section,
+    .hero-wrapper {
+        margin-top: 0 !important;
+    }
+}
+
+/* ==========================================================================
+   FIX KONSISTENSI KETEBALAN FONT NAVBAR
+   ========================================================================== */
+/* Memaksa menu utama dan sub-menu pakai ketebalan Semi-Bold (600) yang elegan */
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-item {
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 600 !important;
+    /* Ubah dari bawaan fw-bold (700) ke 600 agar tidak terlalu gemuk */
+    letter-spacing: 0.2px;
+
+    /* Trik rahasia UI/UX agar font render konsisten antara warna gelap dan terang */
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Penyesuaian khusus warna Dropdown Item agar tidak terlalu pekat/berat */
+.navbar-nav .dropdown-item {
+    color: #333333 !important;
+    font-size: 0.95rem !important;
+    /* Sedikit disesuaikan biar hierarkinya pas dengan menu utama */
+}
+
+/* Warna saat dropdown di-hover */
+.navbar-nav .dropdown-item:hover,
+.navbar-nav .dropdown-item:focus {
+    color: #800000 !important;
+    background-color: #fff5f5 !important;
+}
+
+/* Tombol MRC Access biarkan tetap sangat tebal (700) karena dia adalah Call to Action utama */
+#mrcMenuWrapper .btn {
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   GLOBAL MOBILE TYPOGRAPHY (FONT SIZE FIX UNTUK SEMUA HALAMAN DI HP)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    /* Reset ukuran font untuk Judul Besar (Hero/Banner) */
+    h1,
+    .h1,
+    .hero-title,
+    .display-4,
+    .display-5,
+    .display-6 {
+        font-size: 1.8rem !important;
+        /* Dikecilin biar rapi dan gak menuhi layar */
+        line-height: 1.3 !important;
+        letter-spacing: -0.5px !important;
+        /* Rapatkan dikit biar elegan */
+    }
+
+    /* Reset ukuran font untuk Sub-judul */
+    h2,
+    .h2 {
+        font-size: 1.5rem !important;
+        line-height: 1.4 !important;
+    }
+
+    h3,
+    .h3 {
+        font-size: 1.25rem !important;
+    }
+
+    /* Reset ukuran Paragraf / Deskripsi */
+    p,
+    .hero-desc,
+    .lead {
+        font-size: 0.9rem !important;
+        /* Lebih kecil dikit biar enak dibaca */
+        line-height: 1.6 !important;
+        /* Jarak antar baris dilonggarin biar nafasnya enak */
+    }
+
+    /* Penyesuaian khusus tombol di HP agar tidak kebesaran */
+    .btn {
+        font-size: 0.85rem !important;
+        padding: 8px 18px !important;
+    }
+}
+
+/* Penyesuaian khusus untuk layar sekecil iPhone SE / layar 360px ke bawah */
+@media (max-width: 380px) {
+
+    h1,
+    .h1,
+    .hero-title,
+    .display-4,
+    .display-5,
+    .display-6 {
+        font-size: 1.6rem !important;
+    }
+
+    p,
+    .hero-desc,
+    .lead {
+        font-size: 0.85rem !important;
+    }
 }
