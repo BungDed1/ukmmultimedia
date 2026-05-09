@@ -33,22 +33,35 @@ function togglePassword() {
 // 3. Fitur Validasi & Pemberian Tiket
 function checkAccess() {
     const inputField = document.getElementById('accessKey');
+    const errorMsg = document.getElementById('errorMessage');
+
     if (!inputField) return;
 
-    const inputKey = inputField.value;
+    const inputKey = inputField.value.trim(); // Pakai trim() biar bersih dari spasi
+
+    // Sembunyikan pesan error setiap kali ngeklik tombol/enter
+    if (errorMsg) {
+        errorMsg.classList.add('d-none');
+    }
 
     // Cek Tiket Member (Anggota Internal UKM)
     if (inputKey === 'mulmedikip123') {
-
-        // BAGIAN PALING PENTING: Kasih tiket ke pengunjung!
-        sessionStorage.setItem('isMember', 'true');
-
-        // Arahkan ke halaman utama MRC
+        sessionStorage.setItem('isMember', 'true'); // Kasih tiket VIP
         window.location.href = '/pages/MRC/index.html';
+    }
+    // Cek Tiket Peserta (Berdasarkan kodingan lu sebelumnya)
+    else if (inputKey.includes('peserta123')) {
+        sessionStorage.removeItem('isMember'); // Cabut tiket VIP
+        sessionStorage.setItem('targetID', inputKey); // Buat auto-search
+        sessionStorage.setItem('isParticipant', 'true'); // Kasih tiket Reguler
+        window.location.href = '/pages/MRC/certificates/index.html';
+    }
+    else {
+        // Kalau Key-nya salah, tampilkan pesan error merah
+        if (errorMsg) {
+            errorMsg.classList.remove('d-none');
+        }
 
-    } else {
-        // Kalau Key-nya salah
-        alert("Key Akses salah atau tidak valid! Silakan coba lagi.");
         inputField.value = ''; // Kosongin inputan biar bisa ngetik lagi
         inputField.focus();    // Langsung arahin kursor ke inputan
     }
