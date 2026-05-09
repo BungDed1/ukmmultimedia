@@ -1,4 +1,6 @@
-// Cek kedua jenis tiket
+// --- File: /function/mrc/auth-guard.js ---
+
+// Cek kedua jenis tiket di dalam kantong browser (Session Storage)
 const isMember = sessionStorage.getItem('isMember');
 const isParticipant = sessionStorage.getItem('isParticipant');
 
@@ -6,6 +8,6 @@ const isParticipant = sessionStorage.getItem('isParticipant');
 if (!isMember && !isParticipant) {
     alert("Hayo! Anda belum memasukkan Key Akses. Silakan login dulu ya!");
 
-    // Tendang ke halaman login awal
-    window.location.replace('/pages/MRC/index.html');
+    // Tendang balik ke halaman login awal (sesuaikan link ini ke halaman login lu)
+    window.location.replace('/index.html');
 }

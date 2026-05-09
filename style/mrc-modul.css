@@ -1,0 +1,107 @@
+/* --- E-LEARNING & MODUL PREMIUM STYLE --- */
+:root {
+    --mrc-maroon: #800000;
+    --mrc-maroon-dark: #5a0000;
+}
+
+/* Kartu Utama */
+.modul-card {
+    border: none;
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+    background: white;
+    padding: 2.5rem;
+}
+
+/* Search Bar Modern */
+.search-wrapper {
+    position: relative;
+    width: 350px;
+}
+
+.search-wrapper i {
+    position: absolute;
+    top: 50%;
+    left: 18px;
+    transform: translateY(-50%);
+    color: #a0a5aa;
+}
+
+.search-box {
+    border-radius: 14px;
+    border: 2px solid #f1f2f4;
+    padding: 12px 20px 12px 45px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.search-box:focus {
+    border-color: var(--mrc-maroon);
+    box-shadow: 0 0 0 4px rgba(128, 0, 0, 0.08);
+    outline: none;
+}
+
+/* Styling Tabel */
+.table-responsive {
+    border-radius: 16px;
+    border: 1px solid #f1f2f4;
+    overflow: hidden;
+}
+
+.table thead th {
+    background-color: #fbfbfc;
+    color: #8e959f;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 1.2rem 1rem;
+    border: none;
+}
+
+.table tbody td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid #f1f2f4;
+}
+
+.badge-kategori {
+    background-color: #fff5f5;
+    color: var(--mrc-maroon);
+    border: 1px solid rgba(128, 0, 0, 0.1);
+    font-weight: 700;
+    font-size: 0.65rem;
+}
+
+.btn-unduh {
+    background-color: var(--mrc-maroon);
+    color: white;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.btn-unduh:hover {
+    background-color: var(--mrc-maroon-dark);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(128, 0, 0, 0.2);
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .header-modul {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 15px;
+    }
+
+    .search-wrapper {
+        width: 100%;
+    }
+
+    .modul-card {
+        padding: 1.5rem;
+    }
+}
