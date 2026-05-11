@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/style/mrc-style.css">
 </head>
 
-<body class="bg-light mrc-page-wrapper">
+<body class="bg-light mrc-page-wrapper d-flex flex-column min-vh-100">
     <div id="tempat-navbar"></div>
 
     <section class="global-hero-rounded">
@@ -36,9 +36,8 @@
         </div>
     </section>
 
-    <main class="mrc-content-flex py-5 mt-3">
+    <main class="py-5 mt-3 flex-grow-1">
         <div class="container">
-            <!-- 4 PILAR UTAMA -->
             <div class="row g-4 justify-content-center d-flex align-items-stretch">
                 <div class="col-lg-3 col-md-6">
                     <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
@@ -80,7 +79,6 @@
 
             <hr class="my-5 opacity-25">
 
-            <!-- PEMILIHAN RUANG KERJA -->
             <div class="text-center mb-4">
                 <h3 class="fw-bold text-dark">Ruang Kerja Departemen</h3>
                 <p class="text-muted small">Pilih subdepartemen untuk laporan harian.</p>
@@ -108,10 +106,92 @@
                         class="btn btn-maroon w-100 py-3 fw-bold rounded-4 shadow-sm"><i
                             class="bi bi-shield-lock-fill me-2"></i> Ruang Kontrol SDM</a></div>
             </div>
+
+            <hr class="my-5 opacity-25">
+
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-dark">Kelas Film Center</h3>
+                <p class="text-muted small">Pusat administrasi, evaluasi, dan modul kurikulum produksi film.</p>
+            </div>
+
+            <div class="row g-4 justify-content-center d-flex align-items-stretch">
+                <div class="col-lg-4 col-md-6">
+                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
+                        <div class="mrc-icon-box text-white" style="background-color: #0056b3;"><i
+                                class="bi bi-calendar2-check-fill"></i></div>
+                        <h5 class="fw-bold text-dark">Presensi Kelas</h5>
+                        <p class="text-muted small">Catat dan pantau kehadiran peserta di setiap pertemuan kelas.
+                        </p>
+                        <div class="mt-auto pt-3"><a href="/pages/MRC/kelas-film/presensi/index.html"
+                                class="btn-mrc-pro w-100">Cek Presensi</a></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
+                        <div class="mrc-icon-box text-white" style="background-color: #212529;"><i
+                                class="bi bi-camera-reels-fill"></i></div>
+                        <h5 class="fw-bold text-dark">Data Kelompok (PH)</h5>
+                        <p class="text-muted small">Daftar anggota Production House dan role masing-masing crew.</p>
+                        <div class="mt-auto pt-3"><a href="/pages/MRC/kelas-film/ph/index.html"
+                                class="btn-mrc-pro w-100">Buka Data PH</a></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
+                        <div class="mrc-icon-box text-white" style="background-color: #ff7f50;"><i
+                                class="bi bi-bar-chart-line-fill"></i></div>
+                        <h5 class="fw-bold text-dark">Nilai Evaluasi</h5>
+                        <p class="text-muted small">Rekapitulasi nilai akhir individu dan pencapaian kelompok PH.
+                        </p>
+                        <div class="mt-auto pt-3"><a href="/pages/MRC/kelas-film/evaluasi/index.html"
+                                class="btn-mrc-pro w-100">Lihat Nilai</a></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
+                        <div class="mrc-icon-box text-white" style="background-color: #800000;"><i
+                                class="bi bi-file-earmark-pdf-fill"></i></div>
+                        <h5 class="fw-bold text-dark">Modul & Template</h5>
+                        <p class="text-muted small">Akses silabus materi, naskah, breakdown sheet, dan dokumen
+                            produksi.</p>
+                        <div class="mt-auto pt-3"><a href="/pages/MRC/kelas-film/modul/index.html"
+                                class="btn-mrc-pro w-100">Unduh Materi</a></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
+                        <div class="mrc-icon-box text-white" style="background-color: #0d6efd;"><i
+                                class="bi bi-cloud-arrow-up-fill"></i></div>
+                        <h5 class="fw-bold text-dark">Pengumpulan Tugas</h5>
+                        <p class="text-muted small">Portal upload tugas mingguan, file editing, dan progress final
+                            project.</p>
+                        <div class="mt-auto pt-3"><a href="/pages/MRC/kelas-film/tugas/index.html"
+                                class="btn-mrc-pro w-100">Submit Tugas</a></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="mrc-gateway-card h-100 d-flex flex-column shadow-sm border-0">
+                        <div class="mrc-icon-box text-white" style="background-color: #b30000;"><i
+                                class="bi bi-ui-radios"></i></div>
+                        <h5 class="fw-bold text-dark">Quiz Acak Individu</h5>
+                        <p class="text-muted small">Sistem ujian kompetensi dengan bank soal acak untuk tiap
+                            peserta.</p>
+                        <div class="mt-auto pt-3"><a href="/pages/MRC/kelas-film/quiz/index.html"
+                                class="btn-mrc-pro w-100">Mulai Quiz</a></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <div id="tempat-footer"></div>
+    <div id="tempat-footer" class="mt-auto"></div>
+
     <script src="/function/navbar.js"></script>
     <script src="/function/footer.js"></script>
 </body>

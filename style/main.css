@@ -1283,3 +1283,202 @@ section {
         font-size: 0.85rem !important;
     }
 }
+
+/* =========================================
+   TABS MENU GALERI (ANTI-NGEBUG 100% CENTER)
+========================================= */
+.gallery-tabs-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    /* Paksa berjajar ke samping */
+    flex-wrap: wrap !important;
+    /* Kalau mentok, baru turun baris */
+    justify-content: center !important;
+    /* Selalu rata tengah */
+    align-items: center !important;
+    gap: 10px !important;
+    /* Jarak antar tombol */
+    padding-left: 0 !important;
+}
+
+/* KUNCI MASALAHNYA ADA DI SINI */
+.gallery-tabs-wrapper .nav-item {
+    margin: 0 !important;
+    flex: 0 0 auto !important;
+    /* Jangan biarkan tombol melar 100% di HP */
+    width: auto !important;
+    display: block !important;
+}
+
+/* Tampilan Normal Tombol */
+.gallery-tabs-wrapper .nav-link {
+    display: inline-block !important;
+    border: 2px solid #800000 !important;
+    color: #800000 !important;
+    border-radius: 50px !important;
+    padding: 8px 20px !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    background-color: transparent !important;
+    transition: all 0.3s ease !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    /* Jaga teks biar gak patah ke bawah */
+}
+
+/* Tampilan Pas Tombol Aktif / Di-Hover */
+.gallery-tabs-wrapper .nav-link:hover,
+.gallery-tabs-wrapper .nav-link.active {
+    background-color: #800000 !important;
+    color: #ffffff !important;
+    /* Teks putih */
+    border-color: #800000 !important;
+    box-shadow: 0 4px 10px rgba(128, 0, 0, 0.25) !important;
+}
+
+/* =========================================
+   UI PENGUMPULAN TUGAS (CLEAN PROFESSIONAL)
+========================================= */
+
+/* Label Form yang Rapi */
+.pro-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #495057;
+    margin-bottom: 0.4rem;
+}
+
+/* Kotak Input Standar Profesional */
+.pro-input {
+    border-color: #dee2e6;
+    border-radius: 0.5rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    background-color: #ffffff;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.pro-input:focus {
+    border-color: #800000;
+    box-shadow: 0 0 0 0.25rem rgba(128, 0, 0, 0.15);
+    background-color: #ffffff;
+}
+
+/* Custom Tombol File */
+.pro-input[type="file"]::file-selector-button {
+    background-color: #f8f9fa;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    margin-right: 1rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pro-input[type="file"]::file-selector-button:hover {
+    background-color: #e2e6ea;
+}
+
+/* Tombol Submit Maroon Solid */
+.pro-btn {
+    background-color: #800000;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.pro-btn:hover {
+    background-color: #660000;
+    color: #ffffff;
+}
+
+.pro-btn:active {
+    transform: scale(0.98);
+}
+
+/* Tabel Bersih & Rapi */
+.pro-table th {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #6c757d;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.75rem;
+}
+
+.pro-table td {
+    font-size: 0.9rem;
+    vertical-align: middle;
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+/* =========================================
+   TOMBOL KHAS ALA KETUM
+========================================= */
+.btn-ala-ketum {
+    background-color: #1a1a1a;
+    /* Hitam solid / Dark */
+    border-color: #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.btn-ala-ketum:hover {
+    background-color: #6c757d !important;
+    /* Berubah jadi abu-abu elegan */
+    border-color: #6c757d !important;
+    transform: translateY(-2px);
+    /* Sedikit ngangkat biar interaktif */
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+/* =========================================
+   PERBAIKAN TAMPILAN HP (RESPONSIVE MOBILE)
+========================================= */
+@media (max-width: 767.98px) {
+
+    /* 1. Kecilin jarak/padding di dalam Card biar gak sumpek */
+    .lab-card {
+        padding: 1.25rem !important;
+    }
+
+    /* 2. Kecilin judul biar gak menuhin layar */
+    .lab-card h5 {
+        font-size: 1.1rem !important;
+    }
+
+    /* 3. Kecilin font tabel dan label form */
+    .table th {
+        font-size: 0.7rem !important;
+        /* Header tabel jadi imut */
+        padding: 0.5rem !important;
+    }
+
+    .table td {
+        font-size: 0.8rem !important;
+        /* Isi tabel pas buat dibaca */
+    }
+
+    .form-label {
+        font-size: 0.75rem !important;
+    }
+
+    /* 4. Sesuaikan ukuran tombol di HP */
+    .btn-mrc-pro {
+        font-size: 0.9rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+
+    /* 5. Tombol refresh dikecilin */
+    button[onclick="fetchRiwayatTugas()"] {
+        font-size: 0.7rem !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+}

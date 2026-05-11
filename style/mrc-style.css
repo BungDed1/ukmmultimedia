@@ -221,3 +221,68 @@
     background: #fffdf0;
     color: #d4a017;
 }
+
+/* Card PH Styling */
+.object-fit-cover {
+    object-fit: cover;
+}
+
+/* Biar card-nya seragam tingginya */
+#grid-ph .lab-card {
+    display: flex;
+    flex-direction: column;
+}
+
+#grid-ph .lab-card .p-4 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Responsive Mobile Fix for PH Grid */
+@media (max-width: 767.98px) {
+    .global-hero-rounded h1 {
+        font-size: 2.2rem !important;
+    }
+
+    .lab-card h5 {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* =========================================
+   JURUS ANTI FOOTER NGAMBANG
+========================================= */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Memaksa tinggi body minimal seukuran layar penuh */
+}
+
+main {
+    flex: 1;
+    /* Memaksa tag <main> melar buat ngedorong footer ke paling bawah */
+}
+
+.card-topi-maroon {
+    border-top: 10px solid #800000 !important;
+    border-radius: 1.5rem !important;
+    overflow: hidden;
+}
+
+.embed-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /* Tinggi tampilan excelnya */
+    overflow: hidden;
+    border-radius: 0 0 1rem 1rem;
+}
+
+.embed-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
