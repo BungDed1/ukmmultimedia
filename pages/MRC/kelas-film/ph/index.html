@@ -15,32 +15,6 @@
 
     <link rel="stylesheet" href="/style/main.css">
     <link rel="stylesheet" href="/style/mrc-style.css">
-
-    <style>
-        .card-topi-maroon {
-            border-top: 10px solid #800000 !important;
-            border-radius: 1.5rem !important;
-            transition: transform 0.3s ease;
-        }
-
-        .card-topi-maroon:hover {
-            transform: translateY(-5px);
-        }
-
-        .btn-materi {
-            transition: all 0.2s ease;
-            border: 1px solid #dee2e6 !important;
-        }
-
-        .btn-materi:hover {
-            background-color: #800000 !important;
-            color: white !important;
-        }
-
-        .btn-materi:hover i {
-            color: white !important;
-        }
-    </style>
 </head>
 
 <body class="bg-light mrc-page-wrapper d-flex flex-column min-vh-100">
@@ -79,62 +53,57 @@
 
                 <div class="row g-4 justify-content-center">
 
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-6 col-lg-4">
                         <div
                             class="lab-card shadow-sm p-4 h-100 d-flex flex-column border-0 text-center card-topi-maroon bg-white">
-                            <div class="mx-auto mb-3" style="width: 80px; height: 80px;">
+                            <div class="mx-auto mb-3" style="width: 85px; height: 85px;">
                                 <img src="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/tugas_film/logoph/logolensara.jpeg"
                                     alt="Logo Lensara" class="w-100 h-100 rounded-circle shadow-sm border"
                                     style="object-fit: cover;">
                             </div>
-                            <h5 class="fw-bold text-dark mb-1">Lensara Pictures</h5>
-                            <p class="text-muted small mb-3">10 Anggota Kru</p>
-                            <button class="btn-mrc-pro w-100 mt-auto" onclick="showDetail('lensara')">Buka
-                                Profil</button>
+                            <h4 class="fw-bold text-dark mb-1">Lensara Pictures</h4>
+                            <p class="text-muted small mb-3"><i class="bi bi-people-fill me-1"></i> 13 Anggota Kru</p>
+                            <span
+                                class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mx-auto mb-4">PH
+                                Aktif</span>
+                            <button class="btn-mrc-pro w-100 mt-auto" onclick="showDetail('lensara')">Buka Profil
+                                PH</button>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-6 col-lg-4">
                         <div
                             class="lab-card shadow-sm p-4 h-100 d-flex flex-column border-0 text-center card-topi-maroon bg-white">
-                            <div class="mx-auto mb-3" style="width: 80px; height: 80px;">
+                            <div class="mx-auto mb-3" style="width: 85px; height: 85px;">
                                 <img src="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/tugas_film/logoph/logosigma.jpeg"
                                     alt="Logo Sigma" class="w-100 h-100 rounded-circle shadow-sm border"
                                     style="object-fit: cover;">
                             </div>
-                            <h5 class="fw-bold text-dark mb-1">Sigma Production</h5>
-                            <p class="text-muted small mb-3">9 Anggota Kru</p>
-                            <button class="btn-mrc-pro w-100 mt-auto" onclick="showDetail('sigma')">Buka Profil</button>
+                            <h4 class="fw-bold text-dark mb-1">Sigma Production</h4>
+                            <p class="text-muted small mb-3"><i class="bi bi-people-fill me-1"></i> 13 Anggota Kru</p>
+                            <span
+                                class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mx-auto mb-4">PH
+                                Aktif</span>
+                            <button class="btn-mrc-pro w-100 mt-auto" onclick="showDetail('sigma')">Buka Profil
+                                PH</button>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-6 col-lg-4">
                         <div
                             class="lab-card shadow-sm p-4 h-100 d-flex flex-column border-0 text-center card-topi-maroon bg-white">
-                            <div class="mx-auto mb-3" style="width: 80px; height: 80px;">
+                            <div class="mx-auto mb-3" style="width: 85px; height: 85px;">
                                 <img src="https://placehold.co/200x200/eeeeee/800000?text=Visual"
                                     alt="Logo Visuallaksana" class="w-100 h-100 rounded-circle shadow-sm border"
                                     style="object-fit: cover;">
                             </div>
-                            <h5 class="fw-bold text-dark mb-1">Visuallaksana</h5>
-                            <p class="text-muted small mb-3">9 Anggota Kru</p>
-                            <button class="btn-mrc-pro w-100 mt-auto" onclick="showDetail('visuallaksana')">Buka
-                                Profil</button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-3">
-                        <div
-                            class="lab-card shadow-sm p-4 h-100 d-flex flex-column border-0 text-center card-topi-maroon bg-white">
-                            <div class="mx-auto mb-3" style="width: 80px; height: 80px;">
-                                <img src="https://placehold.co/200x200/eeeeee/800000?text=OneVision"
-                                    alt="Logo One Vision" class="w-100 h-100 rounded-circle shadow-sm border"
-                                    style="object-fit: cover;">
-                            </div>
-                            <h5 class="fw-bold text-dark mb-1">One Vision Pictures</h5>
-                            <p class="text-muted small mb-3">10 Anggota Kru</p>
-                            <button class="btn-mrc-pro w-100 mt-auto" onclick="showDetail('onevision')">Buka
-                                Profil</button>
+                            <h4 class="fw-bold text-dark mb-1">Visuallaksana</h4>
+                            <p class="text-muted small mb-3"><i class="bi bi-people-fill me-1"></i> 12 Anggota Kru</p>
+                            <span
+                                class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mx-auto mb-4">PH
+                                Aktif</span>
+                            <button class="btn-mrc-pro w-100 mt-auto" onclick="showDetail('visuallaksana')">Buka Profil
+                                PH</button>
                         </div>
                     </div>
 
@@ -162,6 +131,7 @@
                                     class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mt-2">PH
                                     Aktif</span>
                             </div>
+
                             <h6 class="fw-bold mb-3 small text-uppercase text-muted"><i
                                     class="bi bi-people-fill me-2"></i>Susunan Kru</h6>
                             <div class="d-flex flex-column gap-2 mb-5">
@@ -172,24 +142,34 @@
                                         class="fw-bold">Muhammad Fair Firmansyah</span><span
                                         class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Ahmad Faizal Khafidhul A.</span><span
+                                        class="fw-bold">Ahmad Faizal Khafidhul Anant</span><span
                                         class="text-muted">Sutradara</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
                                         class="fw-bold">Diah Ayu Lestari</span><span class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
                                         class="fw-bold">Serli Erlinda</span><span class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Satria Bagus Putra H.</span><span class="text-muted">Kru</span>
-                                </div>
+                                        class="fw-bold">Satria Bagus Putra Hermawan</span><span
+                                        class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Uswatun Chsanah</span><span class="text-muted">Kru</span></div>
+                                        class="fw-bold">Uswatun Chasanah</span><span class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
                                         class="fw-bold">Rina Praptiwi</span><span class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
                                         class="fw-bold">Nanda Susanto</span><span class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Wahib Maulana A.</span><span class="text-muted">Kru</span></div>
+                                        class="fw-bold">Wahib Maulana A</span><span class="text-muted">Kru</span></div>
+                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
+                                        class="fw-bold">Olif Agustina</span><span class="text-muted">Kru</span></div>
+                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
+                                        class="fw-bold">Pipin Dwi Setiyarini</span><span class="text-muted">Kru</span>
+                                </div>
+                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
+                                        class="fw-bold">Moch Radhit Fathur R.</span><span class="text-muted">Kru</span>
+                                </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -202,14 +182,15 @@
                             onclick="showList()"><i class="bi bi-arrow-left me-2"></i> Kembali</button>
                         <div class="lab-card shadow-sm p-4 p-md-5 border-0 card-topi-maroon bg-white">
                             <div class="text-center border-bottom pb-4 mb-4">
-                                <img src="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/tugas_film/logoph/logosigma.jpeg"
-                                    alt="Logo Sigma" class="rounded-circle shadow-sm border mb-3"
+                                <img src="https://placehold.co/200x200/eeeeee/800000?text=Sigma" alt="Logo Sigma"
+                                    class="rounded-circle shadow-sm border mb-3"
                                     style="width: 100px; height: 100px; object-fit: cover;">
                                 <h4 class="fw-bold text-dark mb-1">Sigma Production</h4>
                                 <span
                                     class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mt-2">PH
                                     Aktif</span>
                             </div>
+
                             <h6 class="fw-bold mb-3 small text-uppercase text-muted"><i
                                     class="bi bi-people-fill me-2"></i>Susunan Kru</h6>
                             <div class="d-flex flex-column gap-2 mb-5">
@@ -236,7 +217,20 @@
                                 </div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
                                         class="fw-bold">Rudianto</span><span class="text-muted">Kru</span></div>
+                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
+                                        class="fw-bold">M. Imam Ali Murtado</span><span class="text-muted">Kru</span>
+                                </div>
+                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
+                                        class="fw-bold">Hidayah Yeti Julianti</span><span class="text-muted">Kru</span>
+                                </div>
+                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
+                                        class="fw-bold">Miftakhul Khasanah</span><span class="text-muted">Kru</span>
+                                </div>
+                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
+                                        class="fw-bold">Setiana Agelika</span><span class="text-muted">Kru</span></div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -257,6 +251,7 @@
                                     class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mt-2">PH
                                     Aktif</span>
                             </div>
+
                             <h6 class="fw-bold mb-3 small text-uppercase text-muted"><i
                                     class="bi bi-people-fill me-2"></i>Susunan Kru</h6>
                             <div class="d-flex flex-column gap-2 mb-5">
@@ -266,8 +261,8 @@
                                         class="fw-bold">Ahmad Lutfi Ihsanuddin</span><span class="text-muted">Kru</span>
                                 </div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Aditya Tri Anom B. P.</span><span class="text-muted">Kru</span>
-                                </div>
+                                        class="fw-bold">Aditya Tri Anom Bawono Putra</span><span
+                                        class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
                                         class="fw-bold">Moch Alfiyan Adi Pratama</span><span
                                         class="text-muted">Kru</span></div>
@@ -283,56 +278,14 @@
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
                                         class="fw-bold">Irfan Andika Pratama</span><span class="text-muted">Kru</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="view-detail-onevision" class="d-none">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6">
-                        <button class="btn btn-outline-dark rounded-pill px-4 btn-sm fw-bold mb-4 shadow-sm"
-                            onclick="showList()"><i class="bi bi-arrow-left me-2"></i> Kembali</button>
-                        <div class="lab-card shadow-sm p-4 p-md-5 border-0 card-topi-maroon bg-white">
-                            <div class="text-center border-bottom pb-4 mb-4">
-                                <img src="https://placehold.co/200x200/eeeeee/800000?text=OneVision"
-                                    alt="Logo One Vision" class="rounded-circle shadow-sm border mb-3"
-                                    style="width: 100px; height: 100px; object-fit: cover;">
-                                <h4 class="fw-bold text-dark mb-1">One Vision Pictures</h4>
-                                <span
-                                    class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 mt-2">PH
-                                    Aktif</span>
-                            </div>
-                            <h6 class="fw-bold mb-3 small text-uppercase text-muted"><i
-                                    class="bi bi-people-fill me-2"></i>Susunan Kru</h6>
-                            <div class="d-flex flex-column gap-2 mb-5">
-                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">M. Imam Ali Murtado</span><span class="text-muted">Kru</span>
-                                </div>
-                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Pipin Dwi Setiyarini</span><span class="text-muted">Kru</span>
-                                </div>
-                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Moch Radhit Fathur R.</span><span class="text-muted">Kru</span>
-                                </div>
-                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Olif Agustina</span><span class="text-muted">Kru</span></div>
-                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Hidayah Yeti Julianti</span><span class="text-muted">Kru</span>
-                                </div>
-                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Miftakhul Khasanah</span><span class="text-muted">Kru</span>
-                                </div>
-                                <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Setiana Agelika</span><span class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
                                         class="fw-bold">Eko Satrio</span><span class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
                                         class="fw-bold">Edy Sutanto</span><span class="text-muted">Kru</span></div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 small"><span
-                                        class="fw-bold">Febri Satrio N.</span><span class="text-muted">Kru</span></div>
+                                        class="fw-bold">Febri Satrio N</span><span class="text-muted">Kru</span></div>
                             </div>
+
                         </div>
                     </div>
                 </div>

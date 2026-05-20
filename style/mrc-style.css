@@ -286,3 +286,51 @@ main {
     height: 100%;
     border: none;
 }
+
+/* =========================================
+   STYLE KHUSUS CARD TOPI MAROON & MATERI
+   ========================================= */
+.card-topi-maroon {
+    border-top: 10px solid #800000 !important;
+    border-radius: 1.5rem !important;
+    transition: transform 0.3s ease;
+}
+
+.card-topi-maroon:hover {
+    transform: translateY(-5px);
+}
+
+.btn-materi {
+    transition: all 0.2s ease;
+    border: 1px solid #dee2e6 !important;
+}
+
+.btn-materi:hover {
+    background-color: #800000 !important;
+    color: white !important;
+}
+
+.btn-materi:hover i {
+    color: white !important;
+}
+
+/* =========================================
+   GLOBAL FIX: PERBAIKAN KONTRAS LABEL & BADGE
+   ========================================= */
+/* Memaksa semua badge/label berlatar terang agar teksnya berwarna gelap (Maroon) */
+.badge.bg-light,
+.btn-light,
+.bg-light.rounded-pill {
+    color: #000000 !important;
+    /* Paksa teks jadi warna Maroon (identitas MRC) */
+    font-weight: 800 !important;
+    /* Cetak tebal agar sangat jelas */
+    border: 1px solid #dcdcdc !important;
+    /* Garis tepi tipis agar bentuk pill-nya tegas */
+}
+
+/* Penyelamat jika di HTML secara tidak sengaja tertulis class "text-white" di background terang */
+.bg-light.text-white,
+.btn-light.text-white {
+    color: #000000 !important;
+}
