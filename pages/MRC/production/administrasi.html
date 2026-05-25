@@ -3,6 +3,7 @@
 
 <head>
     <script src="/function/mrc/auth-guard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrasi & Legal - UKM Multimedia</title>
@@ -46,10 +47,9 @@
                 <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
                     <h5 class="fw-bold mb-0"><i class="bi bi-file-earmark-text text-maroon me-2"></i> Dokumen
                         Administrasi</h5>
-                    <span class="badge bg-light text-maroon border border-maroon-subtle px-3 py-2 rounded-pill small">10
-                        Dokumen</span>
+                    <span class="badge bg-light text-maroon border border-maroon-subtle px-3 py-2 rounded-pill small"
+                        id="total-dokumen">Memuat...</span>
                 </div>
-
                 <div class="table-responsive">
                     <table class="table table-hover align-middle">
                         <thead class="table-light">
@@ -59,96 +59,18 @@
                                 <th class="text-end">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="small">
+                        <tbody class="small" id="tempat-dokumen">
                             <tr>
-                                <td>
-                                    <div class="fw-bold">1. Surat Izin Lokasi Syuting (Internal Kampus)</div>
+                                <td colspan="3" class="text-center py-4 text-muted">
+                                    <div class="spinner-border spinner-border-sm text-maroon me-2"></div> Menarik
+                                    data...
                                 </td>
-                                <td class="text-center text-muted">DOCX</td>
-                                <td class="text-end"><a href="#"
-                                        class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fw-bold">2. Kontrak Perjanjian Kru (SOP UKM)</div>
-                                </td>
-                                <td class="text-center text-muted">PDF</td>
-                                <td class="text-end"><a href="#"
-                                        class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fw-bold">3. Form Talent Release & Hak Cipta</div>
-                                </td>
-                                <td class="text-center text-muted">PDF</td>
-                                <td class="text-end"><a href="#"
-                                        class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fw-bold">4. Surat Peminjaman Alat Multimedia</div>
-                                </td>
-                                <td class="text-center text-muted">DOCX</td>
-                                <td class="text-end"><a href="#"
-                                        class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fw-bold">5. Form Absensi Kru & Talent Harian</div>
-                                </td>
-                                <td class="text-center text-muted">XLSX</td>
-                                <td class="text-end"><a href="#"
-                                        class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fw-bold">6. Surat Permohonan Sponsorship & Dana</div>
-                                </td>
-                                <td class="text-center text-muted">DOCX</td>
-                                <td class="text-end"><a href="#"
-                                        class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fw-bold">7. MoU Kerjasama Pihak Ketiga (Vendor)</div>
-                                </td>
-                                <td class="text-center text-muted">PDF</td>
-                                <td class="text-end"><a href="#"
-                                        class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fw-bold">8. Berita Acara Kerusakan/Kehilangan Alat</div>
-                                </td>
-                                <td class="text-center text-muted">DOCX</td>
-                                <td class="text-end"><a href="#"
-                                        class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fw-bold">9. Form Evaluasi Pasca Produksi (Wrap Report)</div>
-                                </td>
-                                <td class="text-center text-muted">PDF</td>
-                                <td class="text-end"><a href="#"
-                                        class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="fw-bold">10. Surat Keterangan Selesai Produksi (SKSP)</div>
-                                </td>
-                                <td class="text-center text-muted">DOCX</td>
-                                <td class="text-end"><a href="#"
-                                        class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <div class="mt-4 pt-3 border-top text-end">
-                    <a href="/pages/MRC/production/index.html" class="btn btn-mrc-pro">
-                        <i class="bi bi-arrow-left me-2"></i> Kembali ke Suite
-                    </a>
-                </div>
+                <div class="mt-4 pt-3 border-top text-end"><a href="/pages/MRC/production/index.html"
+                        class="btn btn-mrc-pro"><i class="bi bi-arrow-left me-2"></i> Kembali ke Suite</a></div>
             </div>
         </div>
     </main>
@@ -156,7 +78,8 @@
     <div id="tempat-footer"></div>
     <script src="/function/navbar.js"></script>
     <script src="/function/footer.js"></script>
-
+    <script src="/function/mrc/production-fetch.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => loadProductionTable('prod_administrasi'));</script>
 </body>
 
 </html>

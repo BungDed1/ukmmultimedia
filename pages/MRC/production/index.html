@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 
-<head>|
+<head>
     <script src="/function/mrc/auth-guard.js"></script>
     <script src="/function/mrc/protection.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Production Suite - UKM Multimedia</title>
@@ -41,54 +42,16 @@
 
     <main class="mrc-content-flex py-5 mt-4">
         <div class="container">
-
-            <div class="row mb-5 justify-content-center">
-                <div class="col-lg-8">
-                    <div class="bg-white p-3 rounded-4 shadow-sm d-flex border border-maroon-subtle">
-                        <div class="input-group">
-                            <span class="input-group-text bg-transparent border-0"><i
-                                    class="bi bi-search text-muted"></i></span>
-                            <input type="text" id="searchInput" class="form-control border-0 shadow-none"
-                                placeholder="Cari template RAB, Surat Izin, Shotlist...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="searchResults" style="display: none;" class="mb-5">
-                <div class="lab-card shadow-sm p-4 border border-secondary-subtle">
-                    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
-                        <h5 class="fw-bold mb-0"><i class="bi bi-search text-maroon me-2"></i> Hasil Pencarian</h5>
-                        <span id="resultCount" class="badge px-3 py-2 rounded-pill small"
-                            style="background-color: #800000; color: #ffffff;">Ditemukan 0 dokumen</span>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle">
-                            <thead class="table-light">
-                                <tr class="small text-uppercase fw-bold text-muted">
-                                    <th>Judul Template</th>
-                                    <th class="text-center">Folder</th>
-                                    <th class="text-center">Format</th>
-                                    <th class="text-end">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody id="resultTableBody" class="small"></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
             <div class="row g-4 d-flex align-items-stretch" id="productionContainer">
 
                 <div class="col-lg-4 col-md-6">
-                    <div class="lab-card accent-maroon shadow-sm">
+                    <div class="lab-card accent-maroon shadow-sm h-100 d-flex flex-column">
                         <div class="d-flex align-items-center mb-4">
                             <div class="p-3 bg-light rounded-3 me-3"><i
                                     class="bi bi-pencil-square fs-4 text-maroon"></i></div>
                             <h5 class="fw-bold mb-0">Pra-Produksi</h5>
                         </div>
-                        <div class="lab-list-item small text-muted">10 Dokumen Tersedia</div>
-
+                        <div class="lab-list-item small text-muted fw-bold" id="count-pra">Memuat data...</div>
                         <div class="mt-auto pt-4 text-center border-top">
                             <a href="/pages/MRC/production/pra-produksi.html" class="btn-mrc-pro w-100"><i
                                     class="bi bi-folder2-open me-2"></i> Buka Folder</a>
@@ -97,14 +60,13 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6">
-                    <div class="lab-card accent-maroon shadow-sm">
+                    <div class="lab-card accent-maroon shadow-sm h-100 d-flex flex-column">
                         <div class="d-flex align-items-center mb-4">
                             <div class="p-3 bg-light rounded-3 me-3"><i
                                     class="bi bi-file-earmark-text fs-4 text-maroon"></i></div>
                             <h5 class="fw-bold mb-0">Administrasi</h5>
                         </div>
-                        <div class="lab-list-item small text-muted">10 Dokumen Tersedia</div>
-
+                        <div class="lab-list-item small text-muted fw-bold" id="count-admin">Memuat data...</div>
                         <div class="mt-auto pt-4 text-center border-top">
                             <a href="/pages/MRC/production/administrasi.html" class="btn-mrc-pro w-100"><i
                                     class="bi bi-folder2-open me-2"></i> Lihat Dokumen</a>
@@ -113,29 +75,28 @@
                 </div>
 
                 <div class="col-lg-4 col-md-6">
-                    <div class="lab-card accent-maroon shadow-sm">
+                    <div class="lab-card accent-maroon shadow-sm h-100 d-flex flex-column">
                         <div class="d-flex align-items-center mb-4">
                             <div class="p-3 bg-light rounded-3 me-3"><i class="bi bi-cash-stack fs-4 text-maroon"></i>
                             </div>
                             <h5 class="fw-bold mb-0">Manajemen RAB</h5>
                         </div>
-                        <div class="lab-list-item small text-muted">8 Dokumen Tersedia</div>
-
+                        <div class="lab-list-item small text-muted fw-bold" id="count-rab">Memuat data...</div>
                         <div class="mt-auto pt-4 text-center border-top">
                             <a href="/pages/MRC/production/rab.html" class="btn-mrc-pro w-100"><i
                                     class="bi bi-calculator me-2"></i> Akses RAB</a>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </main>
 
     <div id="tempat-footer"></div>
     <script src="/function/navbar.js"></script>
     <script src="/function/footer.js"></script>
-    <script src="/function/mrc/production.js"></script>
+    <script src="/function/mrc/productions.js"></script>
 </body>
 
 </html>
