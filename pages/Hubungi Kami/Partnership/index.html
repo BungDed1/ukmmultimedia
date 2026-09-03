@@ -53,7 +53,7 @@
                     <div class="proposal-card-v3 shadow-sm">
                         <div class="proposal-v3-header">
                             <i class="bi bi-journal-richtext proposal-v3-icon"></i>
-                            <h3 class="fw-bold mb-2 text-dark">Spektra Vol. 1: Antalogi Puisi & Visual Kreatif</h3>
+                            <h3 class="fw-bold mb-2 text-dark" id="proposal1TitleText">Spektra Vol. 1: Antalogi Puisi & Visual Kreatif</h3>
                             <span class="badge bg-dark rounded-pill px-3 py-2 fw-normal"
                                 style="letter-spacing: 1px;">Sponsorship & Media Partner</span>
                         </div>
@@ -74,7 +74,7 @@
                                 </li>
                             </ul>
 
-                            <a href="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Proposal/GUIDEBOOK%20SPEKTRA_compressed.pdf"
+                            <a id="proposal1Link" href="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Proposal/GUIDEBOOK%20SPEKTRA_compressed.pdf"
                                 download="Proposal_Sponsorship_Spektra.pdf"
                                 class="btn w-100 py-3 rounded-pill btn-maroon fw-bold mt-auto shadow-sm">
                                 <i class="bi bi-cloud-arrow-down-fill me-2 fs-5"></i> Unduh Proposal
@@ -89,7 +89,7 @@
                     <div class="proposal-card-v3 shadow-sm">
                         <div class="proposal-v3-header">
                             <i class="bi bi-camera-reels-fill proposal-v3-icon"></i>
-                            <h3 class="fw-bold mb-2 text-dark">Kelas Film UKM Multimedia</h3>
+                            <h3 class="fw-bold mb-2 text-dark" id="proposal2TitleText">Kelas Film UKM Multimedia</h3>
                             <span class="badge bg-dark rounded-pill px-3 py-2 fw-normal"
                                 style="letter-spacing: 1px;">Sponsorship & Media Partner</span>
                         </div>
@@ -108,7 +108,7 @@
                                 <li><strong>Content Sharing</strong> untuk Media Partner melalui aset visual kami.</li>
                             </ul>
 
-                            <a href="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Proposal/Proposal_Kerjasama_UKM_Multimedia.pdf"
+                            <a id="proposal2Link" href="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Proposal/Proposal_Kerjasama_UKM_Multimedia.pdf"
                                 download="Proposal_Kerjasama_KelasFilm.pdf"
                                 class="btn w-100 py-3 rounded-pill btn-maroon fw-bold mt-auto shadow-sm">
                                 <i class="bi bi-cloud-arrow-down-fill me-2 fs-5"></i> Unduh Proposal
@@ -125,8 +125,30 @@
 
     <div id="tempat-footer"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/function/mrc/supabase-config.js"></script>
+    <script src="/function/mrc/site-settings.js"></script>
+    <script src="/function/mrc/supabase-auth.js"></script>
     <script src="/function/navbar.js"></script>
     <script src="/function/footer.js"></script>
+    <script>
+        (async function loadProposals() {
+            try {
+                const s = await window.getSiteSettings({
+                    proposal1_title: document.getElementById('proposal1TitleText').textContent,
+                    proposal1_file_url: document.getElementById('proposal1Link').getAttribute('href'),
+                    proposal2_title: document.getElementById('proposal2TitleText').textContent,
+                    proposal2_file_url: document.getElementById('proposal2Link').getAttribute('href'),
+                });
+                document.getElementById('proposal1TitleText').textContent = s.proposal1_title;
+                document.getElementById('proposal1Link').setAttribute('href', s.proposal1_file_url);
+                document.getElementById('proposal2TitleText').textContent = s.proposal2_title;
+                document.getElementById('proposal2Link').setAttribute('href', s.proposal2_file_url);
+            } catch (err) {
+                console.error('Gagal memuat proposal, pakai fallback statis:', err);
+            }
+        })();
+    </script>
 </body>
 
 </html>

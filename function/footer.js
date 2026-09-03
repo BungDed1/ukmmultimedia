@@ -1,7 +1,31 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const footerContainer = document.getElementById('tempat-footer');
 
     if (footerContainer) {
+        const s = window.getSiteSettings ? await window.getSiteSettings({
+            site_name: 'UKM MULTIMEDIA',
+            site_tagline: 'Creative, Innovative, Collaborative',
+            footer_about_text: 'Wadah kreatif mahasiswa IKIP PGRI Bojonegoro untuk bereksplorasi dalam dunia Visual, Literasi, dan Digital Creative. Kami percaya setiap karya memiliki cerita dan setiap cerita layak untuk diabadikan.',
+            contact_email: 'ukmmultimediaikip@gmail.com',
+            contact_address: 'Jl. Panglima Polim No. 46, Bojonegoro, Jawa Timur',
+            contact_whatsapp: '+62 815-1570-9786',
+            instagram_url: 'https://www.instagram.com/ukmmultimedia',
+            tiktok_url: 'https://www.tiktok.com/@ukmmultimediaikip',
+            youtube_url: 'https://youtube.com/@ukmmultimediaikip',
+            logo_url: 'https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Logo/logomm.webp',
+        }) : {
+            site_name: 'UKM MULTIMEDIA',
+            site_tagline: 'Creative, Innovative, Collaborative',
+            footer_about_text: 'Wadah kreatif mahasiswa IKIP PGRI Bojonegoro untuk bereksplorasi dalam dunia Visual, Literasi, dan Digital Creative. Kami percaya setiap karya memiliki cerita dan setiap cerita layak untuk diabadikan.',
+            contact_email: 'ukmmultimediaikip@gmail.com',
+            contact_address: 'Jl. Panglima Polim No. 46, Bojonegoro, Jawa Timur',
+            contact_whatsapp: '+62 815-1570-9786',
+            instagram_url: 'https://www.instagram.com/ukmmultimedia',
+            tiktok_url: 'https://www.tiktok.com/@ukmmultimediaikip',
+            youtube_url: 'https://youtube.com/@ukmmultimediaikip',
+            logo_url: 'https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Logo/logomm.webp',
+        };
+
         footerContainer.innerHTML = `
             <footer class="bg-dark text-white pt-5 pb-0 mt-5 shadow-lg" style="background-color: #1a1a1a !important; font-family: 'Poppins', sans-serif;">
                 <div class="container">
@@ -9,22 +33,22 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         <div class="col-lg-4 col-md-6">
                             <div class="d-flex align-items-center mb-3">
-                                <img src="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Logo/logomm.webp" alt="Logo UKM" width="50" class="me-3 bg-white rounded-circle p-1">
+                                <img src="${s.logo_url}" alt="Logo UKM" width="50" class="me-3 bg-white rounded-circle p-1">
                                 <div class="d-flex flex-column">
-                                    <h5 class="fw-bold m-0" style="letter-spacing: 1px;">UKM MULTIMEDIA</h5>
+                                    <h5 class="fw-bold m-0" style="letter-spacing: 1px;">${s.site_name}</h5>
                                     <span style="font-family: 'Cardo', serif; font-style: italic; font-size: 0.9rem; color: #cccccc; letter-spacing: 0.5px;">
-                                        Creative, Innovative, Collaborative
+                                        ${s.site_tagline}
                                     </span>
                                 </div>
                             </div>
                             <p class="text-secondary small mb-4" style="line-height: 1.8;">
-                                Wadah kreatif mahasiswa IKIP PGRI Bojonegoro untuk bereksplorasi dalam dunia Visual, Literasi, dan Digital Creative. Kami percaya setiap karya memiliki cerita dan setiap cerita layak untuk diabadikan.
+                                ${s.footer_about_text}
                             </p>
                             <div class="d-flex gap-3">
-                                <a href="mailto:ukmmultimediaikip@gmail.com" class="text-white fs-5 hover-maroon-text-top" title="Kirim Email"><i class="bi bi-envelope-fill"></i></a>
-                                <a href="https://www.instagram.com/ukmmultimedia?igsh=aGlyYmV2YWZyZ2Nu" class="text-white fs-5 hover-maroon-text-top" title="Instagram"><i class="bi bi-instagram"></i></a>
-                                <a href="https://www.tiktok.com/@ukmmultimediaikip?lang=en" class="text-white fs-5 hover-maroon-text-top" title="TikTok"><i class="bi bi-tiktok"></i></a>
-                                <a href="https://youtube.com/@ukmmultimediaikip?si=YIybflLmZFrIlybN" class="text-white fs-5 hover-maroon-text-top" title="YouTube"><i class="bi bi-youtube"></i></a>
+                                <a href="mailto:${s.contact_email}" class="text-white fs-5 hover-maroon-text-top" title="Kirim Email"><i class="bi bi-envelope-fill"></i></a>
+                                <a href="${s.instagram_url}" class="text-white fs-5 hover-maroon-text-top" title="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="${s.tiktok_url}" class="text-white fs-5 hover-maroon-text-top" title="TikTok"><i class="bi bi-tiktok"></i></a>
+                                <a href="${s.youtube_url}" class="text-white fs-5 hover-maroon-text-top" title="YouTube"><i class="bi bi-youtube"></i></a>
                             </div>
                         </div>
 
@@ -42,15 +66,15 @@ document.addEventListener("DOMContentLoaded", function () {
                             <h6 class="fw-bold mb-4 text-uppercase" style="color: #800000; letter-spacing: 1px;">Hubungi Kami</h6>
                             <div class="d-flex mb-3">
                                 <i class="bi bi-geo-alt-fill me-3" style="color: #800000;"></i>
-                                <p class="text-secondary small m-0">Jl. Panglima Polim No. 46, Bojonegoro, Jawa Timur</p>
+                                <p class="text-secondary small m-0">${s.contact_address}</p>
                             </div>
                             <div class="d-flex mb-3">
                                 <i class="bi bi-envelope-fill me-3" style="color: #800000;"></i>
-                                <p class="text-secondary small m-0">ukmmultimediaikip@gmail.com</p>
+                                <p class="text-secondary small m-0">${s.contact_email}</p>
                             </div>
                             <div class="d-flex mb-3">
                                 <i class="bi bi-whatsapp me-3" style="color: #800000;"></i>
-                                <p class="text-secondary small m-0">+62 815-1570-9786</p>
+                                <p class="text-secondary small m-0">${s.contact_whatsapp}</p>
                             </div>
                         </div>
 
@@ -62,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="row align-items-center">
                             <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
                                 <p class="m-0 text-white" style="font-size: 0.8rem; font-weight: 500; opacity: 0.9;">
-                                    &copy; 2026 UKM MULTIMEDIA IKIP PGRI BOJONEGORO. All Rights Reserved.
+                                    &copy; 2026 ${s.site_name} IKIP PGRI BOJONEGORO. All Rights Reserved.
                                 </p>
                             </div>
                             <div class="col-md-6 text-center text-md-end">

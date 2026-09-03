@@ -4,104 +4,16 @@
 // Implementasi authentication yang aman dengan Supabase
 // ============================================
 
-// Konfigurasi Supabase (sudah ada di supabase-config.js)
-// const _supabaseUrl = 'https://kbrvnbduwczjqdmofdky.supabase.co';
-// const _supabaseKey = 'your_anon_key';
+// Konfigurasi Supabase ada di supabase-config.js (harus di-load sebelum file ini)
 // const _supabase = supabase.createClient(_supabaseUrl, _supabaseKey);
 
 // ============================================
-// SETUP DATABASE (Jalankan di Supabase SQL Editor)
+// SKEMA DATABASE (sudah dibuat & di-migrasi di Supabase project)
+// Tabel: members (id, email, full_name, role: 'member'|'admin', status: 'active'|'inactive', created_at, last_login)
+// Tabel: activity_logs (id, user_id, action, details, user_agent, created_at)
+// Proteksi akses diatur lewat Row Level Security (RLS) di database, BUKAN di file ini.
+// File ini hanya memanggil Supabase Auth; server yang menegakkan siapa boleh apa.
 // ============================================
-
-/*
--- 1. Buat tabel members
-CREATE TABLE IF NOT EXISTS members (
-    id UUID REFERENCES auth.users(id) PRIMARY KEY,
-    email TEXT UNIQUE NOT NULL,
-    full_name TEXT,
-    role TEXT CHECK (role IN ('admin', 'member', 'participant')) DEFAULT 'participant',
-    npm TEXT,
-    department TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    last_login TIMESTAMP WITH TIME ZONE
-);
-
--- 2. Enable Row Level Security
-ALTER TABLE members ENABLE ROW LEVEL SECURITY;
-
--- 3. Policies untuk tabel members
--- Policy: Users dapat melihat data sendiri
-CREATE POLICY "Users can view own data"
-ON members FOR SELECT
-USING (auth.uid() = id);
-
--- Policy: Hanya admin yang bisa update semua data
-CREATE POLICY "Admins can update all"
-ON members FOR UPDATE
-USING (
-    EXISTS (
-        SELECT 1 FROM members
-        WHERE id = auth.uid() AND role = 'admin'
-    )
-);
-
--- Policy: Users bisa update data sendiri (kecuali role)
-CREATE POLICY "Users can update own data"
-ON members FOR UPDATE
-USING (auth.uid() = id)
-WITH CHECK (
-    auth.uid() = id AND
-    role = (SELECT role FROM members WHERE id = auth.uid())
-);
-
--- 4. Buat function untuk auto-create member profile
-CREATE OR REPLACE FUNCTION public.handle_new_user()
-RETURNS TRIGGER AS $$
-BEGIN
-    INSERT INTO public.members (id, email, full_name)
-    VALUES (
-        NEW.id,
-        NEW.email,
-        NEW.raw_user_meta_data->>'full_name'
-    );
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- 5. Buat trigger
-CREATE TRIGGER on_auth_user_created
-    AFTER INSERT ON auth.users
-    FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
-
--- 6. Buat tabel untuk activity logs
-CREATE TABLE IF NOT EXISTS activity_logs (
-    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-    user_id UUID REFERENCES auth.users(id),
-    action TEXT NOT NULL,
-    details JSONB,
-    ip_address TEXT,
-    user_agent TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
--- Enable RLS untuk logs
-ALTER TABLE activity_logs ENABLE ROW LEVEL SECURITY;
-
--- Policy: Hanya admin yang bisa lihat semua logs
-CREATE POLICY "Admins can view all logs"
-ON activity_logs FOR SELECT
-USING (
-    EXISTS (
-        SELECT 1 FROM members
-        WHERE id = auth.uid() AND role = 'admin'
-    )
-);
-
--- Policy: Users bisa lihat log sendiri
-CREATE POLICY "Users can view own logs"
-ON activity_logs FOR SELECT
-USING (auth.uid() = user_id);
-*/
 
 // ============================================
 // AUTHENTICATION FUNCTIONS
@@ -145,7 +57,7 @@ async function loginWithEmail(email, password) {
 /**
  * Signup user baru
  */
-async function signupUser(email, password, fullName, role = 'participant') {
+async function signupUser(email, password, fullName, role = 'member') {
     try {
         const { data, error } = await _supabase.auth.signUp({
             email: email,
@@ -190,8 +102,8 @@ async function logout() {
         const { error } = await _supabase.auth.signOut();
         if (error) throw error;
 
-        // Redirect ke login
-        window.location.href = '/pages/MRC/login/index.html';
+        // Redirect ke beranda (logout bisa dipicu dari halaman publik maupun MRC)
+        window.location.href = '/index.html';
     } catch (error) {
         console.error('Logout error:', error);
     }
@@ -339,7 +251,8 @@ async function protectPage(requiredRole = null) {
             const hasAccess = await checkUserRole(requiredRole);
 
             if (!hasAccess) {
-                alert('Akses ditolak! Anda tidak memiliki hak akses ke halaman ini.');
+                // Tidak pakai alert() -- biar halaman tetap blank/bersih sebelum redirect,
+                // bukan nongolin popup jelek dulu.
                 window.location.replace('/pages/MRC/index.html');
                 return false;
             }
@@ -362,11 +275,12 @@ async function protectPage(requiredRole = null) {
  * Setup auth listener - untuk auto-redirect
  */
 function setupAuthListener() {
+    // Catatan: redirect setelah logout sudah ditangani di fungsi logout() sendiri.
+    // Listener ini sengaja TIDAK memaksa redirect saat SIGNED_OUT, supaya halaman
+    // publik (yang juga memuat file ini untuk keperluan navbar) tidak ikut
+    // ter-redirect paksa ke halaman login MRC.
     _supabase.auth.onAuthStateChange((event, session) => {
-        if (event === 'SIGNED_OUT') {
-            // User logout, redirect ke login
-            window.location.href = '/pages/MRC/login/index.html';
-        } else if (event === 'PASSWORD_RECOVERY') {
+        if (event === 'PASSWORD_RECOVERY') {
             // User klik link reset password
             window.location.href = '/pages/MRC/reset-password.html';
         }
@@ -414,14 +328,8 @@ async function handleLogin() {
     const result = await window.supabaseAuth.login(email, password);
     
     if (result.success) {
-        // Cek role untuk redirect
-        const user = await window.supabaseAuth.getCurrentUser();
-        
-        if (user.profile.role === 'admin' || user.profile.role === 'member') {
-            window.location.href = '/pages/MRC/index.html';
-        } else {
-            window.location.href = '/pages/MRC/certificates/index.html';
-        }
+        // Member & admin sama-sama masuk ke dashboard MRC
+        window.location.href = '/pages/MRC/index.html';
     } else {
         alert('Login gagal: ' + result.error);
     }

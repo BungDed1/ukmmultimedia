@@ -1,7 +1,6 @@
 // --- UBAH NAMA VARIABEL BIAR GAK BENTROK SAMA MODUL-FETCH.JS ---
-const _supabaseUrlTemplate = "https://kbrvnbduwczjqdmofdky.supabase.co";
-const _supabaseKeyTemplate = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImticnZuYmR1d2N6anFkbW9mZGt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyMDczODYsImV4cCI6MjA5Mjc4MzM4Nn0.M1jW5lB3eSm7oOp37gKmEIO7XaUUAw-qwZ-aOVf09Vo";
-const _supabaseTemplate = supabase.createClient(_supabaseUrlTemplate, _supabaseKeyTemplate);
+// Pakai client Supabase bersama dari supabase-config.js
+const _supabaseTemplate = _supabase;
 
 // FUNGSI TARIK DATA TEMPLATE DARI SUPABASE
 async function fetchTemplate() {
@@ -40,7 +39,7 @@ async function fetchTemplate() {
                     <span class="badge bg-light text-dark border px-2 py-1">${template.format}</span>
                 </td>
                 <td class="text-end">
-                    <a href="${template.link_file}" target="_blank" class="btn btn-sm btn-outline-dark rounded-pill px-3">Unduh</a>
+                    <button type="button" class="btn btn-sm btn-outline-dark rounded-pill px-3" data-path="${mrcEscAttr(template.link_file)}" onclick="openMrcFile(this.dataset.path, this)">Unduh</button>
                 </td>
             </tr>`;
         });

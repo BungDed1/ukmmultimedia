@@ -1,45 +1,25 @@
 // --- KONFIGURASI ---
-const SDM_ACCESS_KEY = "sdm2026";
-const SDM_SB_URL = 'https://kbrvnbduwczjqdmofdky.supabase.co';
-const SDM_SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImticnZuYmR1d2N6anFkbW9mZGt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyMDczODYsImV4cCI6MjA5Mjc4MzM4Nn0.M1jW5lB3eSm7oOp37gKmEIO7XaUUAw-qwZ-aOVf09Vo';
-
-const sdm_sb = window.supabase.createClient(SDM_SB_URL, SDM_SB_KEY);
+// Client Supabase dipakai bersama dari supabase-config.js (_supabase),
+// tidak lagi bikin client terpisah dengan key hardcoded di file ini.
+const sdm_sb = _supabase;
 
 // --- AUTH & REFRESH ---
+// Password gate manual ("sdm2026") sudah DIHAPUS.
+// Halaman ini sekarang diproteksi oleh mrc-guard.js (Supabase Auth, role admin)
+// yang di-load lebih dulu di index.html. Kalau skrip ini sempat jalan,
+// berarti akses sudah sah, jadi konten langsung ditampilkan.
 function mrc_check_auth() {
-    const isAuth = localStorage.getItem('sdm_authenticated');
     const gate = document.getElementById('sdm_auth_gate');
     const content = document.getElementById('sdm_main_content');
 
-    if (isAuth === 'true') {
-        if (gate) gate.style.setProperty('display', 'none', 'important');
-        if (content) content.style.display = 'block';
-        window.tarik_data_sdm_sekarang();
-    } else {
-        if (gate) gate.style.setProperty('display', 'flex', 'important');
-        if (content) content.style.display = 'none';
-
-        const inputEl = document.getElementById('sdm_password_input');
-        if (inputEl) {
-            inputEl.addEventListener('keypress', (e) => { if (e.key === 'Enter') window.verifikasi_akses_sdm(); });
-        }
-    }
+    if (gate) gate.style.setProperty('display', 'none', 'important');
+    if (content) content.style.display = 'block';
+    window.tarik_data_sdm_sekarang();
 }
 
 // FUNGSI REFRESH HALAMAN PENUH
 window.mrc_refresh_halaman = function () {
     window.location.reload();
-};
-
-window.verifikasi_akses_sdm = function () {
-    const inputEl = document.getElementById('sdm_password_input');
-    if (inputEl.value === SDM_ACCESS_KEY) {
-        localStorage.setItem('sdm_authenticated', 'true');
-        mrc_check_auth();
-    } else {
-        alert("❌ Sandi Salah!");
-        inputEl.value = "";
-    }
 };
 
 window.sdm_logout = function () {

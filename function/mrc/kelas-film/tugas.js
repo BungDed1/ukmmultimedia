@@ -1,7 +1,5 @@
 // Konfigurasi Supabase
-const _supabaseUrl = "https://kbrvnbduwczjqdmofdky.supabase.co";
-const _supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImticnZuYmR1d2N6anFkbW9mZGt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyMDczODYsImV4cCI6MjA5Mjc4MzM4Nn0.M1jW5lB3eSm7oOp37gKmEIO7XaUUAw-qwZ-aOVf09Vo";
-const _supabase = supabase.createClient(_supabaseUrl, _supabaseKey);
+// Pakai client Supabase bersama `_supabase` yang sudah dideklarasikan di supabase-config.js
 
 // DOM Elements
 const formTugas = document.getElementById('form-tugas');

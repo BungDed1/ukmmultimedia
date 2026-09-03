@@ -58,7 +58,7 @@
             <div class="tab-content" id="gallery-tabContent">
 
                 <div class="tab-pane fade show active" id="pills-semua" role="tabpanel" tabindex="0">
-                    <div class="row g-4">
+                    <div class="row g-4" id="galeriRowSemua">
                         <div class="col-lg-6">
                             <div class="card gallery-card bg-dark text-white">
                                 <div class="ratio ratio-16x9">
@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="pills-video" role="tabpanel" tabindex="0">
-                    <div class="row g-4 justify-content-center">
+                    <div class="row g-4 justify-content-center" id="galeriRowVideo">
                         <div class="col-lg-6">
                             <div class="card gallery-card bg-dark text-white h-100">
                                 <div class="ratio ratio-16x9">
@@ -164,7 +164,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="pills-foto" role="tabpanel" tabindex="0">
-                    <div class="row g-4">
+                    <div class="row g-4" id="galeriRowFoto">
                         <div class="col-lg-4 col-md-6">
                             <div class="card gallery-card"><img
                                     src="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Public/Sejarah/sejarah1.webp"
@@ -199,7 +199,7 @@
                 </div>
 
                 <div class="tab-pane fade" id="pills-publikasi" role="tabpanel" tabindex="0">
-                    <div class="row g-4 justify-content-center">
+                    <div class="row g-4 justify-content-center" id="galeriRowPublikasi">
 
                         <div class="col-lg-3 col-md-6">
                             <div class="card gallery-card h-100 bg-white">
@@ -284,8 +284,95 @@
 
     <div id="tempat-footer"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/function/mrc/supabase-config.js"></script>
+    <script src="/function/mrc/site-settings.js"></script>
+    <script src="/function/mrc/supabase-auth.js"></script>
     <script src="/function/navbar.js"></script>
     <script src="/function/footer.js"></script>
+    <script>
+        // Tambahkan item galeri dari database (Kelola Konten) ke tab yang sesuai.
+        // Kartu lama tetap ada -- ini cuma MENAMBAHKAN, tidak menghapus apapun.
+        (async function loadGaleri() {
+            try {
+                const { data, error } = await _supabase
+                    .from('galeri')
+                    .select('*')
+                    .eq('is_published', true)
+                    .order('urutan', { ascending: true });
+
+                if (error || !data || data.length === 0) return;
+
+                const rowSemua = document.getElementById('galeriRowSemua');
+                const categoryRowMap = {
+                    'Videografi': document.getElementById('galeriRowVideo'),
+                    'Fotografi': document.getElementById('galeriRowFoto'),
+                    // Publikasi ditangani terpisah lewat tabel `publikasi` (kartu buku/modul lebih detail), lihat loadPublikasi()
+                };
+
+                data.forEach(item => {
+                    const cardHtml = `
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card gallery-card h-100">
+                                <img src="${item.gambar_url || ''}" class="gallery-img h-100" alt="${escGaleriText(item.judul || '')}">
+                            </div>
+                        </div>`;
+                    if (rowSemua) rowSemua.insertAdjacentHTML('beforeend', cardHtml);
+                    const targetRow = categoryRowMap[item.kategori];
+                    if (targetRow) targetRow.insertAdjacentHTML('beforeend', cardHtml);
+                });
+            } catch (err) {
+                console.error('Gagal memuat galeri tambahan:', err);
+            }
+        })();
+
+        function escGaleriText(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Tab Publikasi punya struktur kartu lebih detail (penulis, kode ISBN/QRCBN, status),
+        // jadi ditangani terpisah dari galeri foto biasa, dan menggantikan isi lama sepenuhnya
+        // (data DB sudah diseed sama persis dengan yang sebelumnya hardcode).
+        (async function loadPublikasi() {
+            try {
+                const { data, error } = await _supabase
+                    .from('publikasi')
+                    .select('*')
+                    .eq('is_published', true)
+                    .order('urutan', { ascending: true });
+
+                if (error || !data || data.length === 0) return;
+
+                const row = document.getElementById('galeriRowPublikasi');
+                if (!row) return;
+
+                row.innerHTML = data.map(pub => {
+                    const isComingSoon = pub.status === 'coming_soon';
+                    return `
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card gallery-card h-100 bg-white" ${isComingSoon ? 'style="border:1px solid #dc3545;"' : ''}>
+                            ${pub.gambar_url ? `<img src="${pub.gambar_url}" class="gallery-img" alt="${escGaleriText(pub.judul || '')}">` : ''}
+                            <div class="card-body p-4 text-start border-top d-flex flex-column">
+                                ${isComingSoon
+                                    ? `<span class="badge align-self-start mb-2 text-dark" style="background-color:#ffc107;">Coming Soon</span>`
+                                    : `<span class="badge align-self-start mb-2" style="background-color: #800000;">${escGaleriText(pub.jenis || '')}</span>`
+                                }
+                                <h6 class="fw-bold mb-3 flex-grow-1">${escGaleriText(pub.judul || '')}</h6>
+                                <div class="mt-auto">
+                                    <p class="text-muted small mb-1"><i class="bi bi-pen-fill me-2"></i>${escGaleriText(pub.penulis || '')}</p>
+                                    <p class="text-secondary small fw-bold mb-0"><i class="bi bi-upc-scan me-2"></i>${escGaleriText(pub.kode || '')}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                }).join('');
+            } catch (err) {
+                console.error('Gagal memuat publikasi, pakai fallback statis:', err);
+            }
+        })();
+    </script>
 </body>
 
 </html>

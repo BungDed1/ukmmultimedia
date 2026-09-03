@@ -1,0 +1,216 @@
+/* ==========================================================================
+   ADMIN PANEL - LAYOUT STYLE
+   Konsisten dengan identitas visual utama (maroon #800000).
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+
+body.admin-body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f6fa;
+    padding-top: 0 !important;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+.btn-maroon {
+    background-color: #800000 !important;
+    color: #ffffff !important;
+    border: 2px solid #800000 !important;
+    transition: all 0.2s ease !important;
+}
+.btn-maroon:hover, .btn-maroon:active {
+    background-color: #690000 !important;
+    color: #ffffff !important;
+    border: 2px solid #690000 !important;
+}
+
+.admin-shell { display: flex; min-height: 100vh; }
+
+/* ---------------- MOBILE TOPBAR (hanya tampil di layar kecil) ---------------- */
+.admin-mobile-topbar {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    background: #800000;
+    color: #fff;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+}
+.admin-mobile-topbar .brand-mini { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; }
+.admin-mobile-topbar .brand-mini img { width: 28px; height: 28px; border-radius: 6px; background: #fff; padding: 2px; }
+.admin-mobile-topbar button {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: #fff;
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.admin-sidebar-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1039;
+}
+.admin-sidebar-backdrop.show { display: block; }
+
+/* ---------------- SIDEBAR ---------------- */
+.admin-sidebar {
+    width: 264px;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, #800000 0%, #5c0000 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 22px 0;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 1040;
+    transition: transform 0.25s ease;
+}
+
+.admin-sidebar .brand {
+    display: flex; align-items: center; gap: 10px;
+    padding: 0 22px 18px 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    margin-bottom: 14px;
+}
+.admin-sidebar .brand img { width: 38px; height: 38px; border-radius: 9px; background: #fff; padding: 3px; }
+.admin-sidebar .brand-text { font-weight: 700; font-size: 0.95rem; line-height: 1.2; }
+.admin-sidebar .brand-text small { display: block; font-weight: 400; opacity: 0.75; font-size: 0.7rem; }
+
+.admin-nav { list-style: none; padding: 0 12px; margin: 0; flex: 1; }
+.admin-nav a {
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    padding: 11px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+    transition: all 0.15s ease;
+}
+.admin-nav a:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.admin-nav a.active { background: #fff; color: #800000; font-weight: 700; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+.admin-nav a i { font-size: 1.05rem; width: 20px; text-align: center; }
+.admin-nav .nav-section-label {
+    font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.5); padding: 14px 14px 6px 14px; font-weight: 700;
+}
+
+.admin-sidebar .sidebar-footer { padding: 12px 12px 0 12px; border-top: 1px solid rgba(255,255,255,0.15); }
+.admin-sidebar .sidebar-footer a {
+    display: flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none; padding: 10px 14px;
+    border-radius: 10px; font-size: 0.83rem;
+}
+.admin-sidebar .sidebar-footer a:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+/* ---------------- MAIN CONTENT ---------------- */
+.admin-main { margin-left: 264px; flex: 1; padding: 30px 34px 60px 34px; width: 100%; max-width: 100%; overflow-x: hidden; }
+
+.admin-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 26px; flex-wrap: wrap; gap: 12px; }
+.admin-topbar h4 { font-weight: 700; color: #212529; margin: 0; }
+.admin-topbar .admin-user-chip {
+    background: #fff; border-radius: 999px; padding: 6px 16px 6px 6px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06); font-size: 0.85rem;
+}
+.admin-user-chip .avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: #800000; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.8rem;
+}
+
+/* ---------------- CARDS ---------------- */
+.admin-card { background: #fff; border-radius: 16px; padding: 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.04); }
+
+.admin-stat-card .stat-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    background: rgba(128,0,0,0.08); color: #800000;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 12px;
+}
+.admin-stat-card .stat-value { font-size: 1.8rem; font-weight: 700; color: #212529; line-height: 1.1; }
+.admin-stat-card .stat-label { font-size: 0.82rem; color: #6c757d; margin-top: 2px; }
+
+.admin-badge-role-admin { background: rgba(128,0,0,0.1); color: #800000; font-weight: 600; font-size: 0.72rem; padding: 4px 10px; border-radius: 999px; }
+.admin-badge-role-member { background: rgba(13,110,253,0.1); color: #0d6efd; font-weight: 600; font-size: 0.72rem; padding: 4px 10px; border-radius: 999px; }
+.admin-badge-status-active { background: rgba(25,135,84,0.1); color: #198754; font-weight: 600; font-size: 0.72rem; padding: 4px 10px; border-radius: 999px; }
+.admin-badge-status-inactive { background: rgba(108,117,125,0.12); color: #6c757d; font-weight: 600; font-size: 0.72rem; padding: 4px 10px; border-radius: 999px; }
+
+.admin-table thead th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; color: #6c757d; border-bottom-width: 1px; white-space: nowrap; }
+.admin-table td { vertical-align: middle; font-size: 0.88rem; }
+
+/* ---------------- PILLAR GROUPS (Kelola MRC) ---------------- */
+.mrc-pillar-group {
+    margin-bottom: 16px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: #fff;
+}
+.mrc-pillar-header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s ease;
+}
+.mrc-pillar-header:hover { background: #faf5f5; }
+.mrc-pillar-header .pillar-icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+}
+.mrc-pillar-header .pillar-info { flex: 1; min-width: 0; }
+.mrc-pillar-header .pillar-title { font-weight: 700; font-size: 0.95rem; color: #212529; }
+.mrc-pillar-header .pillar-desc { font-size: 0.78rem; color: #6c757d; }
+.mrc-pillar-header .pillar-chevron { transition: transform 0.2s ease; color: #adb5bd; }
+.mrc-pillar-group.open .pillar-chevron { transform: rotate(180deg); }
+.mrc-pillar-body { display: none; border-top: 1px solid rgba(0,0,0,0.06); }
+.mrc-pillar-group.open .mrc-pillar-body { display: block; }
+
+#mrcTabNav .nav-link {
+    color: #495057; background: #f4f6fa; border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 999px; font-size: 0.82rem; font-weight: 600; padding: 7px 15px;
+}
+#mrcTabNav .nav-link.active { color: #fff !important; border-color: #800000; }
+#mrcTabNav .nav-link:not(.active):hover { background: rgba(128,0,0,0.06); }
+
+/* ---------------- EMPTY STATE ---------------- */
+.admin-empty-state { text-align: center; padding: 40px 20px; color: #adb5bd; }
+.admin-empty-state i { font-size: 2rem; display: block; margin-bottom: 10px; }
+
+/* ---------------- MOBILE ---------------- */
+@media (max-width: 900px) {
+    .admin-mobile-topbar { display: flex; }
+
+    .admin-sidebar {
+        transform: translateX(-100%);
+        width: 78%;
+        max-width: 300px;
+        box-shadow: 6px 0 24px rgba(0,0,0,0.25);
+    }
+    .admin-sidebar.open { transform: translateX(0); }
+
+    .admin-main { margin-left: 0; padding: 18px 16px 44px 16px; }
+    .admin-topbar .admin-user-chip { display: none; }
+
+    .admin-card { padding: 16px; border-radius: 14px; }
+    .admin-stat-card .stat-value { font-size: 1.5rem; }
+
+    .mrc-pillar-header { padding: 14px; }
+    .mrc-pillar-header .pillar-desc { display: none; }
+
+    .table-responsive { font-size: 0.82rem; }
+}

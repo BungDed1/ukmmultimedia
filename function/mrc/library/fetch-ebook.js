@@ -1,6 +1,5 @@
-const _sbUrl = "https://kbrvnbduwczjqdmofdky.supabase.co";
-const _sbKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImticnZuYmR1d2N6anFkbW9mZGt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyMDczODYsImV4cCI6MjA5Mjc4MzM4Nn0.M1jW5lB3eSm7oOp37gKmEIO7XaUUAw-qwZ-aOVf09Vo";
-const _libDB = supabase.createClient(_sbUrl, _sbKey);
+// Pakai client Supabase bersama dari supabase-config.js
+const _libDB = _supabase;
 
 async function loadEbookLibrary() {
     const container = document.getElementById('tempat-buku');
@@ -41,9 +40,9 @@ async function loadEbookLibrary() {
                 </td>
                 <td class="text-center text-muted">${buku.format || 'PDF'}</td>
                 <td class="text-end">
-                    <a href="${buku.link_baca || '#'}" target="_blank" class="btn btn-sm btn-outline-dark rounded-pill px-3">
+                    <button type="button" class="btn btn-sm btn-outline-dark rounded-pill px-3" data-path="${mrcEscAttr(buku.link_baca)}" onclick="openMrcFile(this.dataset.path, this)">
                         <i class="bi bi-book-half me-1"></i> Baca
-                    </a>
+                    </button>
                 </td>
             </tr>
         `).join('');

@@ -1,11 +1,9 @@
 console.log("Script Production.js berhasil dipanggil!");
 
-const _sbUrl = "https://kbrvnbduwczjqdmofdky.supabase.co";
-const _sbKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImticnZuYmR1d2N6anFkbW9mZGt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyMDczODYsImV4cCI6MjA5Mjc4MzM4Nn0.M1jW5lB3eSm7oOp37gKmEIO7XaUUAw-qwZ-aOVf09Vo";
-
 async function loadProductionCounts() {
     try {
-        const _prodDB = supabase.createClient(_sbUrl, _sbKey);
+        // Pakai client Supabase bersama dari supabase-config.js
+        const _prodDB = _supabase;
 
         // 1. Tarik Data Pra-Produksi
         try {

@@ -3,6 +3,55 @@
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/function/mrc/supabase-config.js"></script>
+    <script>
+        // Ambil slide dari database (Kelola Konten > Beranda). Kalau gagal/kosong,
+        // markup carousel bawaan di HTML ini yang tetap dipakai (aman, tidak pernah blank).
+        (async function loadHeroSlides() {
+            try {
+                const { data, error } = await _supabase
+                    .from('homepage_slides')
+                    .select('*')
+                    .eq('is_published', true)
+                    .order('urutan', { ascending: true });
+
+                if (error || !data || data.length === 0) return;
+
+                const indicatorsEl = document.querySelector('#mainHeroCarousel .carousel-indicators');
+                const innerEl = document.querySelector('#mainHeroCarousel .carousel-inner');
+                if (!indicatorsEl || !innerEl) return;
+
+                indicatorsEl.innerHTML = data.map((s, i) => `
+                    <button type="button" data-bs-target="#mainHeroCarousel" data-bs-slide-to="${i}" class="${i === 0 ? 'active' : ''}"></button>
+                `).join('');
+
+                innerEl.innerHTML = data.map((s, i) => `
+                    <div class="carousel-item ${i === 0 ? 'active' : ''}">
+                        <div class="hero-bg-image" style="background-image: url('${(s.gambar_url || '').replace(/'/g, "%27")}');">
+                            <div class="hero-overlay"></div>
+                            <div class="container position-relative z-2">
+                                <div class="row">
+                                    <div class="col-lg-8 text-white px-4">
+                                        ${s.badge ? `<span class="badge mb-3 px-3 py-2 text-uppercase hero-badge shadow-sm">${escapeHeroText(s.badge)}</span>` : ''}
+                                        <h1 class="mb-3 hero-title text-shadow">${escapeHeroText(s.judul || '')}</h1>
+                                        <p class="hero-desc text-shadow-sm">${escapeHeroText(s.subjudul || '')}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (err) {
+                console.error('Gagal memuat slide beranda, pakai fallback statis:', err);
+            }
+        })();
+
+        function escapeHeroText(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Utama - UKM Multimedia</title>
@@ -151,18 +200,18 @@
                     <div class="card h-100 border-0 rounded-4 shadow p-4 event-banner-hover"
                         style="background-color: #ffffff;">
                         <div class="card-body d-flex flex-column p-0 text-start">
-                            <span class="badge align-self-start mb-3 px-3 py-2 text-white"
+                            <span id="eventDeadlineBadge" class="badge align-self-start mb-3 px-3 py-2 text-white"
                                 style="background-color: #dc3545; border-radius: 6px; font-size: 0.85rem;">Deadline: 30
                                 Mei 2026</span>
-                            <h3 class="fw-bold h4 mb-3" style="color: #800000;">Spektra Vol. 1: Antologi & Visual</h3>
-                            <p class="text-muted small flex-grow-1 mb-4" style="line-height: 1.6;">
+                            <h3 id="eventTitleText" class="fw-bold h4 mb-3" style="color: #800000;">Spektra Vol. 1: Antologi & Visual</h3>
+                            <p id="eventDescText" class="text-muted small flex-grow-1 mb-4" style="line-height: 1.6;">
                                 Kesempatan emas bagi kreator umum untuk mengirimkan karya puisi dan visual terbaikmu
                                 dalam mahakarya kolaboratif.
                             </p>
                             <div class="d-flex flex-column flex-sm-row gap-2">
-                                <a href="/pages/event/index.html"
+                                <a id="eventDaftarLink" href="/pages/event/index.html"
                                     class="btn btn-maroon fw-bold flex-grow-1 rounded-pill py-2">Daftar</a>
-                                <a href="/pages/event/index.html"
+                                <a id="eventGuidebookLink" href="/pages/event/index.html"
                                     class="btn btn-outline-dark-custom fw-bold flex-grow-1 rounded-pill py-2">Guidebook</a>
                             </div>
                         </div>
@@ -176,19 +225,19 @@
         <div class="container text-center">
             <div class="row g-4">
                 <div class="col-6 col-md-3 border-end">
-                    <span class="stat-number">40+</span>
+                    <span class="stat-number" id="statAnggotaAktif">40+</span>
                     <p class="text-muted fw-bold small mb-0">Anggota Aktif</p>
                 </div>
                 <div class="col-6 col-md-3 border-end">
-                    <span class="stat-number">120+</span>
+                    <span class="stat-number" id="statKarya">120+</span>
                     <p class="text-muted fw-bold small mb-0">Karya Visual</p>
                 </div>
                 <div class="col-6 col-md-3 border-end">
-                    <span class="stat-number">10+</span>
+                    <span class="stat-number" id="statBukuTerbit">10+</span>
                     <p class="text-muted fw-bold small mb-0">Buku Terbit</p>
                 </div>
                 <div class="col-6 col-md-3">
-                    <span class="stat-number">15+</span>
+                    <span class="stat-number" id="statProjectKolaborasi">15+</span>
                     <p class="text-muted fw-bold small mb-0">Project Kolaborasi</p>
                 </div>
             </div>
@@ -291,8 +340,48 @@
     <div id="tempat-footer"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/function/mrc/site-settings.js"></script>
+    <script src="/function/mrc/supabase-auth.js"></script>
     <script src="/function/navbar.js"></script>
     <script src="/function/footer.js"></script>
+    <script>
+        (async function loadStats() {
+            try {
+                const s = await window.getSiteSettings({
+                    stat_anggota_aktif: document.getElementById('statAnggotaAktif').textContent,
+                    stat_karya: document.getElementById('statKarya').textContent,
+                    stat_buku_terbit: document.getElementById('statBukuTerbit').textContent,
+                    stat_project_kolaborasi: document.getElementById('statProjectKolaborasi').textContent,
+                });
+                document.getElementById('statAnggotaAktif').textContent = s.stat_anggota_aktif;
+                document.getElementById('statKarya').textContent = s.stat_karya;
+                document.getElementById('statBukuTerbit').textContent = s.stat_buku_terbit;
+                document.getElementById('statProjectKolaborasi').textContent = s.stat_project_kolaborasi;
+            } catch (err) {
+                console.error('Gagal memuat statistik, pakai fallback statis:', err);
+            }
+        })();
+    </script>
+    <script>
+        (async function loadEventPromo() {
+            try {
+                const s = await window.getSiteSettings({
+                    event_deadline: document.getElementById('eventDeadlineBadge').textContent.trim(),
+                    event_title: document.getElementById('eventTitleText').textContent.trim(),
+                    event_desc: document.getElementById('eventDescText').textContent.trim(),
+                    event_daftar_url: document.getElementById('eventDaftarLink').getAttribute('href'),
+                    event_guidebook_url: document.getElementById('eventGuidebookLink').getAttribute('href'),
+                });
+                document.getElementById('eventDeadlineBadge').textContent = s.event_deadline;
+                document.getElementById('eventTitleText').textContent = s.event_title;
+                document.getElementById('eventDescText').textContent = s.event_desc;
+                document.getElementById('eventDaftarLink').setAttribute('href', s.event_daftar_url);
+                document.getElementById('eventGuidebookLink').setAttribute('href', s.event_guidebook_url);
+            } catch (err) {
+                console.error('Gagal memuat event promo, pakai fallback statis:', err);
+            }
+        })();
+    </script>
 </body>
 
 </html>

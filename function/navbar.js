@@ -1,6 +1,24 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const navbarContainer = document.getElementById('tempat-navbar');
     if (!navbarContainer) return;
+
+    // Ambil dari Pengaturan Situs (Admin Panel), fallback ke nilai default
+    // kalau gagal fetch -- supaya navbar tidak pernah rusak/kosong.
+    const s = window.getSiteSettings ? await window.getSiteSettings({
+        site_name: 'UKM MULTIMEDIA',
+        site_tagline: 'Creative, Innovative, Collaborative',
+        instagram_url: 'https://www.instagram.com/ukmmultimedia',
+        tiktok_url: 'https://www.tiktok.com/@ukmmultimediaikip',
+        youtube_url: 'https://youtube.com/@ukmmultimediaikip',
+        logo_url: 'https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Logo/logomm.webp',
+    }) : {
+        site_name: 'UKM MULTIMEDIA',
+        site_tagline: 'Creative, Innovative, Collaborative',
+        instagram_url: 'https://www.instagram.com/ukmmultimedia',
+        tiktok_url: 'https://www.tiktok.com/@ukmmultimediaikip',
+        youtube_url: 'https://youtube.com/@ukmmultimediaikip',
+        logo_url: 'https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Logo/logomm.webp',
+    };
 
     // Logika Pintar untuk Cek Halaman Aktif
     const currentPath = window.location.pathname;
@@ -18,19 +36,19 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="bg-black text-white py-1 d-none d-md-block" style="font-family: 'Poppins', sans-serif;">
                 <div class="container d-flex justify-content-end align-items-center">
                     <span class="me-3 fw-bold" style="font-size: 0.75rem;">Follow:</span>
-                    <a href="https://www.instagram.com/ukmmultimedia" class="text-white me-3 fs-6"><i class="bi bi-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@ukmmultimediaikip" class="text-white me-3 fs-6"><i class="bi bi-tiktok"></i></a>
-                    <a href="https://youtube.com/@ukmmultimediaikip" class="text-white fs-6"><i class="bi bi-youtube"></i></a>
+                    <a href="${s.instagram_url}" class="text-white me-3 fs-6"><i class="bi bi-instagram"></i></a>
+                    <a href="${s.tiktok_url}" class="text-white me-3 fs-6"><i class="bi bi-tiktok"></i></a>
+                    <a href="${s.youtube_url}" class="text-white fs-6"><i class="bi bi-youtube"></i></a>
                 </div>
             </div>
 
             <nav class="navbar navbar-expand-lg navbar-light bg-white" style="font-family: 'Poppins', sans-serif; padding: 10px 0;">
                 <div class="container">
                     <a class="navbar-brand d-flex align-items-center" href="/index.html">
-                        <img src="https://kbrvnbduwczjqdmofdky.supabase.co/storage/v1/object/public/Public/Logo/logomm.webp" alt="Logo" width="45" class="me-2">
+                        <img src="${s.logo_url}" alt="Logo" width="45" class="me-2">
                         <div class="d-flex flex-column">
-                            <span class="fw-bold fs-5 text-dark" style="letter-spacing: -0.5px; line-height: 1.1;">UKM MULTIMEDIA</span>
-                            <span style="font-family: 'Cardo', serif; font-style: italic; font-size: 0.75rem; color: #000; letter-spacing: 0.5px;">Creative, Innovative, Collaborative</span>
+                            <span class="fw-bold fs-5 text-dark" style="letter-spacing: -0.5px; line-height: 1.1;">${s.site_name}</span>
+                            <span style="font-family: 'Cardo', serif; font-style: italic; font-size: 0.75rem; color: #000; letter-spacing: 0.5px;">${s.site_tagline}</span>
                         </div>
                     </a>
 
@@ -78,25 +96,37 @@ document.addEventListener("DOMContentLoaded", function () {
     renderMrcButton();
 });
 
-function renderMrcButton() {
-    const isMember = sessionStorage.getItem('isMember');
-    const targetID = sessionStorage.getItem('targetID');
-    const isParticipant = sessionStorage.getItem('isParticipant');
+async function renderMrcButton() {
     const mrcWrapper = document.getElementById('mrcMenuWrapper');
+    if (!mrcWrapper) return;
 
-    if (isMember) {
+    // Default dulu ke tombol "belum login" sambil nunggu Supabase dicek,
+    // supaya navbar tetap tampil kalau skrip auth gagal load.
+    let isLoggedIn = false;
+    let isAdmin = false;
+
+    if (window.supabaseAuth) {
+        try {
+            const user = await window.supabaseAuth.getCurrentUser();
+            isLoggedIn = !!user;
+            isAdmin = !!(user && user.profile && user.profile.role === 'admin');
+        } catch (err) {
+            console.error('[navbar] Gagal cek status login:', err);
+        }
+    }
+
+    if (isLoggedIn) {
+        const adminLink = isAdmin
+            ? `<a class="btn btn-outline-dark rounded-pill px-3 py-2 small fw-bold" href="/pages/Admin/index.html"><i class="bi bi-speedometer2 me-1"></i> ADMIN</a>`
+            : '';
         mrcWrapper.innerHTML = `
         <div class="d-flex gap-2 align-items-center">
+            ${adminLink}
             <a class="btn btn-maroon text-white rounded-pill px-4 py-2 small fw-bold" href="/pages/MRC/index.html">DASHBOARD</a>
             <button onclick="logout()" class="btn btn-outline-danger rounded-circle d-flex align-items-center justify-content-center" style="width: 35px; height: 35px;">
                 <i class="bi bi-power fs-5"></i>
             </button>
         </div>`;
-    } else if (targetID || isParticipant) {
-        mrcWrapper.innerHTML = `
-        <button onclick="logout()" class="btn btn-outline-danger rounded-pill px-4 py-2 small fw-bold">
-            <i class="bi bi-power me-2"></i> KELUAR
-        </button>`;
     } else {
         mrcWrapper.innerHTML = `
         <a class="btn btn-maroon text-white rounded-pill px-4 py-2 small fw-bold" href="/pages/MRC/login/index.html">
@@ -105,7 +135,10 @@ function renderMrcButton() {
     }
 }
 
-window.logout = function () {
-    sessionStorage.clear();
-    window.location.href = "/index.html";
+window.logout = async function () {
+    if (window.supabaseAuth) {
+        await window.supabaseAuth.logout();
+    } else {
+        window.location.href = "/index.html";
+    }
 };

@@ -2,7 +2,12 @@
 <html lang="id">
 
 <head>
-    <script src="/function/mrc/auth-guard.js"></script>
+    <script>document.documentElement.style.visibility = 'hidden';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/function/mrc/supabase-config.js"></script>
+    <script src="/function/mrc/site-settings.js"></script>
+    <script src="/function/mrc/supabase-auth.js"></script>
+    <script src="/function/mrc/mrc-guard.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presensi Kelas Film - UKM Multimedia</title>
@@ -54,7 +59,7 @@
                         </div>
 
                         <div class="embed-container">
-                            <iframe
+                            <iframe id="presensiSheetEmbed"
                                 src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS76JCA1r_V1l9cXTjWI1cUBAnnt5HHRiC0nMvxiXndl18g66CChCk3VGtsEan_SkRHbplpfDbQfUH0/pubhtml?widget=true&amp;headers=false"></iframe>
                         </div>
                     </div>
@@ -74,6 +79,13 @@
 
     <script src="/function/navbar.js"></script>
     <script src="/function/footer.js"></script>
+    <script>
+        (async function () {
+            const url = await window.getSiteSetting('presensi_sheet_embed_url',
+                document.getElementById('presensiSheetEmbed').src);
+            document.getElementById('presensiSheetEmbed').src = url;
+        })();
+    </script>
 </body>
 
 </html>

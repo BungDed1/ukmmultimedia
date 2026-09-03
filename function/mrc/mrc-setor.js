@@ -1,6 +1,5 @@
-const mrc_url = 'https://kbrvnbduwczjqdmofdky.supabase.co';
-const mrc_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImticnZuYmR1d2N6anFkbW9mZGt5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyMDczODYsImV4cCI6MjA5Mjc4MzM4Nn0.M1jW5lB3eSm7oOp37gKmEIO7XaUUAw-qwZ-aOVf09Vo';
-const mrc_sb = window.supabase.createClient(mrc_url, mrc_key);
+// Pakai client Supabase bersama dari supabase-config.js
+const mrc_sb = _supabase;
 
 const mrc_params = new URLSearchParams(window.location.search);
 const mrc_divisi = mrc_params.get('divisi') || 'Umum';

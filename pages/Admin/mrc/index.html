@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola MRC - UKM MM</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style/admin.css">
+</head>
+
+<body class="admin-body">
+
+    <script>document.documentElement.style.visibility = 'hidden'; window.MRC_REQUIRED_ROLE = 'admin';</script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/function/mrc/supabase-config.js"></script>
+    <script src="/function/mrc/mrc-file-open.js"></script>
+    <script src="/function/mrc/supabase-auth.js"></script>
+    <script src="/function/mrc/mrc-guard.js"></script>
+
+    <div id="adminShellRoot"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/function/admin/admin-layout.js"></script>
+    <script src="/function/admin/mrc-manage.js"></script>
+    <script>renderAdminShell('mrc');</script>
+
+</body>
+
+</html>
